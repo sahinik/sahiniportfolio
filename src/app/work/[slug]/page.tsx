@@ -1,0 +1,115 @@
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { getAllProjects, getProjectBySlug, getAdjacentProject } from "@/content/projects";
+import { Section } from "@/components/ui/Section";
+import { Tag } from "@/components/ui/Tag";
+import { ProjectSectionBlock } from "@/components/case-study/ProjectSection";
+import { buildMetadata } from "@/lib/metadata";
+
+export function generateStaticParams() {
+  return getAllProjects().map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata(props: PageProps<"/work/[slug]">) {
+  const { slug } = await props.params;
+  const project = getProjectBySlug(slug);
+  if (!project) return buildMetadata({ title: "Project not found", description: "" });
+
+  return buildMetadata({
+    title: project.title,
+    description: project.summary,
+    path: `/work/${project.slug}`,
+    image: project.coverImage.src,
+  });
+}
+
+export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
+  const { slug } = await props.params;
+  const project = getProjectBySlug(slug);
+  if (!project) notFound();
+
+  const next = getAdjacentProject(slug);
+
+  return (
+    <article>
+      <Section as="header" className="pt-16 pb-10">
+        {project.isPlaceholder && (
+          <p className="mb-6 inline-block rounded-full bg-accent px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent-ink">
+            Placeholder case study
+          </p>
+        )}
+        <p className="text-sm font-medium uppercase tracking-wide text-ink-muted">
+          {project.category}
+        </p>
+        <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
+          {project.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg text-ink-muted">{project.summary}</p>
+
+        <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-4">
+          <div>
+            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Role</dt>
+            <dd className="mt-1 text-sm text-ink">{project.meta.role}</dd>
+          </div>
+          <div>
+            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Timeline</dt>
+            <dd className="mt-1 text-sm text-ink">{project.meta.timeline}</dd>
+          </div>
+          {project.meta.team && (
+            <div>
+              <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Team</dt>
+              <dd className="mt-1 text-sm text-ink">{project.meta.team}</dd>
+            </div>
+          )}
+          <div>
+            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Disciplines</dt>
+            <dd className="mt-2 flex flex-wrap gap-2">
+              {project.disciplines.map((d) => (
+                <Tag key={d}>{d}</Tag>
+              ))}
+            </dd>
+          </div>
+        </dl>
+      </Section>
+
+      <Section as="div" className="pb-8">
+        <div className="relative aspect-video overflow-hidden rounded-sm border border-line bg-paper-raised">
+          <Image
+            src={project.coverImage.src}
+            alt={project.coverImage.alt}
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+        </div>
+      </Section>
+
+      <Section as="div" className="pb-16">
+        {project.sections.map((section, index) => (
+          <ProjectSectionBlock key={index} section={section} />
+        ))}
+
+        {project.outcome && (
+          <div className="mx-auto max-w-2xl border-t border-line py-8">
+            <h2 className="font-display text-2xl text-ink">Outcome</h2>
+            <p className="mt-3 text-ink-muted leading-relaxed">{project.outcome}</p>
+          </div>
+        )}
+      </Section>
+
+      <Section as="div" className="border-t border-line py-16">
+        <p className="text-sm font-medium uppercase tracking-wide text-ink-muted">
+          Next project
+        </p>
+        <Link
+          href={`/work/${next.slug}`}
+          className="mt-2 inline-block font-display text-3xl text-ink hover:text-accent"
+        >
+          {next.title} →
+        </Link>
+      </Section>
+    </article>
+  );
+}

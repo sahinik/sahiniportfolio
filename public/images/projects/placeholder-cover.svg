@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#e5e1da"/>
+  <rect x="0.5" y="0.5" width="1599" height="999" fill="none" stroke="#c9c2b4" stroke-width="1"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" fill="#8a8371">Placeholder cover · 16:10</text>
+</svg>
