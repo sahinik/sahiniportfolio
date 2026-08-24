@@ -15,9 +15,6 @@ system by hand.
 **Known gaps / things to revisit:**
 - The page background color (`--color-paper` in `globals.css`) isn't a
   Figma variable — it's a close visual approximation, not an exact hex.
-- `--font-hand` uses Google Fonts' **Caveat** as a stand-in for the file's
-  real custom font, "Sahini's Writing" — swap in the real font file via
-  `next/font/local` when available.
 - Case studies only have title/category/cover image from Figma — the body
   sections are placeholder ("write-up coming soon") until real content
   exists. See `src/content/projects/`.

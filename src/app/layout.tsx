@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif, Caveat } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -20,16 +21,11 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-/**
- * Substitute for the real "Sahini's Writing" custom font referenced in the
- * Figma file — that's a personal font file this project doesn't have access
- * to. Caveat is a placeholder standing in for it; swap in the real font
- * (via next/font/local) once the file is available.
- */
-const handwritten = Caveat({
+const handwritten = localFont({
+  src: "../fonts/SahinisWriting-Regular.ttf",
   variable: "--font-handwritten",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = buildMetadata({
