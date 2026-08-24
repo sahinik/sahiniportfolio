@@ -1,3 +1,9 @@
+/**
+ * Archived — not routed. Renaming this folder to "_playground" (Next.js's
+ * private-folder convention) takes it out of the App Router without
+ * deleting the work. Rename back to "playground" to bring the route back;
+ * until then, the nav item shows a "coming soon" cursor tooltip instead.
+ */
 import { Section } from "@/components/ui/Section";
 import { buildMetadata } from "@/lib/metadata";
 

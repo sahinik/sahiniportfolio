@@ -2,35 +2,80 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { clsx } from "clsx";
-import { nav, navSecondary, site } from "@/content/site";
+import { nav, navSecondary, site, type NavEntry } from "@/content/site";
 import { BunnyMark } from "@/components/ui/BunnyMark";
+import { requestScrollTo } from "@/lib/scroll-to-hash";
 
-const allLinks = [...nav, ...navSecondary];
+const allLinks: NavEntry[] = [...nav, ...navSecondary];
 
-function NavLink({
-  href,
-  label,
-  active,
-  className,
-}: {
-  href: string;
-  label: string;
-  active: boolean;
-  className?: string;
-}) {
+const linkClasses =
+  "font-sans text-base text-blue transition-colors duration-[var(--duration-fast)] hover:text-navy";
+
+/**
+ * Handles clicks on an anchor-link nav item (href containing "#"):
+ * already on that page → scroll immediately, since Next won't re-navigate.
+ * Navigating cross-page → record the target so it can be scrolled to once
+ * the destination has actually mounted (see scroll-to-hash.ts for why).
+ */
+function handleAnchorClick(item: NavEntry, active: boolean) {
+  return (event: MouseEvent) => {
+    const hashIndex = item.href.indexOf("#");
+    if (hashIndex === -1) return;
+    const hash = item.href.slice(hashIndex);
+    if (active) {
+      const target = document.querySelector(hash);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      requestScrollTo(hash);
+    }
+  };
+}
+
+function NavLink({ item, active, className }: { item: NavEntry; active: boolean; className?: string }) {
+  if (item.disabled) {
+    return (
+      <button
+        type="button"
+        aria-disabled="true"
+        title={item.tooltip}
+        data-cursor-badge={item.tooltip}
+        className={clsx(linkClasses, "cursor-default hover:text-blue", className)}
+      >
+        {item.label}
+      </button>
+    );
+  }
+
+  if (item.external) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={clsx(linkClasses, className)}
+      >
+        {item.label}
+      </a>
+    );
+  }
+
+  const isHashLink = item.href.includes("#");
+
   return (
     <Link
-      href={href}
+      href={item.href}
       aria-current={active ? "page" : undefined}
-      className={clsx(
-        "font-sans text-base text-blue transition-colors duration-[var(--duration-fast)] hover:text-navy",
-        active && "font-medium underline underline-offset-4",
-        className,
-      )}
+      onClick={handleAnchorClick(item, active)}
+      // For hash links, scroll is handled manually (see scroll-to-hash.ts) —
+      // Next's own scroll-to-top-on-navigate would otherwise fight it.
+      scroll={!isHashLink}
+      className={clsx(linkClasses, active && "font-medium underline underline-offset-4", className)}
     >
-      {label}
+      {item.label}
     </Link>
   );
 }
@@ -68,13 +113,21 @@ export function Header() {
           {/* Desktop: single centered cluster, matching the Figma navbar */}
           <nav aria-label="Primary" className="hidden items-center gap-10 lg:gap-16 md:flex">
             {nav.map((item) => (
-              <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} />
+              <NavLink
+                key={item.label}
+                item={item}
+                active={pathname === (item.matchPath ?? item.href)}
+              />
             ))}
             <Link href="/" aria-label={`${site.name} — home`} className="flex items-center justify-center">
               <BunnyMark className="h-14 w-auto" />
             </Link>
             {navSecondary.map((item) => (
-              <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} />
+              <NavLink
+                key={item.label}
+                item={item}
+                active={pathname === (item.matchPath ?? item.href)}
+              />
             ))}
           </nav>
 
@@ -111,16 +164,41 @@ export function Header() {
           menuOpen ? "block" : "hidden",
         )}
       >
-        {allLinks.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            aria-current={pathname === item.href ? "page" : undefined}
-            className="border-b border-line py-4 font-serif italic text-2xl text-ink"
-          >
-            {item.label}
-          </Link>
-        ))}
+        {allLinks.map((item) => {
+          if (item.disabled) {
+            return (
+              <div
+                key={item.label}
+                aria-disabled="true"
+                className="flex items-center justify-between border-b border-line py-4 font-serif italic text-2xl text-ink/50"
+              >
+                {item.label}
+                <span className="font-sans text-xs font-medium not-italic text-ink/40">
+                  {item.tooltip}
+                </span>
+              </div>
+            );
+          }
+          const itemActive = pathname === (item.matchPath ?? item.href);
+          const linkProps = item.external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : { "aria-current": itemActive ? ("page" as const) : undefined };
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={(event) => {
+                setMenuOpen(false);
+                handleAnchorClick(item, itemActive)(event);
+              }}
+              scroll={!item.href.includes("#")}
+              className="border-b border-line py-4 font-serif italic text-2xl text-ink"
+              {...linkProps}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
         <a
           href={`mailto:${site.email}`}
           className="mt-6 inline-flex w-fit items-center rounded-lg bg-sage-pale px-5 py-3 text-sm font-medium text-olive"

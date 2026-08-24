@@ -14,7 +14,7 @@ export default function HomePage() {
         <Hero />
       </Section>
 
-      <Section as="section" className="py-12 sm:py-16" ariaLabel="Projects">
+      <Section as="section" id="projects" className="scroll-mt-[82px] py-12 sm:py-16" ariaLabel="Projects">
         <div className="relative inline-block">
           <h1 className="font-serif italic text-4xl text-ink">projects</h1>
           <Squiggle className="absolute -bottom-2 left-0 h-3 w-full text-blue" />

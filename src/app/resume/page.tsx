@@ -15,11 +15,7 @@ export default function ResumePage() {
     <Section as="div" className="py-16 sm:py-20">
       <h1 className="font-serif italic text-4xl text-ink sm:text-5xl">resume</h1>
       <p className="mt-4 max-w-xl font-sans text-ink/70">
-        Placeholder — add a resume PDF at{" "}
-        <code className="rounded bg-mist px-1.5 py-0.5 text-sm">
-          public/resume.pdf
-        </code>{" "}
-        to enable the download below.
+        The full resume, as a PDF.
       </p>
       <div className="mt-8 flex gap-4">
         <LinkButton href={site.resumeUrl} external icon={ArrowUpRight}>

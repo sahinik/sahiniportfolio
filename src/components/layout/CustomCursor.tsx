@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Hourglass } from "lucide-react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const INTERACTIVE_SELECTOR = "a, button, [role='button'], input, textarea, select, [data-cursor]";
@@ -36,11 +37,14 @@ export function CustomCursor() {
   const enabled = hasFinePointer && !reduced;
   const [hovering, setHovering] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
+  const [badge, setBadge] = useState<string | null>(null);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const springX = useSpring(x, { stiffness: 500, damping: 40, mass: 0.4 });
   const springY = useSpring(y, { stiffness: 500, damping: 40, mass: 0.4 });
+  const badgeX = useTransform(springX, (v) => v + 18);
+  const badgeY = useTransform(springY, (v) => v + 18);
 
   useEffect(() => {
     document.documentElement.classList.toggle("has-custom-cursor", enabled);
@@ -57,10 +61,14 @@ export function CustomCursor() {
 
     const handleOver = (event: MouseEvent) => {
       const target = (event.target as Element)?.closest(INTERACTIVE_SELECTOR);
-      if (target) {
-        setHovering(true);
-        setLabel(target.getAttribute("data-cursor-label"));
+      if (!target) return;
+      const badgeText = target.getAttribute("data-cursor-badge");
+      if (badgeText) {
+        setBadge(badgeText);
+        return;
       }
+      setHovering(true);
+      setLabel(target.getAttribute("data-cursor-label"));
     };
 
     const handleOut = (event: MouseEvent) => {
@@ -68,6 +76,7 @@ export function CustomCursor() {
       if (target) {
         setHovering(false);
         setLabel(null);
+        setBadge(null);
       }
     };
 
@@ -83,8 +92,27 @@ export function CustomCursor() {
 
   if (!enabled) return null;
 
+  if (badge) {
+    return (
+      <motion.div
+        key="badge"
+        aria-hidden
+        className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center gap-1 whitespace-nowrap rounded-[18px] bg-navy px-[10px] py-[5px] font-sans text-sm font-medium text-mist"
+        style={{ x: badgeX, y: badgeY }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <Hourglass className="size-4 shrink-0" strokeWidth={2} aria-hidden />
+        {badge}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
+      key="circle"
       aria-hidden
       className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center justify-center rounded-full border border-ink mix-blend-difference"
       style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}

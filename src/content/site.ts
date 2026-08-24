@@ -24,24 +24,39 @@ export const site = {
   resumeUrl: "/resume.pdf",
 } as const;
 
-/** Nav order and the center logo position match the Figma navbar exactly. */
-export const nav = [
-  { label: "work", href: "/work" },
-  { label: "playground", href: "/playground" },
-] as const;
+export interface NavEntry {
+  label: string;
+  href: string;
+  /** Pathname to compare against for the active/current-page state, when it differs from href (e.g. an anchor link). */
+  matchPath?: string;
+  disabled?: boolean;
+  /** Tooltip shown via the custom cursor when disabled. */
+  tooltip?: string;
+  external?: boolean;
+}
 
-export const navSecondary = [
+/** Nav order and the center logo position match the Figma navbar exactly. */
+export const nav: NavEntry[] = [
+  // Jumps to the projects section on the homepage rather than a separate page.
+  { label: "work", href: "/#projects", matchPath: "/" },
+  // Playground isn't built yet — archived at src/app/_playground. Rendered
+  // as a disabled item with a "coming soon" cursor tooltip instead of a link.
+  { label: "playground", href: "/playground", disabled: true, tooltip: "coming soon!" },
+];
+
+export const navSecondary: NavEntry[] = [
   { label: "about", href: "/about" },
-  { label: "resume", href: "/resume" },
-] as const;
+  { label: "resume", href: "/resume.pdf", external: true },
+];
 
 export const footerNav = {
   navigation: [
-    { label: "work", href: "/work" },
+    { label: "work", href: "/#projects", matchPath: "/" },
     { label: "about", href: "/about" },
-    // "museum" is labeled distinctly from "playground" in the Figma footer —
-    // routed here as the closest conceptual match until its intent is confirmed.
-    { label: "museum", href: "/playground" },
+    // "museum" is labeled distinctly from "playground" in the Figma footer.
+    // Playground itself is archived (not built yet), so this points home
+    // until "museum" has its own destination.
+    { label: "museum", href: "/" },
   ],
   connect: [
     { label: "email", href: "mailto:hi.sahini@gmail.com" },
