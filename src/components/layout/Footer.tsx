@@ -1,50 +1,61 @@
-import { site } from "@/content/site";
+import Link from "next/link";
+import { site, footerNav } from "@/content/site";
+import { BunnyMark } from "@/components/ui/BunnyMark";
 
 export function Footer() {
-  const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto w-full max-w-(--container-max) px-(--gutter) py-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="font-display text-2xl text-ink">Let&apos;s talk.</p>
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-2 inline-block text-sm text-ink-muted underline decoration-line underline-offset-4 hover:text-ink hover:decoration-accent"
-            >
-              {site.email}
-            </a>
+    <footer className="mx-auto w-full max-w-(--container-max) px-(--gutter) py-10 sm:py-16">
+      <div
+        className="relative overflow-hidden rounded-lg bg-footer bg-cover bg-bottom px-6 py-10 sm:px-12 sm:py-14"
+        style={{ backgroundImage: "url(/images/home/footer-texture.png)" }}
+      >
+        <div className="relative flex flex-col items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-navy">
+            <p className="font-hand text-4xl sm:text-5xl">{site.handle}</p>
+            <p className="mt-1 font-sans text-lg">{site.tagline}</p>
           </div>
-          <ul className="flex gap-6 text-sm text-ink-muted">
-            {site.social.linkedin && (
-              <li>
-                <a
-                  href={site.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-ink"
-                >
-                  LinkedIn
-                </a>
-              </li>
-            )}
-            {site.social.github && (
-              <li>
-                <a
-                  href={site.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-ink"
-                >
-                  GitHub
-                </a>
-              </li>
-            )}
-          </ul>
+
+          <Link
+            href="/"
+            aria-label={`${site.name} — home`}
+            className="order-first self-center sm:order-none"
+          >
+            <BunnyMark variant="white" rotateDeg={-8} className="h-24 w-auto sm:h-28" />
+          </Link>
+
+          <div className="flex gap-12 text-navy">
+            <div>
+              <p className="font-hand text-2xl">navigation</p>
+              <ul className="mt-1 space-y-0.5 font-sans text-lg">
+                {footerNav.navigation.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="hover:underline">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="font-hand text-2xl">let&apos;s chat!</p>
+              <ul className="mt-1 space-y-0.5 font-sans text-lg">
+                {footerNav.connect.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="hover:underline"
+                      {...(item.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        <p className="mt-10 text-xs text-ink-muted">
-          &copy; {year} {site.name}. Built by hand.
-        </p>
       </div>
     </footer>
   );

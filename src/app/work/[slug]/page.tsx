@@ -33,37 +33,37 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
   return (
     <article>
-      <Section as="header" className="pt-16 pb-10">
+      <Section as="header" className="pt-12 pb-10 sm:pt-16">
         {project.isPlaceholder && (
-          <p className="mb-6 inline-block rounded-full bg-accent px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent-ink">
-            Placeholder case study
+          <p className="mb-6 inline-block rounded bg-sky px-3 py-1 font-sans text-sm font-medium text-caption">
+            Case study write-up coming soon
           </p>
         )}
-        <p className="text-sm font-medium uppercase tracking-wide text-ink-muted">
+        <span className="inline-block rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
           {project.category}
-        </p>
-        <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
+        </span>
+        <h1 className="mt-4 font-serif italic text-4xl text-ink sm:text-5xl">
           {project.title}
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-ink-muted">{project.summary}</p>
+        <p className="mt-4 max-w-2xl font-sans text-lg text-ink/70">{project.summary}</p>
 
         <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-4">
           <div>
-            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Role</dt>
-            <dd className="mt-1 text-sm text-ink">{project.meta.role}</dd>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Role</dt>
+            <dd className="mt-1 font-sans text-sm text-ink">{project.meta.role}</dd>
           </div>
           <div>
-            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Timeline</dt>
-            <dd className="mt-1 text-sm text-ink">{project.meta.timeline}</dd>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Timeline</dt>
+            <dd className="mt-1 font-sans text-sm text-ink">{project.meta.timeline}</dd>
           </div>
           {project.meta.team && (
             <div>
-              <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Team</dt>
-              <dd className="mt-1 text-sm text-ink">{project.meta.team}</dd>
+              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Team</dt>
+              <dd className="mt-1 font-sans text-sm text-ink">{project.meta.team}</dd>
             </div>
           )}
           <div>
-            <dt className="text-xs font-medium uppercase tracking-wide text-ink-muted">Disciplines</dt>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Disciplines</dt>
             <dd className="mt-2 flex flex-wrap gap-2">
               {project.disciplines.map((d) => (
                 <Tag key={d}>{d}</Tag>
@@ -74,7 +74,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
       </Section>
 
       <Section as="div" className="pb-8">
-        <div className="relative aspect-video overflow-hidden rounded-sm border border-line bg-paper-raised">
+        <div className="relative aspect-video overflow-hidden rounded-md bg-mist">
           <Image
             src={project.coverImage.src}
             alt={project.coverImage.alt}
@@ -93,19 +93,19 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
         {project.outcome && (
           <div className="mx-auto max-w-2xl border-t border-line py-8">
-            <h2 className="font-display text-2xl text-ink">Outcome</h2>
-            <p className="mt-3 text-ink-muted leading-relaxed">{project.outcome}</p>
+            <h2 className="font-serif italic text-2xl text-ink">Outcome</h2>
+            <p className="mt-3 font-sans text-ink/70 leading-relaxed">{project.outcome}</p>
           </div>
         )}
       </Section>
 
       <Section as="div" className="border-t border-line py-16">
-        <p className="text-sm font-medium uppercase tracking-wide text-ink-muted">
+        <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/50">
           Next project
         </p>
         <Link
           href={`/work/${next.slug}`}
-          className="mt-2 inline-block font-display text-3xl text-ink hover:text-accent"
+          className="mt-2 inline-block font-serif italic text-3xl text-ink hover:text-blue"
         >
           {next.title} →
         </Link>

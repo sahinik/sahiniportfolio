@@ -4,7 +4,7 @@ export function Tag({ children, className }: { children: string; className?: str
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full border border-line px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-muted",
+        "inline-flex items-center rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption",
         className,
       )}
     >

@@ -1,24 +1,50 @@
 export const site = {
   name: "Sahini Komandla",
+  handle: "sahini komandla",
   role: "Product Designer",
-  /** TODO: replace with your real positioning statement once content is ready. */
+  tagline: "designing for creatives ☆⋆⭒˚.⋆",
+  /** Homepage hero line — kept as-authored in the Figma file, WIP marker included. */
+  heroLine:
+    "WIP - I'm an accessibility focused designer that solves ambiguity through creative solutions",
   positioning:
-    "I design at the seam where physical objects and digital interfaces meet — products people can hold, understand, and trust.",
-  shortBio:
-    "Placeholder bio — replace with your real background, philosophy, and what shapes your design perspective.",
+    "Accessibility-focused product designer bridging the physical and digital world.",
+  about: {
+    greeting: "hi i'm sahini :))",
+    paragraphs: [
+      "I grew up in sunny San Diego, and I'm now based in Seattle. I have a BS in psychology with minor in neuroscience at San Diego State University and a MS in human centered design & engineering at University of Washington.",
+      "As a product designer and researcher I'm committed to improve accessibility of experiences and bridge the gap between the physical and digital world.",
+      "When I'm not cooking up designs or shaping experiences, you can find me creating art, fueling up with hojicha, watching sunsets, or collecting cat memes!",
+    ],
+  },
   email: "hi.sahini@gmail.com",
-  location: "Placeholder, Earth",
   social: {
+    /** TODO: replace with real LinkedIn URL — not present in the Figma source. */
     linkedin: "https://linkedin.com/in/placeholder",
-    github: "https://github.com/placeholder",
-    dribbble: undefined as string | undefined,
   },
   resumeUrl: "/resume.pdf",
 } as const;
 
+/** Nav order and the center logo position match the Figma navbar exactly. */
 export const nav = [
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Playground", href: "/playground" },
-  { label: "Resume", href: "/resume" },
+  { label: "work", href: "/work" },
+  { label: "playground", href: "/playground" },
 ] as const;
+
+export const navSecondary = [
+  { label: "about", href: "/about" },
+  { label: "resume", href: "/resume" },
+] as const;
+
+export const footerNav = {
+  navigation: [
+    { label: "work", href: "/work" },
+    { label: "about", href: "/about" },
+    // "museum" is labeled distinctly from "playground" in the Figma footer —
+    // routed here as the closest conceptual match until its intent is confirmed.
+    { label: "museum", href: "/playground" },
+  ],
+  connect: [
+    { label: "email", href: "mailto:hi.sahini@gmail.com" },
+    { label: "linkedin", href: "https://linkedin.com/in/placeholder" },
+  ],
+} as const;

@@ -1,14 +1,30 @@
 import type { Project } from "@/types/project";
-import { signal } from "./signal";
-import { tender } from "./tender";
-import { ledger } from "./ledger";
+import { teamChemistry } from "./team-chemistry";
+import { vertexAi } from "./vertex-ai";
+import { donorMap } from "./donor-map";
+import { insectProtein } from "./insect-protein";
+import { makeupDevice } from "./makeup-device";
+import { sharedCourage } from "./shared-courage";
 
-export const projects: Project[] = [signal, tender, ledger].sort(
-  (a, b) => a.order - b.order,
-);
+export const projects: Project[] = [
+  teamChemistry,
+  vertexAi,
+  donorMap,
+  insectProtein,
+  makeupDevice,
+  sharedCourage,
+].sort((a, b) => a.order - b.order);
 
 export function getAllProjects() {
   return projects;
+}
+
+export function getLargeProjects() {
+  return projects.filter((p) => p.size === "large");
+}
+
+export function getSmallProjects() {
+  return projects.filter((p) => p.size === "small");
 }
 
 export function getFeaturedProjects() {

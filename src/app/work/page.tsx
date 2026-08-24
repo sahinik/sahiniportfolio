@@ -1,6 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { getAllProjects } from "@/content/projects";
+import { getLargeProjects, getSmallProjects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -10,20 +10,32 @@ export const metadata = buildMetadata({
 });
 
 export default function WorkPage() {
-  const projects = getAllProjects();
+  const largeProjects = getLargeProjects();
+  const smallProjects = getSmallProjects();
 
   return (
-    <Section as="div" className="py-20">
-      <h1 className="font-display text-4xl text-ink sm:text-5xl">Work</h1>
-      <p className="mt-4 max-w-xl text-ink-muted">
-        A selection of product design projects across B2B and B2C, spanning
-        research, interaction design, and physical–digital systems.
+    <Section as="div" className="py-16 sm:py-20">
+      <h1 className="font-serif italic text-4xl text-ink sm:text-5xl">work</h1>
+      <p className="mt-4 max-w-xl font-sans text-ink/70">
+        Product design projects spanning research, interaction design, and
+        physical–digital systems.
       </p>
-      <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
+      <div className="mt-14 grid grid-cols-1 gap-x-11 gap-y-16 lg:grid-cols-2">
+        {largeProjects.map((project, index) => (
           <ProjectCard key={project.slug} project={project} priority={index === 0} />
         ))}
       </div>
+
+      {smallProjects.length > 0 && (
+        <div className="mt-20">
+          <h2 className="font-serif italic text-2xl text-ink">other side quests</h2>
+          <div className="mt-6 flex flex-wrap gap-9">
+            {smallProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+      )}
     </Section>
   );
 }

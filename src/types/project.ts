@@ -46,6 +46,8 @@ export interface Project {
   disciplines: ProjectDiscipline[];
   year: string;
   featured: boolean;
+  /** "large" = main 2x2 project grid, "small" = "other side quests" row. */
+  size: "large" | "small";
   /** Lower sorts first. */
   order: number;
   coverImage: { src: string; alt: string };
