@@ -21,7 +21,7 @@ export function Footer() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn doodle */}
             <img
-              src="/images/marks/saki.svg"
+              src="/images/marks/saki-footer.svg"
               alt=""
               aria-hidden="true"
               className="h-24 w-auto sm:h-28"

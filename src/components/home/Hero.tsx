@@ -14,7 +14,7 @@ export function Hero() {
         <div className="absolute inset-0 flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element -- hand-drawn doodle mascot */}
           <img
-            src="/images/marks/hero-doodle.svg"
+            src="/images/marks/cat-doodle.svg"
             alt="A small hand-drawn cat with a cane, peeking out"
             className="h-[45%] w-auto -translate-y-[6%]"
           />

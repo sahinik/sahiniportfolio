@@ -12,7 +12,7 @@ export function BunnyMark({
   return (
     // eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn SVG, not a next/image candidate
     <img
-      src={variant === "white" ? "/images/marks/bunny-mark-white.svg" : "/images/marks/bunny-mark.svg"}
+      src={variant === "white" ? "/images/marks/saki-footer.svg" : "/images/marks/saki-nav.svg"}
       alt=""
       aria-hidden="true"
       className={className}
