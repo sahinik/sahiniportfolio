@@ -53,10 +53,7 @@ export const footerNav = {
   navigation: [
     { label: "work", href: "/#projects", matchPath: "/" },
     { label: "about", href: "/about" },
-    // "museum" is labeled distinctly from "playground" in the Figma footer.
-    // Playground itself is archived (not built yet), so this points home
-    // until "museum" has its own destination.
-    { label: "museum", href: "/" },
+    { label: "resume", href: "/resume.pdf" },
   ],
   connect: [
     { label: "email", href: "mailto:hi.sahini@gmail.com" },
