@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { site, footerNav } from "@/content/site";
-import { BunnyMark } from "@/components/ui/BunnyMark";
 
 export function Footer() {
   return (
-    <footer className="mx-auto w-full max-w-(--container-max) px-(--gutter) py-10 sm:py-16">
+    <footer className="mx-auto w-full max-w-(--container-max) py-10 sm:py-16">
       <div
-        className="relative overflow-hidden rounded-lg bg-footer bg-cover bg-bottom px-6 py-10 sm:px-12 sm:py-14"
-        style={{ backgroundImage: "url(/images/home/footer-texture.png)" }}
+        className="relative overflow-hidden rounded-lg bg-footer bg-cover bg-bottom p-10 sm:p-14"
+        style={{ backgroundImage: "url(/images/home/footer-texture.jpg)" }}
       >
         <div className="relative flex flex-col items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-navy">
@@ -20,7 +19,13 @@ export function Footer() {
             aria-label={`${site.name} — home`}
             className="order-first self-center sm:order-none"
           >
-            <BunnyMark variant="white" rotateDeg={-8} className="h-24 w-auto sm:h-28" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn doodle */}
+            <img
+              src="/images/marks/saki.svg"
+              alt=""
+              aria-hidden="true"
+              className="h-24 w-auto sm:h-28"
+            />
           </Link>
 
           <div className="flex gap-12 text-navy">
