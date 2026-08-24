@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { Mail, ArrowUpRight, Check } from "lucide-react";
 import { site } from "@/content/site";
@@ -21,22 +21,39 @@ export function AboutHero() {
 
   return (
     <div className="grid grid-cols-1 items-center gap-12 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-      <div className="relative">
+      <div
+        className="relative"
+        style={
+          {
+            // Distance from the true viewport left edge to the right edge of
+            // the left grid column (1fr of the lg:grid-cols-[1fr_1.1fr]
+            // split), i.e. where the lg:gap-16 gutter to the text column
+            // begins. Keep the 4rem/2.1 below in sync if those grid values
+            // change. Used at lg: (+ the gap width, - a small buffer) to
+            // land the backdrop's right edge just before the text column,
+            // however wide the viewport gets.
+            "--col-right":
+              "calc(max(0px, (100vw - var(--container-max)) / 2) + var(--gutter) + (min(100vw, var(--container-max)) - 2 * var(--gutter) - 4rem) / 2.1)",
+          } as CSSProperties
+        }
+      >
         {/*
           Cloud-pattern backdrop, full-bleed to the viewport's left edge on
-          tablet/desktop (right edge stays anchored near the portrait), and
-          to both edges on mobile. The left/right insets use the Section's
-          own --gutter/--container-max tokens so the bleed is exact at any
-          viewport width without JS measurement.
+          tablet/desktop (right edge anchored towards the horizontal middle
+          of the screen, capped so it never overlaps the text column once
+          the two-column grid kicks in at lg:), and to both edges on mobile.
+          The aspect ratio matches the source image 1:1 on mobile (no
+          cropping); on tablet/desktop it reverts to a taller crop behind
+          the portrait.
         */}
         <div
-          className="absolute top-6 aspect-[513/571] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:w-[42vw] sm:max-w-[420px] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:w-[34vw]"
+          className="absolute top-6 aspect-[1306/954] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:aspect-[513/571] sm:w-[50vw] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:w-[calc(var(--col-right)_+_4rem_-_24px)]"
         >
           <Image
             src="/images/about/cloud-pattern.jpg"
             alt=""
             fill
-            sizes="(min-width: 1024px) 34vw, (min-width: 640px) 42vw, 100vw"
+            sizes="(min-width: 640px) 50vw, 100vw"
             className="object-cover"
             quality={100}
           />
