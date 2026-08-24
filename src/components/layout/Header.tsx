@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { motion } from "framer-motion";
 import { clsx } from "clsx";
 import { nav, navSecondary, site, type NavEntry } from "@/content/site";
 import { BunnyMark } from "@/components/ui/BunnyMark";
 import { requestScrollTo } from "@/lib/scroll-to-hash";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
+
+const HEADER_HEIGHT = 82;
 
 const allLinks: NavEntry[] = [...nav, ...navSecondary];
 
@@ -82,8 +86,11 @@ function NavLink({ item, active, className }: { item: NavEntry; active: boolean;
 
 export function Header() {
   const pathname = usePathname();
+  const reducedMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastPathname, setLastPathname] = useState(pathname);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
@@ -97,9 +104,41 @@ export function Header() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (reducedMotion) return;
+    lastScrollY.current = window.scrollY;
+    let ticking = false;
+
+    const updateVisibility = () => {
+      const currentY = window.scrollY;
+      const scrollingDown = currentY > lastScrollY.current;
+      const pastHeader = currentY > HEADER_HEIGHT;
+      setHidden(scrollingDown && pastHeader);
+      lastScrollY.current = currentY;
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateVisibility);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [reducedMotion]);
+
+  // Never hide behind an open mobile menu, and skip the animation for
+  // reduced-motion users — the nav just stays put.
+  const navHidden = hidden && !menuOpen && !reducedMotion;
+
   return (
     <header className="sticky top-0 z-40">
-      <div className="bg-paper/90 backdrop-blur-sm">
+      <motion.div
+        className="bg-paper/90 backdrop-blur-sm"
+        animate={{ y: navHidden ? "-100%" : "0%" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         <div className="relative mx-auto flex h-[82px] w-full max-w-(--container-max) items-center justify-center px-(--gutter)">
           {/* Mobile: bunny mark at left as home link */}
           <Link
@@ -155,7 +194,7 @@ export function Header() {
             </span>
           </button>
         </div>
-      </div>
+      </motion.div>
 
       <div
         id="mobile-nav"
