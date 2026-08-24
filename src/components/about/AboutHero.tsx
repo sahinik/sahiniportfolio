@@ -21,20 +21,28 @@ export function AboutHero() {
 
   return (
     <div className="grid grid-cols-1 items-center gap-12 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-      <div className="relative mx-auto w-full max-w-md pb-8 pl-[14%] pt-6 sm:max-w-lg">
-        {/* Decorative backdrop, offset behind and above-left of the portrait — matches the Figma hero's off-center layering. */}
-        <div className="absolute left-0 top-0 aspect-[513/571] w-[74%] overflow-hidden rounded-lg shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)]">
+      <div className="relative">
+        {/*
+          Cloud-pattern backdrop, full-bleed to the viewport's left edge on
+          tablet/desktop (right edge stays anchored near the portrait), and
+          to both edges on mobile. The left/right insets use the Section's
+          own --gutter/--container-max tokens so the bleed is exact at any
+          viewport width without JS measurement.
+        */}
+        <div
+          className="absolute top-6 aspect-[513/571] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:w-[42vw] sm:max-w-[420px] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:w-[34vw]"
+        >
           <Image
             src="/images/about/cloud-pattern.jpg"
             alt=""
             fill
-            sizes="(min-width: 1024px) 380px, 300px"
+            sizes="(min-width: 1024px) 34vw, (min-width: 640px) 42vw, 100vw"
             className="object-cover"
             quality={100}
           />
         </div>
         {/* Portrait cutout, shifted right and down over the backdrop, extending past it. */}
-        <div className="relative">
+        <div className="relative mx-auto w-full max-w-md pb-8 pl-[14%] pt-6 sm:max-w-lg">
           <Image
             src="/images/about/grad-photo.png"
             alt="Sahini Komandla in graduation attire, holding a bouquet of flowers"
