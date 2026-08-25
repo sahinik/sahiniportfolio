@@ -20,9 +20,9 @@ export function AboutHero() {
   }
 
   return (
-    <div className="grid grid-cols-1 items-center gap-12 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+    <div className="grid grid-cols-1 items-center gap-12 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1fr_1.1fr] lg:items-stretch lg:gap-16">
       <div
-        className="relative"
+        className="relative lg:flex lg:flex-col lg:justify-center"
         style={
           {
             // Distance from the true viewport left edge to the right edge of
@@ -43,11 +43,12 @@ export function AboutHero() {
           of the screen, capped so it never overlaps the text column once
           the two-column grid kicks in at lg:), and to both edges on mobile.
           The aspect ratio matches the source image 1:1 on mobile (no
-          cropping); on tablet/desktop it reverts to a taller crop behind
-          the portrait.
+          cropping); on tablet it's a taller crop behind the portrait. At
+          lg: (desktop, side-by-side), height instead matches the text
+          column's own height exactly, via the lg:items-stretch grid row.
         */}
         <div
-          className="absolute top-6 aspect-[1306/954] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:aspect-[513/571] sm:w-[50vw] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:w-[calc(var(--col-right)_+_4rem_-_24px)]"
+          className="absolute top-6 aspect-[1306/954] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:aspect-[513/571] sm:w-[50vw] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:top-0 lg:h-full lg:w-[calc(var(--col-right)_+_4rem_-_24px)] lg:aspect-auto"
         >
           <Image
             src="/images/about/cloud-pattern.jpg"
