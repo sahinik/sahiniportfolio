@@ -3,7 +3,7 @@ import { ProjectSectionBlock } from "@/components/case-study/ProjectSection";
 
 export function CaseStudyContent({ sections }: { sections: CaseStudySection[] }) {
   return (
-    <div className="flex flex-col gap-16 sm:gap-20">
+    <div className="flex min-w-0 flex-col gap-16 sm:gap-20 lg:flex-1">
       {sections.map((section) => {
         const header = (
           <>
@@ -21,7 +21,7 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
         );
 
         return (
-          <section key={section.id} id={section.id} className="scroll-mt-[104px]">
+          <section key={section.id} id={section.id} className="scroll-mt-[210px] lg:scroll-mt-[104px]">
             {section.highlighted ? (
               <div className="rounded-lg bg-mist/70 p-6 sm:p-8">
                 {header}

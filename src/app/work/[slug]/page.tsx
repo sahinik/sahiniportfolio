@@ -35,7 +35,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
     return (
       <article>
         <Section as="div" className="py-10 sm:py-14">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr] lg:gap-20">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
             <CaseStudySidebar title={project.title} sections={project.caseStudySections} />
             <CaseStudyContent sections={project.caseStudySections} />
           </div>
