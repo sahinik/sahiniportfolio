@@ -29,9 +29,10 @@ export function AboutHero() {
             // the left grid column (1fr of the lg:grid-cols-[1fr_1.1fr]
             // split), i.e. where the lg:gap-16 gutter to the text column
             // begins. Keep the 4rem/2.1 below in sync if those grid values
-            // change. Used at lg: (+ the gap width, - a small buffer) to
-            // land the backdrop's right edge just before the text column,
-            // however wide the viewport gets.
+            // change. Used at lg: as the backdrop's width, so the full
+            // lg:gap-16 (64px) reads as real padding to the text — matching
+            // the Figma hero's gap between the image and "body-container" —
+            // rather than the image crowding right up next to the text.
             "--col-right":
               "calc(max(0px, (100vw - var(--container-max)) / 2) + var(--gutter) + (min(100vw, var(--container-max)) - 2 * var(--gutter) - 4rem) / 2.1)",
           } as CSSProperties
@@ -48,7 +49,7 @@ export function AboutHero() {
           column's own height exactly, via the lg:items-stretch grid row.
         */}
         <div
-          className="absolute top-6 aspect-[1306/954] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:aspect-[513/571] sm:w-[50vw] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:top-0 lg:h-full lg:w-[calc(var(--col-right)_+_4rem_-_24px)] lg:aspect-auto"
+          className="absolute top-6 aspect-[1306/954] overflow-hidden rounded-none shadow-[0_20px_45px_-25px_rgba(36,59,94,0.5)] left-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] right-[calc(-1*(var(--gutter)_+_max(0px,_(100vw_-_var(--container-max))_/_2)))] sm:right-auto sm:aspect-[513/571] sm:w-[50vw] sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-[5px] sm:rounded-br-[5px] lg:top-0 lg:h-full lg:w-[var(--col-right)] lg:aspect-auto"
         >
           <Image
             src="/images/about/cloud-pattern.jpg"
@@ -74,6 +75,7 @@ export function AboutHero() {
         </div>
       </div>
 
+      {/* body-container, matching the Figma node name */}
       <div className="flex flex-col gap-8">
         <div className="flex items-start gap-3">
           <h1 className="font-hand text-5xl text-blue sm:text-6xl">{site.about.greeting}</h1>
