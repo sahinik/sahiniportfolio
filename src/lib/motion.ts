@@ -25,16 +25,21 @@ export const staggerChildren: Variants = {
   },
 };
 
+/**
+ * Opacity-only, deliberately — a `y`/transform here would leave a lingering
+ * `transform` on this wrapper (Framer Motion keeps it in the DOM after the
+ * animation settles, even at y:0), which breaks `position: sticky` and
+ * `position: fixed` for every descendant on every page. Same root cause as
+ * the mobile-nav/backdrop-filter bug; see PageTransition.tsx.
+ */
 export const pageTransition: Variants = {
-  initial: { opacity: 0, y: 12 },
+  initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    y: 0,
     transition: { duration: durations.page, ease: easeTactile },
   },
   exit: {
     opacity: 0,
-    y: -8,
     transition: { duration: durations.standard, ease: easeTactile },
   },
 };

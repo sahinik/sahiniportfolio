@@ -40,7 +40,10 @@ export function CaseStudySidebar({
   }
 
   return (
-    <nav aria-label="Case study sections" className="flex flex-col gap-6 lg:sticky lg:top-[104px] lg:gap-8">
+    <nav
+      aria-label="Case study sections"
+      className="flex flex-col gap-6 lg:sticky lg:top-[104px] lg:self-start lg:gap-8"
+    >
       <Link
         href="/#projects"
         className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/60 transition-colors hover:text-blue"
