@@ -5,7 +5,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
   switch (section.type) {
     case "text":
       return (
-        <div className="mx-auto max-w-2xl py-8">
+        <div className="max-w-2xl py-8">
           {section.heading && (
             <h2 className="font-serif italic text-2xl text-ink">{section.heading}</h2>
           )}
@@ -15,7 +15,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "image":
       return (
-        <figure className={section.fullWidth ? "py-8" : "mx-auto max-w-2xl py-8"}>
+        <figure className={section.fullWidth ? "py-8" : "max-w-2xl py-8"}>
           <div className="relative aspect-video overflow-hidden rounded-md bg-mist">
             <Image
               src={section.src}
@@ -59,7 +59,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "quote":
       return (
-        <blockquote className="mx-auto max-w-2xl border-l-2 border-blue py-8 pl-6">
+        <blockquote className="max-w-2xl border-l-2 border-blue py-8 pl-6">
           <p className="font-serif italic text-2xl text-ink">&ldquo;{section.text}&rdquo;</p>
           {section.attribution && (
             <cite className="mt-3 block font-sans text-sm not-italic text-ink/60">

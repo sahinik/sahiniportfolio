@@ -107,7 +107,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         ))}
 
         {project.outcome && (
-          <div className="mx-auto max-w-2xl border-t border-line py-8">
+          <div className="max-w-2xl border-t border-line py-8">
             <h2 className="font-serif italic text-2xl text-ink">Outcome</h2>
             <p className="mt-3 font-sans text-ink/70 leading-relaxed">{project.outcome}</p>
           </div>
