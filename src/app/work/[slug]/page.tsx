@@ -5,6 +5,8 @@ import { getAllProjects, getProjectBySlug, getAdjacentProject } from "@/content/
 import { Section } from "@/components/ui/Section";
 import { Tag } from "@/components/ui/Tag";
 import { ProjectSectionBlock } from "@/components/case-study/ProjectSection";
+import { CaseStudySidebar } from "@/components/case-study/CaseStudySidebar";
+import { CaseStudyContent } from "@/components/case-study/CaseStudyContent";
 import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -28,6 +30,19 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   const { slug } = await props.params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+
+  if (project.caseStudySections) {
+    return (
+      <article>
+        <Section as="div" className="py-10 sm:py-14">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr] lg:gap-20">
+            <CaseStudySidebar title={project.title} sections={project.caseStudySections} />
+            <CaseStudyContent sections={project.caseStudySections} />
+          </div>
+        </Section>
+      </article>
+    );
+  }
 
   const next = getAdjacentProject(slug);
 
