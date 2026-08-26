@@ -6,7 +6,7 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
     <div className="flex min-w-0 flex-col gap-16 sm:gap-20 lg:flex-1">
       {sections.map((section) => {
         const header = (
-          <>
+          <div>
             {section.eyebrow && (
               <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/50">
                 {section.eyebrow}
@@ -17,29 +17,29 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
                 {section.heading}
               </h2>
             )}
-          </>
+          </div>
         );
 
         return (
-          <section key={section.id} id={section.id} className="scroll-mt-[210px] lg:scroll-mt-[104px]">
+          <section
+            key={section.id}
+            id={section.id}
+            className="scroll-mt-[210px] lg:scroll-mt-[104px]"
+          >
             {section.highlighted ? (
-              <div className="rounded-lg bg-mist/70 p-6 sm:p-8">
+              <div className="flex flex-col gap-6 rounded-lg bg-mist/70 p-6 sm:p-8">
                 {header}
-                <div className="mt-4">
-                  {section.blocks.map((block, index) => (
-                    <ProjectSectionBlock key={index} section={block} />
-                  ))}
-                </div>
+                {section.blocks.map((block, index) => (
+                  <ProjectSectionBlock key={index} section={block} />
+                ))}
               </div>
             ) : (
-              <>
+              <div className="flex flex-col gap-6">
                 {header}
-                <div className="mt-4">
-                  {section.blocks.map((block, index) => (
-                    <ProjectSectionBlock key={index} section={block} />
-                  ))}
-                </div>
-              </>
+                {section.blocks.map((block, index) => (
+                  <ProjectSectionBlock key={index} section={block} />
+                ))}
+              </div>
             )}
           </section>
         );

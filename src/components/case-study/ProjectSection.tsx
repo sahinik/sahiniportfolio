@@ -5,7 +5,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
   switch (section.type) {
     case "text":
       return (
-        <div className="max-w-2xl py-8">
+        <div className="max-w-2xl">
           {section.heading && (
             <h2 className="font-serif italic text-2xl text-ink">{section.heading}</h2>
           )}
@@ -15,7 +15,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "image":
       return (
-        <figure className={section.fullWidth ? "py-8" : "max-w-2xl py-8"}>
+        <figure className={section.fullWidth ? undefined : "max-w-2xl"}>
           <div className="relative aspect-video overflow-hidden rounded-md bg-mist">
             <Image
               src={section.src}
@@ -35,7 +35,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "imageGrid":
       return (
-        <div className="grid grid-cols-1 gap-6 py-8 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {section.images.map((image, index) => (
             <figure key={index} className="overflow-hidden rounded-md bg-mist">
               <div className="relative aspect-[4/5]">
@@ -59,7 +59,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "quote":
       return (
-        <blockquote className="max-w-2xl border-l-2 border-blue py-8 pl-6">
+        <blockquote className="max-w-2xl border-l-2 border-blue py-1 pl-6">
           <p className="font-serif italic text-2xl text-ink">&ldquo;{section.text}&rdquo;</p>
           {section.attribution && (
             <cite className="mt-3 block font-sans text-sm not-italic text-ink/60">
@@ -71,7 +71,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "beforeAfter":
       return (
-        <div className="py-8">
+        <div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {[
               { label: "Before", image: section.before },
@@ -101,7 +101,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "stats":
       return (
-        <div className="grid grid-cols-2 gap-x-8 gap-y-6 py-6 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
           {section.items.map((item, index) => (
             <div key={index}>
               <p className="font-serif italic text-3xl text-ink">{item.value}</p>
@@ -113,7 +113,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "video":
       return (
-        <figure className="py-8">
+        <figure>
           <video
             src={section.src}
             poster={section.poster}
@@ -132,7 +132,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "bullets":
       return (
-        <ul className="grid grid-cols-1 gap-x-8 gap-y-2 py-4 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
           {section.items.map((item, index) => (
             <li key={index} className="flex gap-2.5 font-sans text-ink/80">
               <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue" aria-hidden />
@@ -144,7 +144,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "principles":
       return (
-        <div className="grid grid-cols-1 gap-5 py-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {section.items.map((item, index) => (
             <div key={index} className="rounded-lg border border-line bg-mist/60 p-5">
               <p className="font-serif italic text-lg text-ink">{item.title}</p>
@@ -156,7 +156,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "compareList":
       return (
-        <div className="grid grid-cols-1 gap-6 py-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-lg border border-sage bg-sage-pale/40 p-5">
             <p className="font-sans text-xs font-medium uppercase tracking-wide text-olive">
               {section.keptLabel}
@@ -189,7 +189,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "techStack":
       return (
-        <div className="flex flex-wrap gap-2 py-4">
+        <div className="flex flex-wrap gap-2">
           {section.items.map((item, index) => (
             <span
               key={index}
@@ -203,7 +203,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "timeline":
       return (
-        <ol className="flex flex-col gap-0 py-4 sm:grid sm:grid-cols-[auto_1fr] sm:gap-x-4 sm:gap-y-0">
+        <ol className="flex flex-col gap-0 sm:grid sm:grid-cols-[auto_1fr] sm:gap-x-4 sm:gap-y-0">
           {section.steps.map((step, index) => (
             <li key={index} className="contents">
               <div className="flex items-center gap-3 sm:contents">
@@ -234,7 +234,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
       if (section.skills?.length) columns.push({ label: "Skills", items: section.skills });
 
       return (
-        <dl className="grid grid-cols-2 gap-x-8 gap-y-6 py-2 sm:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
           {columns.map((col) => (
             <div key={col.label}>
               <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
@@ -262,7 +262,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             : "aspect-video";
       return (
         <div
-          className={`flex ${aspect} w-full items-center justify-center rounded-md border border-dashed border-line bg-mist/60 my-4`}
+          className={`flex ${aspect} w-full items-center justify-center rounded-md border border-dashed border-line bg-mist/60`}
         >
           <p className="px-6 text-center font-sans text-sm text-ink/40">{section.label}</p>
         </div>
