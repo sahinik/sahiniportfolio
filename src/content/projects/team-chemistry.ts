@@ -9,14 +9,14 @@ const caseStudySections: CaseStudySection[] = [
     blocks: [
       {
         type: "text",
-        body: "My team and I partnered with Team Chemistry Design to help collegiate sports teams turn team chemistry — usually treated as a vague, intangible thing — into something coaches and players could actually see, measure, and build together. Over capstone we researched, designed, and shipped Huddl: a live app for teams to reflect, check in, and recognize each other, with a real-time pulse for coaches. It's downloadable today.",
+        body: "My capstone team and I partnered with Team Chemistry Design to help collegiate sports teams turn intangible team chemistry into something coaches and players could actually see, measure, and build together. Over capstone we researched, designed, and shipped Huddl: a live app for teams to reflect, check in, and recognize each other, with a real-time pulse for coaches.",
       },
       {
         type: "metaGrid",
         role: "Product Designer",
-        timeline: "UW HCDE Capstone · 2025–2026",
-        team: ["4-person student team", "Sponsor: Team Chemistry Design"],
-        skills: ["User Research", "Interaction Design", "Co-design", "Prototyping"],
+        timeline: "6 months",
+        team: ["Sahini Komandla", "Signe Slater", "Siddharth Hardikar", "Ralph Chang"],
+        skills: ["User Research", "Interaction Design", "Co-design", "Prototyping", "Product Strategy"],
       },
     ],
   },
@@ -24,12 +24,12 @@ const caseStudySections: CaseStudySection[] = [
     id: "challenge",
     navLabel: "Challenge",
     eyebrow: "THE CHALLENGE",
-    heading: "Team chemistry gets treated like magic — not like something you can design for.",
+    heading: "Team chemistry gets treated like magic — something you can feel but not materialize.",
     highlighted: true,
     blocks: [
       {
         type: "text",
-        body: "Our sponsor works with college teams to build chemistry through workshops and consulting — but chemistry itself stays abstract, hard to track, and easy to deprioritize once the season gets busy. How might we help coaches and players turn it into something tangible, measurable, and intentionally built, at scale?",
+        body: "Our sponsor works with college teams to build chemistry through workshops and consulting. However, chemistry is an abstract concept that is hard to track and easy to deprioritize once the season gets busy. Naturally, we questioned if we could help coaches and players turn it into something tangible, measurable, and scaleable",
       },
     ],
   },
@@ -37,19 +37,19 @@ const caseStudySections: CaseStudySection[] = [
     id: "solution",
     navLabel: "Solution",
     eyebrow: "THE SOLUTION",
-    heading: "Huddl — a shared language for team chemistry",
+    heading: "Huddl provides a shared language for team chemistry",
     blocks: [
       {
         type: "text",
-        body: "Huddl gives players a structured way to reflect on team dynamics and recognize teammates, and gives coaches a real-time pulse on team health — quantitative trends plus direct player feedback, not just a gut feeling. It's sport-agnostic and flexible enough for a rowing team and a football team to use it differently.",
+        body: "Huddl gives players a structured way to reflect on team dynamics and recognize teammates, and gives coaches a real time pulse on team health. Coaches receive quantitative trends plus direct player feedback. It's sports agnostic and flexible enough for a rowing team and a football team to use it in their own way.",
       },
       {
         type: "bullets",
         items: [
-          "Vibe Check — lightweight pulse surveys, with trend reports for coaches",
-          "Huddl — a guided retro for players to reflect on team dynamics",
-          "Plays — a social feed for game footage and team moments",
-          "Comment Box — a private channel to raise concerns, with optional anonymity",
+          "Vibe Check: lightweight pulse surveys, with quantitative trend reports for coaches",
+          "Huddl: a guided retro for players to reflect on team dynamics",
+          "Plays: a player-only social feed to share game footage and team moments",
+          "Comment Box: a private channel to raise concerns or offer suggestions, with optional anonymity",
         ],
       },
       { type: "placeholder", label: "Huddl app — core flows", aspect: "wide" },
@@ -59,7 +59,7 @@ const caseStudySections: CaseStudySection[] = [
     id: "impact",
     navLabel: "Impact",
     eyebrow: "IMPACT",
-    heading: "A live, shippable product — not just a concept",
+    heading: "Huddl is a live product, tested by real sports teams",
     blocks: [
       {
         type: "stats",
@@ -70,22 +70,14 @@ const caseStudySections: CaseStudySection[] = [
           { label: "Co-design sessions", value: "6" },
         ],
       },
-      {
-        type: "text",
-        body: "Huddl is live and installable today — hosted on Vercel with Supabase handling auth and data, and Cloudflare Stream for video. Our sponsor was engaged enough by the outcome to invite the whole team to stay on as advisors after capstone ended.",
-      },
     ],
   },
   {
     id: "role",
     navLabel: "My Role",
     eyebrow: "MY ROLE",
-    heading: "Product designer, generalist by necessity",
+    heading: "...as a product designer and accessibility lead",
     blocks: [
-      {
-        type: "text",
-        body: "On a 4-person team building both the research and the product from scratch, I moved across the full process — from early interviews through shipped screens.",
-      },
       {
         type: "bullets",
         items: [
@@ -109,13 +101,12 @@ const caseStudySections: CaseStudySection[] = [
         items: [
           { label: "Interviews", value: "15" },
           { label: "Field studies", value: "3" },
-          { label: "Papers reviewed", value: "17+" },
-          { label: "Teams observed", value: "3" },
+          { label: "Papers reviewed", value: "17+" }
         ],
       },
       {
         type: "text",
-        body: "We started broad — books, academic papers, coaching forums — then went deep with 15 interviews across coaches, players, statisticians, and an athletic trainer, plus 3 field studies embedded in UW Softball, Soccer, and Football practices. Affinity mapping across all of it surfaced the themes that shaped Huddl.",
+        body: "We started broad, with the Intangibles book, organizational psychology academic papers, and coaching forums. Then we went deeper with 15 interviews across coaches, players, statisticians, and an athletic trainer, plus 3 field studies where we observed UW Softball, Soccer, and Football practices. Affinity mapping across all of it surfaced the themes that shaped Huddl.",
       },
       { type: "placeholder", label: "Affinity mapping & field study photos", aspect: "wide" },
     ],
@@ -128,7 +119,7 @@ const caseStudySections: CaseStudySection[] = [
     blocks: [
       {
         type: "text",
-        body: "We built a token-based system — primitives, then semantic and component tokens — tested across light and dark mode before building out the rest of the components. Documenting it in markdown was deliberate: it made the system directly usable in AI-native engineering workflows later on.",
+        body: "We built a token-based system which included primitives, semantic and component tokens. I conducted accessibility checks and tested across light and dark mode before building out the rest of the components. The system was documented in markdown so that it could be directly usable in AI engineering workflows later on.",
       },
       { type: "placeholder", label: "Design tokens & component library", aspect: "wide" },
     ],
@@ -149,7 +140,7 @@ const caseStudySections: CaseStudySection[] = [
       },
       {
         type: "text",
-        body: "We stayed in sketching longer than most teams — on purpose. It kept us from getting attached to any one idea too early. From there we mapped 14 user flow iterations and 2 information architectures (coach and player) before building our first clickable prototype.",
+        body: "We stayed in sketching longer than most teams because it kept us from getting attached to any one idea too early. From there we mapped 14 user flow iterations and 2 information architectures (coach and player) before building our first clickable prototype.",
       },
       { type: "placeholder", label: "Sketches, user flows & information architecture", aspect: "wide" },
     ],
@@ -162,7 +153,7 @@ const caseStudySections: CaseStudySection[] = [
     blocks: [
       {
         type: "text",
-        body: "We ran 6 co-design sessions with athletes across basketball, rowing, soccer, and softball. The Plays feature came directly out of these — players wanted a way to share game footage and team moments that wasn't a chaotic group text, so we split it into a Fun feed and a Game Footage feed based on their feedback.",
+        body: "We ran 6 co-design sessions with athletes across basketball, rowing, soccer, and softball. The Plays feature was a direct result of these sessions. Players wanted a way to share game footage and team moments that wasn't a chaotic group text, so we split it into a Fun feed and a Game Footage feed based on their feedback.",
       },
       {
         type: "quote",
@@ -173,11 +164,11 @@ const caseStudySections: CaseStudySection[] = [
         type: "compareList",
         keptLabel: "Made the cut",
         cutLabel: "Cut from MVP",
-        kept: ["Plays — Fun feed + Game Footage feed", "Team goals (shared, not individual)"],
+        kept: ["Plays (fun feed + game footage feed)", "Team goals (shared, not individual)"],
         cut: [
-          { title: "Buddy system", reason: "Mixed feedback — players didn't find it especially useful in practice" },
+          { title: "Buddy system", reason: "Mixed feedback; players didn't find it especially useful in practice" },
           { title: "Individual goals", reason: "Downstream of the buddy system; team goals were more unifying" },
-          { title: "Archetype quiz", reason: "Not actionable enough — players didn't know what to do with the result" },
+          { title: "Archetype quiz", reason: "Not actionable enough; players didn't know what to do with the result" },
         ],
       },
     ],
@@ -191,12 +182,12 @@ const caseStudySections: CaseStudySection[] = [
       {
         type: "principles",
         items: [
-          { title: "Trust above all else", body: "Anonymity where it matters — Vibe Check reports and the Comment Box — so players can be honest." },
-          { title: "Completed over comprehensive", body: "Vibe Check is built to finish on the walk back to the locker room — one tap per question." },
-          { title: "A door, not a destination", body: "Emoji reactions only, no nested replies — the app opens conversations, it doesn't replace them." },
+          { title: "Trust above all else", body: "Players can choose to be anonymous so they can be more honest in their responses — Vibe Check and the Comment Box." },
+          { title: "Completed over comprehensive", body: "Vibe Check is built to finish on the walk back to the locker room, which means quick interactions and simple navigation." },
+          { title: "A door, not a destination", body: "The app is meant to spark conversations, not replace them." },
           { title: "Signals, not noise", body: "A short, deliberate question set so busy coaches can spot a real shift, not scroll a dashboard." },
           { title: "Actionable for coaches", body: "Bookmarking and starring surface exactly what's worth raising at the next practice." },
-          { title: "Assumed, not argued", body: "No pitch copy explaining why chemistry matters — built for coaches who already believe it." },
+          { title: "Assumed, not argued", body: "No pitch copy explaining why chemistry matters. We assume that coaches and players already believe it." },
         ],
       },
       { type: "placeholder", label: "Hi-fi screens — Vibe Check, Huddl, Plays, Comment Box", aspect: "wide" },
