@@ -15,20 +15,7 @@ const caseStudySections: CaseStudySection[] = [
         type: "metaGrid",
         role: "Lead UX/UI Designer",
         timeline: "12 months",
-        team: ["Digital Aid Seattle developers", "QA", "Researcher"],
         skills: ["Visual Design", "Design Systems", "Responsive Design"],
-      },
-    ],
-  },
-  {
-    id: "context",
-    navLabel: "Context",
-    eyebrow: "CONTEXT",
-    heading: "Who is Games for Love?",
-    blocks: [
-      {
-        type: "text",
-        body: "Games for Love is a nonprofit gaming charity whose mission is to create sustainable futures for children through technology.",
       },
     ],
   },
@@ -234,7 +221,6 @@ export const donorMap: Project = {
   meta: {
     role: "Lead UX/UI Designer",
     timeline: "12 months",
-    team: "Digital Aid Seattle: developers, QA, and a researcher",
   },
   skills: ["Visual Design", "Design Systems", "Responsive Design"],
   sections: [],
