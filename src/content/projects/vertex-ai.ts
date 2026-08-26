@@ -9,7 +9,7 @@ const caseStudySections: CaseStudySection[] = [
     blocks: [
       {
         type: "text",
-        body: "As part of the HCDE Usability Studies course, I worked with a team of students and Google — supported by a Google UX research manager and our professor — to run an 8-participant usability study on Vertex AI Studio's loginless web experience, evaluating how developers navigate and engage with it before ever signing in.",
+        body: "As part of the HCDE Usability Studies course, I collaborated with a team of students and Google, supported by a Google UX research manager and our professor, to conduct a usability study on Vertex AI Studio's loginless web experience. The study assessed how developers navigate and engage with the platform's features before ever signing in.",
       },
       {
         type: "metaGrid",
@@ -27,7 +27,7 @@ const caseStudySections: CaseStudySection[] = [
     blocks: [
       {
         type: "text",
-        body: "Vertex AI is a cloud-based machine-learning development platform for building and using AI models, designed for enterprise developers building and deploying AI models and applications at scale. Its loginless experience is a free way to interact with Gemini models in Vertex AI Studio — no account required.",
+        body: "Vertex AI is a cloud-based machine-learning development platform for building and using AI models. It is designed for enterprise developers to build and deploy AI models and applications at scale. Vertex AI's loginless experience is a free way to interact with Gemini models in Vertex AI Studio. No account is required.",
       },
     ],
   },
@@ -35,12 +35,12 @@ const caseStudySections: CaseStudySection[] = [
     id: "challenge",
     navLabel: "Challenge",
     eyebrow: "THE CHALLENGE",
-    heading: "Would the loginless experience hold up to real developers — and convert them?",
+    heading: "Improving usability and retention for the loginless experience",
     highlighted: true,
     blocks: [
       {
         type: "text",
-        body: "Google wanted to identify usability challenges and uncover opportunities to improve user retention for the Vertex AI platform. They asked us to assess the loginless web experience of Vertex AI Studio, focusing on how developers navigate and engage with its features.",
+        body: "Google wanted to identify usability challenges and uncover opportunities to improve user retention for the Vertex AI platform. They asked us to conduct a usability study assessing the loginless web experience of Vertex AI Studio, focusing on how developers navigate and engage with its features.",
       },
     ],
   },
@@ -48,7 +48,7 @@ const caseStudySections: CaseStudySection[] = [
     id: "approach",
     navLabel: "Approach",
     eyebrow: "THE APPROACH",
-    heading: "8 developers, 6 tasks, 60 minutes each",
+    heading: "What did we do?",
     blocks: [
       {
         type: "stats",
@@ -62,11 +62,11 @@ const caseStudySections: CaseStudySection[] = [
       {
         type: "bullets",
         items: [
-          "8 participants — students & professional developers, all first-time Vertex AI users",
-          "60-minute in-person moderated sessions on the UW campus",
-          "Audio + video recorded, with a think-aloud protocol",
-          "Post-task and post-test questionnaires for quantitative data",
-          "6 tasks replicating the first-time journey — landing page to getting model code",
+          "8 participants: students and professional developers, all first-time users of Vertex AI",
+          "60-minute in-person moderated sessions on the University of Washington campus",
+          "Audio and video recorded, with participants thinking aloud",
+          "Post-task and post-test questionnaires for supplemental quantitative data",
+          "6 tasks replicating the initial user journey, from the landing page to getting code for the model",
         ],
       },
     ],
@@ -75,7 +75,7 @@ const caseStudySections: CaseStudySection[] = [
     id: "impact",
     navLabel: "Impact",
     eyebrow: "IMPACT",
-    heading: "Findings that made it back to Google's Vertex AI team",
+    heading: "18 actionable insights for Google's Vertex AI team",
     blocks: [
       {
         type: "stats",
@@ -90,16 +90,16 @@ const caseStudySections: CaseStudySection[] = [
     id: "role",
     navLabel: "My Role",
     eyebrow: "MY ROLE",
-    heading: "...as a UX researcher, soup to nuts",
+    heading: "...as a UX researcher, from soup to nuts",
     blocks: [
       {
         type: "bullets",
         items: [
-          "Helped create the study plan",
+          "Contributed to creating the study plan",
           "Supported participant recruitment",
-          "Moderated usability test sessions",
+          "Moderated usability tests",
           "Captured detailed qualitative notes",
-          "Analyzed qualitative and quantitative data",
+          "Analyzed both qualitative and quantitative data",
         ],
       },
     ],
@@ -114,7 +114,7 @@ const caseStudySections: CaseStudySection[] = [
         items: [
           "Is the loginless experience usable and satisfying?",
           "What are the major frictions?",
-          "Does the loginless experience provide enough capability to entice new users to sign up for more access?",
+          "Does the loginless experience provide enough capabilities to engage and entice new users to sign up for more access?",
         ],
       },
     ],
@@ -122,15 +122,15 @@ const caseStudySections: CaseStudySection[] = [
   {
     id: "initial-research",
     navLabel: "Initial Research",
-    eyebrow: "GETTING UP TO SPEED",
-    heading: "A heuristic evaluation and a cognitive walkthrough before recruiting anyone",
+    eyebrow: "INITIAL RESEARCH",
+    heading: "Getting familiar with the tool before recruiting anyone",
     blocks: [
       {
         type: "bullets",
         items: [
-          "Ran a heuristic evaluation to get familiar with the tool",
-          "Ran a cognitive walkthrough to understand how developers would navigate the platform",
-          "Studied relevant jargon and LLM fundamentals to speak the same language as participants",
+          "Conducted a heuristic evaluation to familiarize ourselves with the tool",
+          "Conducted a cognitive walkthrough to better understand how developers would navigate the platform",
+          "Spent time familiarizing ourselves with relevant jargon and the fundamentals of how LLMs work",
         ],
       },
     ],
@@ -139,7 +139,7 @@ const caseStudySections: CaseStudySection[] = [
     id: "recruitment",
     navLabel: "Recruitment",
     eyebrow: "PARTICIPANT RECRUITMENT",
-    heading: "Recruiting developers who'd never touched Vertex AI",
+    heading: "Recruiting developers with real AI and LLM experience",
     blocks: [
       {
         type: "stats",
@@ -151,10 +151,10 @@ const caseStudySections: CaseStudySection[] = [
       {
         type: "bullets",
         items: [
-          "Convenience sampling — personal network + 500+ CS students via UW directories",
-          "Screened out anyone with prior Vertex AI experience or only remote availability",
-          "Required familiarity with programming languages and building with AI",
-          "In-person attendance required for data consistency and accuracy",
+          "Convenience sampling through our personal network and 500+ computer science students via the University of Washington directories",
+          "Screening surveys excluded participants with prior Vertex AI experience or only remote availability",
+          "Inclusion criteria required familiarity with programming languages and experience using AI to build applications",
+          "In-person attendance was required to ensure consistency and accuracy of the data",
         ],
       },
     ],
@@ -163,25 +163,25 @@ const caseStudySections: CaseStudySection[] = [
     id: "procedure",
     navLabel: "Testing Procedure",
     eyebrow: "TESTING PROCEDURE",
-    heading: "A 4-person team behind every session",
+    heading: "How each session was run",
     blocks: [
       {
         type: "text",
-        body: "In-person sessions ran in isolated study rooms on the UW campus. Each began with a standard scenario and written consent, followed by a set of tasks tailored to that participant.",
+        body: "We conducted in-person usability sessions in isolated study rooms on the UW campus. Each session began with a standard scenario, followed by a set of tasks created specifically for each participant. Before starting, we obtained written consent through a signed consent form.",
       },
       {
         type: "bullets",
         items: [
-          "Moderator — guided the session",
-          "Note-taker — captured qualitative insights",
-          "Timekeeper — tracked task completion",
-          "Observer — tracked clicks-to-success and click-path errors",
+          "One moderator to guide the session",
+          "One note-taker for qualitative insights",
+          "One timekeeper for task completion",
+          "One observer tracking clicks to success and identifying click-path errors",
         ],
       },
       {
         type: "text",
         heading: "Instruments",
-        body: "Post-task questionnaires captured NASA-TLX and CSAT scores plus qualitative feedback; a post-test questionnaire captured SUS and NPS to summarize the overall experience.",
+        body: "After each task, participants completed a post-task questionnaire with standard NASA-TLX and CSAT scores, plus qualitative feedback on their frustrations or satisfaction. At the end of the test, a post-test questionnaire based on standard SUS and NPS questions summarized their overall experience with Vertex AI.",
       },
       {
         type: "techStack",
@@ -193,66 +193,66 @@ const caseStudySections: CaseStudySection[] = [
     id: "analysis",
     navLabel: "Data Analysis",
     eyebrow: "DATA ANALYSIS",
-    heading: "Affinity mapping to connect qualitative themes with the numbers",
+    heading: "Connecting the qualitative themes with the numbers",
     blocks: [
       {
         type: "bullets",
         items: [
-          "Affinity-mapped qualitative notes to surface recurring patterns and themes",
-          "Reviewed session recordings and pulled quotes that highlighted usability issues",
-          "Tracked time-to-completion and click counts against predefined benchmarks",
-          "Built CSAT, SUS, and NASA-TLX charts from the questionnaire data",
+          "Conducted an affinity mapping exercise on the qualitative notes to identify recurring patterns and themes",
+          "Reviewed session recordings and extracted quotes that directly highlighted issues with Vertex AI",
+          "Tracked time to completion and number of clicks for each task, compared against predefined benchmarks",
+          "Analyzed the post-task and post-test questionnaires to create charts reflecting CSAT, SUS, and NASA-TLX",
         ],
       },
-      { type: "placeholder", label: "CSAT, SUS & NASA-TLX charts — data under NDA", aspect: "wide" },
+      { type: "placeholder", label: "CSAT, SUS & NASA-TLX charts (data under NDA)", aspect: "wide" },
     ],
   },
   {
     id: "findings",
     navLabel: "Findings",
     eyebrow: "FINDINGS",
-    heading: "18 actionable insights, organized into three buckets",
+    heading: "18 actionable insights, organized into three categories",
     blocks: [
       {
         type: "principles",
         items: [
           {
             title: "Task-based findings",
-            body: "Organized around each of the 6 tasks, with user quotes and severity rated on the 4-point scale from the Handbook of Usability Testing (Jeffrey Rubin).",
+            body: "We organized results around each task, incorporating user quotes and rating severity on a 4-point scale from the Handbook of Usability Testing by Jeffrey Rubin.",
           },
           {
             title: "Significant non-task findings",
-            body: "Issues that surfaced outside the defined tasks but spoke directly to our research question on user retention.",
+            body: "These issues emerged outside the defined tasks, but provided valuable insight into our research question on user retention.",
           },
           {
             title: "Quantitative metrics",
-            body: "SUS, NPS, and CSAT scores gathered to support and triangulate the qualitative findings.",
+            body: "We conducted SUS, NPS, and CSAT tests to support our qualitative findings.",
           },
         ],
       },
-      { type: "placeholder", label: "Findings deck — severity-rated insights by task", aspect: "wide" },
+      { type: "placeholder", label: "Findings deck: severity-rated insights by task", aspect: "wide" },
     ],
   },
   {
     id: "reflection",
     navLabel: "Reflection",
     eyebrow: "REFLECTION",
-    heading: "What I'd carry forward",
+    heading: "Key learnings",
     blocks: [
       {
         type: "text",
         heading: "Testing across expertise levels",
-        body: "Testing with diverse expertise levels was essential — the issues beginners faced were different from what advanced users hit, and understanding both helped us prioritize recommendations that benefited the broadest user base without limiting power users.",
+        body: "I learned that testing with diverse expertise levels was essential. The issues faced by beginners versus advanced users were different, and understanding both perspectives helped us prioritize recommendations that would benefit the broadest user base without limiting power users.",
       },
       {
         type: "text",
         heading: "Triangulating methods",
-        body: "Triangulating methods gave us comprehensive insights: heuristic evaluation surfaced systemic issues, while qualitative interviews and quantitative analysis showed how those issues actually played out in real workflows.",
+        body: "Triangulation of methods allowed us to gain comprehensive insights. Heuristic evaluation identified systemic issues, while qualitative interviews and quantitative analysis revealed how these issues manifested in real workflows.",
       },
       {
         type: "text",
         heading: "If I did this again…",
-        body: "I'd add eye tracking (dropped this round for technical constraints) to build heat maps and further validate recommendations, recruit a larger and stratified sample to improve generalizability, and standardize on a single moderator with multiple dry runs before testing.",
+        body: "We wanted to incorporate eye tracking to aid our quantitative data, but stopped due to technical constraints. I believe this data would help identify visual heat maps and further validate usability recommendations. I would also want to recruit larger samples to improve generalizability, explore stratified sampling by experience level, and standardize on a single moderator with multiple dry runs before testing.",
       },
     ],
   },
