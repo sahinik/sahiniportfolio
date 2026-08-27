@@ -60,25 +60,25 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         <h1 className="mt-4 font-serif italic text-4xl text-ink sm:text-5xl">
           {project.title}
         </h1>
-        <p className="mt-4 max-w-2xl font-sans text-lg text-ink/70">{project.summary}</p>
+        <p className="mt-4 max-w-2xl font-sans text-lg text-ink/80">{project.summary}</p>
 
         <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-4">
           <div>
-            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Role</dt>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">Role</dt>
             <dd className="mt-1 font-sans text-sm text-ink">{project.meta.role}</dd>
           </div>
           <div>
-            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Timeline</dt>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">Timeline</dt>
             <dd className="mt-1 font-sans text-sm text-ink">{project.meta.timeline}</dd>
           </div>
           {project.meta.team && (
             <div>
-              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Team</dt>
+              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">Team</dt>
               <dd className="mt-1 font-sans text-sm text-ink">{project.meta.team}</dd>
             </div>
           )}
           <div>
-            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">Disciplines</dt>
+            <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">Disciplines</dt>
             <dd className="mt-2 flex flex-wrap gap-2">
               {project.disciplines.map((d) => (
                 <Tag key={d}>{d}</Tag>
@@ -109,13 +109,13 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         {project.outcome && (
           <div className="max-w-2xl border-t border-line py-8">
             <h2 className="font-serif italic text-2xl text-ink">Outcome</h2>
-            <p className="mt-3 font-sans text-ink/70 leading-relaxed">{project.outcome}</p>
+            <p className="mt-3 font-sans text-ink/80 leading-relaxed">{project.outcome}</p>
           </div>
         )}
       </Section>
 
       <Section as="div" className="border-t border-line py-16">
-        <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/50">
+        <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/75">
           Next project
         </p>
         <Link

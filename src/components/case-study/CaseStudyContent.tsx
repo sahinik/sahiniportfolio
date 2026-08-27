@@ -8,7 +8,7 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
         const header = (
           <div>
             {section.eyebrow && (
-              <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/50">
+              <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/75">
                 {section.eyebrow}
               </p>
             )}

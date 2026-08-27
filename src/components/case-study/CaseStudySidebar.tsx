@@ -79,7 +79,7 @@ export function CaseStudySidebar({
     >
       <Link
         href="/#projects"
-        className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/60 transition-colors hover:text-blue"
+        className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/80 transition-colors hover:text-blue"
       >
         <ArrowLeft className="size-4" aria-hidden />
         back
@@ -103,7 +103,7 @@ export function CaseStudySidebar({
                 aria-current={active ? "true" : undefined}
                 className={clsx(
                   "block font-sans text-sm uppercase tracking-wide transition-colors",
-                  active ? "font-medium text-ink" : "text-ink/40 hover:text-ink/70",
+                  active ? "font-medium text-ink" : "text-ink/75 hover:text-ink/80",
                 )}
               >
                 {section.navLabel}
@@ -135,7 +135,7 @@ export function CaseStudySidebar({
                   "block rounded-full border px-3 py-1.5 font-sans text-xs uppercase tracking-wide transition-colors",
                   active
                     ? "border-blue bg-sky text-caption"
-                    : "border-line text-ink/50 hover:text-ink/80",
+                    : "border-line text-ink/75 hover:text-ink/80",
                 )}
               >
                 {section.navLabel}

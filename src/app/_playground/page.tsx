@@ -24,7 +24,7 @@ export default function PlaygroundPage() {
   return (
     <Section as="div" className="py-16 sm:py-20">
       <h1 className="font-serif italic text-4xl text-ink sm:text-5xl">playground</h1>
-      <p className="mt-4 max-w-xl font-sans text-ink/70">
+      <p className="mt-4 max-w-xl font-sans text-ink/80">
         A laboratory, not a portfolio grid — small experiments, interaction
         studies, and ideas that didn&apos;t need a full case study.
         Placeholder content until real experiments are added.
@@ -35,7 +35,7 @@ export default function PlaygroundPage() {
             key={item.title}
             className="flex aspect-square flex-col justify-between rounded-md bg-mist p-6"
           >
-            <span className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+            <span className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">
               {item.type}
             </span>
             <span className="font-serif italic text-xl text-ink">{item.title}</span>

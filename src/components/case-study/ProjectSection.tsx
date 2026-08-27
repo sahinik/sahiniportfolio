@@ -9,7 +9,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
           {section.heading && (
             <h2 className="font-serif italic text-2xl text-ink">{section.heading}</h2>
           )}
-          <p className="mt-3 font-sans text-ink/70 leading-relaxed">{section.body}</p>
+          <p className="mt-3 font-sans text-ink/80 leading-relaxed">{section.body}</p>
         </div>
       );
 
@@ -26,7 +26,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             />
           </div>
           {section.caption && (
-            <figcaption className="mt-3 font-sans text-sm text-ink/60">
+            <figcaption className="mt-3 font-sans text-sm text-ink/80">
               {section.caption}
             </figcaption>
           )}
@@ -48,7 +48,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
                 />
               </div>
               {image.caption && (
-                <figcaption className="p-3 font-sans text-sm text-ink/60">
+                <figcaption className="p-3 font-sans text-sm text-ink/80">
                   {image.caption}
                 </figcaption>
               )}
@@ -62,7 +62,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         <blockquote className="max-w-2xl border-l-2 border-blue py-1 pl-6">
           <p className="font-serif italic text-2xl text-ink">&ldquo;{section.text}&rdquo;</p>
           {section.attribution && (
-            <cite className="mt-3 block font-sans text-sm not-italic text-ink/60">
+            <cite className="mt-3 block font-sans text-sm not-italic text-ink/80">
               {section.attribution}
             </cite>
           )}
@@ -87,14 +87,14 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
                     className="object-cover"
                   />
                 </div>
-                <figcaption className="p-3 font-sans text-xs font-medium uppercase tracking-wide text-ink/60">
+                <figcaption className="p-3 font-sans text-xs font-medium uppercase tracking-wide text-ink/80">
                   {label}
                 </figcaption>
               </figure>
             ))}
           </div>
           {section.caption && (
-            <p className="mt-3 font-sans text-sm text-ink/60">{section.caption}</p>
+            <p className="mt-3 font-sans text-sm text-ink/80">{section.caption}</p>
           )}
         </div>
       );
@@ -105,7 +105,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
           {section.items.map((item, index) => (
             <div key={index}>
               <p className="font-serif italic text-3xl text-ink">{item.value}</p>
-              <p className="mt-1 font-sans text-sm text-ink/60">{item.label}</p>
+              <p className="mt-1 font-sans text-sm text-ink/80">{item.label}</p>
             </div>
           ))}
         </div>
@@ -123,7 +123,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             <track kind="captions" />
           </video>
           {section.caption && (
-            <figcaption className="mt-3 font-sans text-sm text-ink/60">
+            <figcaption className="mt-3 font-sans text-sm text-ink/80">
               {section.caption}
             </figcaption>
           )}
@@ -148,7 +148,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
           {section.items.map((item, index) => (
             <div key={index} className="rounded-lg border border-line bg-mist/60 p-5">
               <p className="font-serif italic text-lg text-ink">{item.title}</p>
-              <p className="mt-1.5 font-sans text-sm text-ink/70 leading-relaxed">{item.body}</p>
+              <p className="mt-1.5 font-sans text-sm text-ink/80 leading-relaxed">{item.body}</p>
             </div>
           ))}
         </div>
@@ -170,16 +170,16 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             </ul>
           </div>
           <div className="rounded-lg border border-line bg-mist/50 p-5">
-            <p className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+            <p className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">
               {section.cutLabel}
             </p>
             <ul className="mt-3 space-y-3">
               {section.cut.map((item, index) => (
                 <li key={index}>
-                  <p className="font-sans text-sm font-medium text-ink/70 line-through decoration-ink/30">
+                  <p className="font-sans text-sm font-medium text-ink/80 line-through decoration-ink/30">
                     {item.title}
                   </p>
-                  <p className="mt-0.5 font-sans text-xs text-ink/50">{item.reason}</p>
+                  <p className="mt-0.5 font-sans text-xs text-ink/75">{item.reason}</p>
                 </li>
               ))}
             </ul>
@@ -213,7 +213,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
                 <div className="sm:pt-3">
                   <p className="font-sans text-sm font-medium text-ink">{step.label}</p>
                   {step.detail && (
-                    <p className="mt-0.5 font-sans text-xs text-ink/60">{step.detail}</p>
+                    <p className="mt-0.5 font-sans text-xs text-ink/80">{step.detail}</p>
                   )}
                 </div>
               </div>
@@ -237,7 +237,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
           {columns.map((col) => (
             <div key={col.label}>
-              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-ink/75">
                 {col.label}
               </dt>
               <dd className="mt-1.5 flex flex-col gap-0.5">
@@ -264,7 +264,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         <div
           className={`flex ${aspect} w-full items-center justify-center rounded-md border border-dashed border-line bg-mist/60`}
         >
-          <p className="px-6 text-center font-sans text-sm text-ink/40">{section.label}</p>
+          <p className="px-6 text-center font-sans text-sm text-ink/75">{section.label}</p>
         </div>
       );
     }

@@ -16,7 +16,7 @@ export default function WorkPage() {
   return (
     <Section as="div" className="py-16 sm:py-20">
       <h1 className="font-serif italic text-4xl text-ink sm:text-5xl">work</h1>
-      <p className="mt-4 max-w-xl font-sans text-ink/70">
+      <p className="mt-4 max-w-xl font-sans text-ink/80">
         Product design projects spanning research, interaction design, and
         physical–digital systems.
       </p>

@@ -10,7 +10,13 @@
 :root {
   --color-paper: #faf3e9;
   --color-ink: #3a3834;
-  --color-blue: #5583c7;
+  /* Darkened from Figma's #5583c7 — the original only cleared 3.49:1 on the
+     cream page background, short of the 4.5:1 AA floor for normal-size text
+     (this is the color used for the primary nav links at 16px). Minimal
+     darkening that clears 4.5:1 with a small safety margin (4.61:1). Mirror
+     this in the Figma variables content/secondary-text and
+     content/secondary-stroke if it changes again. */
+  --color-blue: #3d6eb8;
   --color-navy: #243b5e;
   --color-sky: #d8ecff;
   --color-mist: #f0f5fa;

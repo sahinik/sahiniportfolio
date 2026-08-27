@@ -20,7 +20,7 @@ export function Experience() {
               <p className="font-sans text-lg font-medium text-ink">{role.title}</p>
               <p className="font-sans text-sm text-blue">{role.org}</p>
             </div>
-            <p className="font-sans text-sm text-ink/60">{role.dates}</p>
+            <p className="font-sans text-sm text-ink/80">{role.dates}</p>
           </li>
         ))}
       </ul>
