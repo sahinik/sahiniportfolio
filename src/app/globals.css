@@ -23,7 +23,8 @@
   --color-footer: #a3b46a;
 
   --font-sans: var(--font-instrument-sans);
-  --font-serif: var(--font-instrument-serif);
+  /* Figma's serif display token moved from Instrument Serif to Source Serif Pro (imported as Source Serif 4 — Google Fonts renamed the family; same italic/400 spec). */
+  --font-serif: var(--font-source-serif);
   --font-hand: var(--font-handwritten);
 
   --ease-tactile: cubic-bezier(0.22, 1, 0.36, 1);
