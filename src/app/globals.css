@@ -97,6 +97,16 @@ body {
   cursor: none;
 }
 
+/* Keeps scroll functionality, hides the visible scrollbar track/thumb. */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

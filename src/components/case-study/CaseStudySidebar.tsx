@@ -116,7 +116,10 @@ export function CaseStudySidebar({
       {/* Mobile/tablet: a horizontally-scrolling pill row instead of a
           vertical list — auto-scrolls so the active chip sits at the
           row's leading edge as its section comes into view. */}
-      <ul ref={mobileListRef} className="flex gap-2 overflow-x-auto scroll-smooth lg:hidden">
+      <ul
+        ref={mobileListRef}
+        className="scrollbar-hide flex gap-2 overflow-x-auto scroll-smooth lg:hidden"
+      >
         {sections.map((section) => {
           const active = activeId === section.id;
           return (
