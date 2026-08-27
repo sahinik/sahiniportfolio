@@ -17,7 +17,12 @@
   --color-caption: #216190;
   --color-glass: rgba(85, 131, 199, 0.2);
   --color-sage-pale: #d8e4d7;
-  --color-sage: #97c492;
+  /* Lightened from Figma's #97c492 — the original only cleared 4.19:1 against
+     --color-olive button text (needs 4.5:1 at 18px medium, not "large text"
+     by WCAG's strict definition). This is the minimal bump that passes with
+     a small safety margin (4.6:1). Mirror this in the Figma variable
+     content/button/button-secondary if it changes again. */
+  --color-sage: #a4cca0;
   --color-olive: #435429;
   --color-line: rgba(58, 56, 52, 0.14);
   --color-footer: #a3b46a;

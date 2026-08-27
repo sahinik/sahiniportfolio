@@ -11,7 +11,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
     return (
       <Link href={`/work/${project.slug}`} className="group block w-full max-w-[271px] focus-visible:outline-2 focus-visible:outline-offset-4 rounded-sm">
         <div className="relative aspect-[271/197] overflow-hidden rounded-md bg-navy transition-transform duration-[var(--duration-standard)] ease-[var(--ease-tactile)] group-hover:scale-[1.02]" />
-        <p className="mt-3 font-sans text-lg text-ink">{project.title}</p>
+        <h3 className="mt-3 font-sans text-lg font-normal text-ink">{project.title}</h3>
       </Link>
     );
   }
@@ -49,7 +49,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
         </div>
       </motion.div>
       <div className="mt-5 flex items-center justify-between gap-4">
-        <h3 className="font-serif italic text-2xl text-ink">{project.title}</h3>
+        <h2 className="font-serif italic text-2xl text-ink">{project.title}</h2>
         <span className="shrink-0 rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
           {project.category}
         </span>
