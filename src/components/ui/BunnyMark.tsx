@@ -1,18 +1,15 @@
-/** The hand-drawn bunny mark used as the site's home link, from the Figma navbar/footer. */
+/** The hand-drawn bunny mark used as the site's home link in the navbar. */
 export function BunnyMark({
   className,
   rotateDeg = -13,
-  variant = "blue",
 }: {
   className?: string;
   rotateDeg?: number;
-  /** "blue" for cream backgrounds (navbar), "white" for the dark green footer. */
-  variant?: "blue" | "white";
 }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn SVG, not a next/image candidate
     <img
-      src={variant === "white" ? "/images/marks/saki-footer.svg" : "/images/marks/saki-nav.svg"}
+      src="/images/marks/saki-nav.svg"
       alt=""
       aria-hidden="true"
       className={className}

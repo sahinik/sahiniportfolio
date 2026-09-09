@@ -6,12 +6,33 @@ import { motion } from "framer-motion";
 import type { Project } from "@/types/project";
 import { easeTactile, durations } from "@/lib/motion";
 
+function categoriesFor(project: Project): string[] {
+  return project.categories ?? [project.category];
+}
+
 export function ProjectCard({ project, priority }: { project: Project; priority?: boolean }) {
+  const categories = categoriesFor(project);
+
   if (project.size === "small") {
     return (
-      <Link href={`/work/${project.slug}`} className="group block w-full max-w-[271px] focus-visible:outline-2 focus-visible:outline-offset-4 rounded-sm">
-        <div className="relative aspect-[271/197] overflow-hidden rounded-md bg-navy transition-transform duration-[var(--duration-standard)] ease-[var(--ease-tactile)] group-hover:scale-[1.02]" />
-        <h3 className="mt-3 font-sans text-lg font-normal text-ink">{project.title}</h3>
+      <Link href={`/work/${project.slug}`} className="group block w-full max-w-[330px] focus-visible:outline-2 focus-visible:outline-offset-4 rounded-sm">
+        <div className="relative aspect-[330/197] overflow-hidden rounded-md bg-navy transition-transform duration-[var(--duration-standard)] ease-[var(--ease-tactile)] group-hover:scale-[1.02]">
+          <Image
+            src={project.thumbnailImage.src}
+            alt=""
+            fill
+            sizes="330px"
+            className="object-cover"
+          />
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <span key={cat} className="rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
+              {cat}
+            </span>
+          ))}
+        </div>
+        <h3 className="mt-2 font-serif text-lg font-normal text-ink">{project.title}</h3>
       </Link>
     );
   }
@@ -32,8 +53,10 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
           transition={{ duration: durations.standard, ease: easeTactile }}
           className="absolute inset-0"
         >
+          {/* Shared V2 card backdrop — every large card uses the same painted-sky
+              texture, matching the Figma "v2 - project card" component. */}
           <Image
-            src={project.coverImage.src}
+            src="/images/projects/project-card-background.png"
             alt=""
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
@@ -41,18 +64,34 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
             priority={priority}
           />
         </motion.div>
-        {/* "glass" media placeholder panel, matching the Figma project-card spec */}
+        {/* "glass" panel matches Figma's "project image" component: a
+            translucent frosted frame around the real mockup, or the navy
+            "not ready" placeholder when a project has none yet. */}
         <div className="absolute inset-0 flex items-center justify-center p-[6%]">
-          <div className="h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
-            <div className="h-full w-full rounded-[5px] bg-navy" />
+          <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
+            {project.cardImage ? (
+              <Image
+                src={project.cardImage.src}
+                alt={project.cardImage.alt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="rounded-[5px] object-cover"
+              />
+            ) : (
+              <div className="h-full w-full rounded-[5px] bg-navy" />
+            )}
           </div>
         </div>
       </motion.div>
-      <div className="mt-5 flex items-center justify-between gap-4">
-        <h2 className="font-serif italic text-2xl text-ink">{project.title}</h2>
-        <span className="shrink-0 rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
-          {project.category}
-        </span>
+      <div className="mt-5 flex flex-col gap-2">
+        <h2 className="font-serif text-2xl font-normal text-ink">{project.title}</h2>
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <span key={cat} className="rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
+              {cat}
+            </span>
+          ))}
+        </div>
       </div>
     </Link>
   );

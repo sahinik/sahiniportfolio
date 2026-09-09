@@ -4,12 +4,9 @@ import { site, footerNav } from "@/content/site";
 export function Footer() {
   return (
     <footer className="mx-auto w-full max-w-(--container-max) py-10 sm:py-16">
-      <div
-        className="relative overflow-hidden rounded-lg bg-footer bg-cover bg-bottom p-10 sm:p-14"
-        style={{ backgroundImage: "url(/images/home/footer-texture.jpg)" }}
-      >
+      <div className="relative overflow-hidden rounded-lg bg-blue p-10 sm:p-14">
         <div className="relative flex flex-col items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-navy">
+          <div className="text-mist">
             <p className="font-hand text-4xl sm:text-5xl">{site.handle}</p>
             <p className="mt-1 font-sans text-lg">{site.tagline}</p>
           </div>
@@ -19,16 +16,16 @@ export function Footer() {
             aria-label={`${site.name} — home`}
             className="order-first self-center sm:order-none"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn doodle */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- hand-painted cat illustration, not a next/image candidate for a small decorative mark */}
             <img
-              src="/images/marks/saki-footer.svg"
+              src="/images/marks/static-cat-footer.png"
               alt=""
               aria-hidden="true"
               className="h-24 w-auto sm:h-28"
             />
           </Link>
 
-          <div className="flex gap-12 text-navy">
+          <div className="flex gap-12 text-mist">
             <div>
               <p className="font-hand text-2xl">navigation</p>
               <ul className="mt-1 space-y-0.5 font-sans text-lg">

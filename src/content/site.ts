@@ -2,19 +2,27 @@ export const site = {
   name: "Sahini Komandla",
   handle: "sahini komandla",
   role: "Product Designer",
-  tagline: "designing for creatives ☆⋆⭒˚.⋆",
-  /** Homepage hero line — kept as-authored in the Figma file, WIP marker included. */
-  heroLine:
-    "WIP - I'm an accessibility focused designer that solves ambiguity through creative solutions",
+  /** V2 footer tagline. */
+  tagline: "made with endless lattes and naps ☆⋆⭒˚.⋆",
+  /** Homepage hero greeting + positioning line (V2 — replaces the old WIP marker). */
+  homeGreeting: "hi i'm sahini",
+  heroLine: "product designer and researcher making accessible design feel like craft, not compliance.",
   positioning:
     "Accessibility-focused product designer bridging the physical and digital world.",
   about: {
-    greeting: "hi i'm sahini :))",
-    paragraphs: [
-      "I grew up in sunny San Diego, and I'm now based in Seattle. I have a BS in psychology with minor in neuroscience at San Diego State University and a MS in human centered design & engineering at University of Washington.",
-      "As a product designer and researcher I'm committed to improve accessibility of experiences and bridge the gap between the physical and digital world.",
-      "When I'm not cooking up designs or shaping experiences, you can find me creating art, fueling up with hojicha, watching sunsets, or collecting cat memes!",
+    greeting: "nice to meet you :))",
+    /** Left column, under the greeting. */
+    introParagraphs: [
+      "Hi, I'm Sahini (pronounced saw-he-nee)! I'm a product designer and researcher raised under the San Diego sun, now adjusting to Seattle's gray skies (it's a work in progress).",
+      "My journey began quite unconventionally as a behavioral neuroscience lab. As a undergrad research assistant, I kept watching my lab mates run around like caffeinated squirrels, shuffling through piles of papers mid-experiment just to log a number. So I made us a little system: a tin of color-coded flash cards. It was nothing fancy, but suddenly I noticed that no one was frantically flipping through clipboards anymore, and the relief on their faces was priceless. From then on, I became the lab's unofficial IT support, except for people instead of computers. When I found out there was an entire field built around exactly that, I was hooked.",
     ],
+    /** Right column, alongside the intro — ends with the action buttons. */
+    moreParagraphs: [
+      "My curiosity eventually led me to the University of Washington's MS in Human Centered Design & Engineering, where I learned to design for diverse audiences, championed accessibility along the way, and tackled real world problems through a human centered lens.",
+      "These days, I care about building thoughtful products that empower people and make their lives a little easier. I'm a big advocate for research and accessibility, because I believe that good products start with actually listening to what people need.",
+      "That's the TLDR, but if you want to learn more about me, feel free to reach out! When I'm not cooking up designs or molding experiences, you can find me creating art (@sahidraws), fueling up with hojicha, watching sunsets, or collecting cat memes :))",
+    ],
+    polaroidCaption: "graduated from UW MS HCDE!",
   },
   email: "hi.sahini@gmail.com",
   social: {
@@ -23,6 +31,14 @@ export const site = {
   },
   resumeUrl: "/resume.pdf",
 } as const;
+
+/** V2 experience roles — real data from Figma, replacing the old placeholder rows. */
+export const experience = [
+  { org: "Team Chemistry Design", project: "Huddl", role: "Product Designer & Researcher" },
+  { org: "University of Washington", project: "IT", role: "Accessibility Assistant" },
+  { org: "Google", project: "Vertex AI (Sponsored)", role: "UX Researcher" },
+  { org: "Digital Aid Seattle", project: "Games for Love", role: "UX/UI Designer Lead" },
+] as const;
 
 export interface NavEntry {
   label: string;
@@ -53,7 +69,10 @@ export const footerNav = {
   navigation: [
     { label: "work", href: "/#projects", matchPath: "/" },
     { label: "about", href: "/about" },
-    { label: "resume", href: "/resume.pdf" },
+    // Matches the v2 footer component's label exactly. No dedicated
+    // /museum route exists yet — routed to /playground as the closest
+    // conceptual match until a real destination exists.
+    { label: "museum", href: "/playground" },
   ],
   connect: [
     { label: "email", href: "mailto:hi.sahini@gmail.com" },

@@ -264,6 +264,7 @@ export const vertexAi: Project = {
   summary:
     "An 8-participant usability study with Google's Vertex AI team, evaluating the loginless developer experience and delivering 18 actionable insights.",
   category: "UX Research",
+  categories: ["Quantitative + Qualitative Research", "AI/ML"],
   disciplines: ["UX Research"],
   year: "2026",
   featured: true,
@@ -271,6 +272,7 @@ export const vertexAi: Project = {
   order: 2,
   coverImage: { src: "/images/projects/vertex-ai.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/vertex-ai.jpg", alt: "" },
+  cardImage: { src: "/images/projects/vertex-project-image.png", alt: "" },
   meta: {
     role: "UX Researcher",
     timeline: "HCDE Usability Studies course · 10 weeks",

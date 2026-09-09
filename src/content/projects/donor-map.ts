@@ -211,6 +211,7 @@ export const donorMap: Project = {
   summary:
     "An interactive donation map built with Digital Aid Seattle for Games for Love, turning an opaque general fund into a transparent, trackable view of where every donation goes.",
   category: "UX/UI design",
+  categories: ["UX/UI Design", "Non-profit"],
   disciplines: ["Visual Design", "Product Design"],
   year: "2026",
   featured: true,
@@ -218,6 +219,7 @@ export const donorMap: Project = {
   order: 3,
   coverImage: { src: "/images/projects/donor-map.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/donor-map.jpg", alt: "" },
+  cardImage: { src: "/images/projects/donor-map--project-image.png", alt: "" },
   meta: {
     role: "Lead UX/UI Designer",
     timeline: "12 months",

@@ -220,6 +220,7 @@ export const insectProtein: Project = {
   summary:
     "A 10-week research and design project tackling consumer hesitation toward insect protein through gamified tasting events, transparent packaging, and a community app built to make trying it feel normal.",
   category: "Product design",
+  categories: ["Concept Design", "User Research"],
   disciplines: ["UX Research", "Product Design", "Service Design"],
   year: "2026",
   featured: true,
@@ -227,6 +228,7 @@ export const insectProtein: Project = {
   order: 4,
   coverImage: { src: "/images/projects/insect-protein.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/insect-protein.jpg", alt: "" },
+  cardImage: { src: "/images/projects/insect-project-image.png", alt: "" },
   meta: {
     role: "UX Researcher & Designer",
     timeline: "10 weeks",

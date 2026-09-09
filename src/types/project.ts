@@ -84,6 +84,13 @@ export interface Project {
   summary: string;
   /** Short label, e.g. "App · B2B SaaS" */
   category: string;
+  /**
+   * Free-form tag pills shown on the V2 project card (e.g. "0 → 1",
+   * "AI/ML") — looser than `disciplines`, which stays a controlled
+   * vocabulary for the case-study meta strip. Falls back to `category`
+   * alone when absent.
+   */
+  categories?: string[];
   disciplines: ProjectDiscipline[];
   year: string;
   featured: boolean;
@@ -93,6 +100,8 @@ export interface Project {
   order: number;
   coverImage: { src: string; alt: string };
   thumbnailImage: { src: string; alt: string };
+  /** Real mockup shown inside the large homepage card's glass panel (Figma's "project image" component). Falls back to a placeholder box when absent. */
+  cardImage?: { src: string; alt: string };
   meta: ProjectMeta;
   /** Short bullet list of skills/methods, shown in the case-study meta strip. */
   skills?: string[];

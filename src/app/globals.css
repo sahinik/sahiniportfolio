@@ -3,12 +3,10 @@
 /*
   Design tokens pulled from Figma (clU6LJwZTxwmRMvEDen2sx).
   Colors and type scale below are the file's real published variables.
-  The page background (--color-paper) is NOT a Figma variable — it wasn't
-  tokenized in the file, so this is a close visual approximation of the
-  cream page fill. Adjust if you have the exact hex.
 */
 :root {
-  --color-paper: #faf3e9;
+  /* V2: surface/page resolved from Figma's primitives/Neutrals-10. */
+  --color-paper: #fffbf6;
   --color-ink: #3a3834;
   /* Darkened from Figma's #5583c7 — the original only cleared 3.49:1 on the
      cream page background, short of the 4.5:1 AA floor for normal-size text
@@ -31,6 +29,8 @@
   --color-sage: #a4cca0;
   --color-olive: #435429;
   --color-line: rgba(58, 56, 52, 0.14);
+  /* Figma variable content/divider. */
+  --color-divider: #e2e8f0;
   --color-footer: #a3b46a;
 
   --font-sans: var(--font-instrument-sans);
@@ -60,6 +60,7 @@
   --color-sage: var(--color-sage);
   --color-olive: var(--color-olive);
   --color-line: var(--color-line);
+  --color-divider: var(--color-divider);
   --color-footer: var(--color-footer);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
