@@ -66,21 +66,37 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
         </motion.div>
         {/* "glass" panel matches Figma's "project image" component: a
             translucent frosted frame around the real mockup, or the navy
-            "not ready" placeholder when a project has none yet. */}
+            "not ready" placeholder when a project has none yet. Mockups
+            that already carry their own finished background (cardImageBare)
+            skip the glass frame so it doesn't double up. */}
         <div className="absolute inset-0 flex items-center justify-center p-[6%]">
-          <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
-            {project.cardImage ? (
-              <Image
-                src={project.cardImage.src}
-                alt={project.cardImage.alt}
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="rounded-[5px] object-cover"
-              />
+          {project.cardImage ? (
+            project.cardImageBare ? (
+              <div className="relative h-full w-full">
+                <Image
+                  src={project.cardImage.src}
+                  alt={project.cardImage.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-contain"
+                />
+              </div>
             ) : (
+              <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
+                <Image
+                  src={project.cardImage.src}
+                  alt={project.cardImage.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="rounded-[5px] object-contain"
+                />
+              </div>
+            )
+          ) : (
+            <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
               <div className="h-full w-full rounded-[5px] bg-navy" />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </motion.div>
       <div className="mt-5 flex flex-col gap-2">

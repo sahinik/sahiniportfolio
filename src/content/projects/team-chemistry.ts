@@ -243,6 +243,7 @@ export const teamChemistry: Project = {
   coverImage: { src: "/images/projects/team-chemistry.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/team-chemistry.jpg", alt: "" },
   cardImage: { src: "/images/projects/team-chem--project-image.png", alt: "" },
+  cardImageBare: true,
   meta: {
     role: "Product Designer",
     timeline: "UW HCDE Capstone · 2025–2026",

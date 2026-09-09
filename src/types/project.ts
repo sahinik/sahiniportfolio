@@ -102,6 +102,8 @@ export interface Project {
   thumbnailImage: { src: string; alt: string };
   /** Real mockup shown inside the large homepage card's glass panel (Figma's "project image" component). Falls back to a placeholder box when absent. */
   cardImage?: { src: string; alt: string };
+  /** Skips the glass panel wrapper around `cardImage` — for mockups that already carry their own finished background/framing, where the glass tint would double up. */
+  cardImageBare?: boolean;
   meta: ProjectMeta;
   /** Short bullet list of skills/methods, shown in the case-study meta strip. */
   skills?: string[];
