@@ -56,7 +56,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
           {/* Shared V2 card backdrop — every large card uses the same painted-sky
               texture, matching the Figma "v2 - project card" component. */}
           <Image
-            src="/images/projects/project-card-background.png"
+            src="/images/projects/project-card-background.jpg"
             alt=""
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
