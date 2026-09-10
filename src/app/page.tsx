@@ -34,7 +34,12 @@ export default function HomePage() {
                   className="hidden h-[220px] w-auto sm:block"
                 />
               </div>
-              <div className="flex flex-wrap items-start justify-center gap-9 lg:flex-1 lg:flex-nowrap lg:justify-start">
+              {/* Grid (not flex) so both cards always get exactly equal columns —
+                  a flex row here left card width dependent on each card's own
+                  content (e.g. category pill text length), which some browsers
+                  resolved inconsistently once combined with the image's
+                  aspect-ratio sizing. */}
+              <div className="grid grid-cols-1 justify-items-center gap-9 sm:grid-cols-2 lg:flex-1 lg:justify-items-start">
                 {smallProjects.map((project) => (
                   <ProjectCard key={project.slug} project={project} />
                 ))}

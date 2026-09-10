@@ -16,7 +16,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
   if (project.size === "small") {
     return (
       <Link href={`/work/${project.slug}`} className="group block w-full max-w-[330px] focus-visible:outline-2 focus-visible:outline-offset-4 rounded-sm">
-        <div className="relative aspect-[330/197] overflow-hidden rounded-md bg-navy transition-transform duration-[var(--duration-standard)] ease-[var(--ease-tactile)] group-hover:scale-[1.02]">
+        <div className="relative aspect-[330/197] overflow-hidden rounded-md transition-transform duration-[var(--duration-standard)] ease-[var(--ease-tactile)] group-hover:scale-[1.02]">
           <Image
             src={project.thumbnailImage.src}
             alt=""
@@ -64,34 +64,20 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
             priority={priority}
           />
         </motion.div>
-        {/* "glass" panel matches Figma's "project image" component: a
-            translucent frosted frame around the real mockup, or the navy
-            "not ready" placeholder when a project has none yet. Mockups
-            that already carry their own finished background (cardImageBare)
-            skip the glass frame so it doesn't double up. */}
+        {/* Real mockups (Figma's "project image" component) carry their own
+            finished background, so they sit directly on the shared backdrop.
+            The "not ready" placeholder keeps the glass panel + navy box. */}
         <div className="absolute inset-0 flex items-center justify-center p-[6%]">
           {project.cardImage ? (
-            project.cardImageBare ? (
-              <div className="relative h-full w-full">
-                <Image
-                  src={project.cardImage.src}
-                  alt={project.cardImage.alt}
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="object-contain"
-                />
-              </div>
-            ) : (
-              <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
-                <Image
-                  src={project.cardImage.src}
-                  alt={project.cardImage.alt}
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="rounded-[5px] object-contain"
-                />
-              </div>
-            )
+            <div className="relative h-full w-full">
+              <Image
+                src={project.cardImage.src}
+                alt={project.cardImage.alt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-contain"
+              />
+            </div>
           ) : (
             <div className="relative h-full w-full rounded-[5px] bg-glass p-[2%] backdrop-blur-[2px]">
               <div className="h-full w-full rounded-[5px] bg-navy" />
