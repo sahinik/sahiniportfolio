@@ -50,7 +50,6 @@ export const site = {
         },
       ],
     ],
-    polaroidCaption: "graduated from UW MS HCDE!",
   },
   email: "hi.sahini@gmail.com",
   social: {

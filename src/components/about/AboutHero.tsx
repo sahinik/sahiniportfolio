@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Mail, ArrowUpRight, Check } from "lucide-react";
 import { site } from "@/content/site";
 import { Button, LinkButton } from "@/components/ui/Button";
 import { RichParagraph } from "@/components/ui/RichText";
+import { PolaroidStack } from "@/components/about/PolaroidStack";
 
 export function AboutHero() {
   const [copied, setCopied] = useState(false);
@@ -22,24 +22,15 @@ export function AboutHero() {
 
   return (
     <div className="flex flex-col items-center gap-16 pt-8 pb-16 sm:pt-12">
-      <div className="relative">
-        {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn mascot, positioned freely against the polaroid */}
+      <div className="relative w-full max-w-[420px]">
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn mascot, positioned freely against the polaroid stack */}
         <img
           src="/images/marks/saki-hello.svg"
           alt=""
           aria-hidden="true"
-          className="absolute -left-16 top-4 hidden h-28 w-auto sm:block lg:-left-24"
+          className="absolute -left-16 top-4 z-10 hidden h-28 w-auto sm:block lg:-left-24"
         />
-        <Image
-          src="/images/about/grad-polaroid.png"
-          alt={`Polaroid photo of Sahini Komandla in graduation attire, holding a bouquet of flowers, captioned "${site.about.polaroidCaption}"`}
-          width={1626}
-          height={1952}
-          sizes="(min-width: 640px) 480px, 90vw"
-          className="h-auto w-full max-w-[480px] drop-shadow-[0_25px_35px_rgba(36,59,94,0.25)]"
-          quality={100}
-          priority
-        />
+        <PolaroidStack />
       </div>
 
       <div className="flex w-full flex-col gap-6">
