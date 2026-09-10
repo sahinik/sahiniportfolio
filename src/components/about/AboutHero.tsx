@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Mail, ArrowUpRight, Check } from "lucide-react";
 import { site } from "@/content/site";
 import { Button, LinkButton } from "@/components/ui/Button";
+import { RichParagraph } from "@/components/ui/RichText";
 
 export function AboutHero() {
   const [copied, setCopied] = useState(false);
@@ -41,29 +42,35 @@ export function AboutHero() {
         />
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-2">
-        <div className="flex flex-col gap-6">
+      <div className="flex w-full flex-col gap-6">
+        <div className="flex items-center gap-3">
           <h1 className="font-hand text-4xl text-blue sm:text-5xl">{site.about.greeting}</h1>
-          <div className="flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
-            {site.about.introParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn smiley, stands in for a literal ":))" */}
+          <img src="/images/marks/smiley.svg" alt="" aria-hidden="true" className="h-7 w-auto sm:h-9" />
         </div>
 
-        <div className="flex flex-col gap-6">
+        {/* Both columns start here so their text lines up, matching the Figma about-hero layout. */}
+        <div className="grid grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-2">
           <div className="flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
-            {site.about.moreParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+            {site.about.introParagraphs.map((paragraph, index) => (
+              <RichParagraph key={index} segments={paragraph} />
             ))}
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <Button variant="secondary" icon={copied ? Check : Mail} onClick={copyEmail}>
-              {copied ? "copied!" : "copy email"}
-            </Button>
-            <LinkButton href="/resume" icon={ArrowUpRight}>
-              view resume
-            </LinkButton>
+
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
+              {site.about.moreParagraphs.map((paragraph, index) => (
+                <RichParagraph key={index} segments={paragraph} />
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button variant="secondary" icon={copied ? Check : Mail} onClick={copyEmail}>
+                {copied ? "copied!" : "copy email"}
+              </Button>
+              <LinkButton href={site.resumeUrl} external icon={ArrowUpRight}>
+                view resume
+              </LinkButton>
+            </div>
           </div>
         </div>
       </div>

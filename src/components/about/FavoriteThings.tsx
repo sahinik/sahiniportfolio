@@ -10,7 +10,7 @@ const items = [
 export function FavoriteThings() {
   return (
     <div className="py-16 sm:py-20">
-      <h2 className="text-center font-serif italic text-3xl text-ink sm:text-4xl">
+      <h2 className="text-center font-hand text-4xl text-blue sm:text-5xl">
         some favorite things
       </h2>
       <div className="mt-14 flex flex-wrap items-end justify-center gap-x-6 gap-y-10 sm:gap-x-10">

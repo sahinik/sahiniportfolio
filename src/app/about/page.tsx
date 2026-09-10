@@ -15,6 +15,7 @@ export default function AboutPage() {
   return (
     <Section as="div">
       <AboutHero />
+      <hr className="border-t border-divider" />
       <Experience />
       <FavoriteThings />
     </Section>

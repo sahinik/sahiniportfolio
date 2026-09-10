@@ -10,17 +10,45 @@ export const site = {
   positioning:
     "Accessibility-focused product designer bridging the physical and digital world.",
   about: {
-    greeting: "nice to meet you :))",
-    /** Left column, under the greeting. */
+    /** The ":))" is rendered as the smiley.svg mark next to this, not literal text. */
+    greeting: "nice to meet you",
+    /**
+     * Left column, under the greeting. Bold/italic spans match the Figma
+     * about-hero text exactly (node 3233:3251) — pay attention to these if
+     * the copy changes.
+     */
     introParagraphs: [
-      "Hi, I'm Sahini (pronounced saw-he-nee)! I'm a product designer and researcher raised under the San Diego sun, now adjusting to Seattle's gray skies (it's a work in progress).",
-      "My journey began quite unconventionally as a behavioral neuroscience lab. As a undergrad research assistant, I kept watching my lab mates run around like caffeinated squirrels, shuffling through piles of papers mid-experiment just to log a number. So I made us a little system: a tin of color-coded flash cards. It was nothing fancy, but suddenly I noticed that no one was frantically flipping through clipboards anymore, and the relief on their faces was priceless. From then on, I became the lab's unofficial IT support, except for people instead of computers. When I found out there was an entire field built around exactly that, I was hooked.",
+      [
+        { text: "My journey started as a non-creative at a behavioral neuroscience lab.", bold: true },
+        {
+          text: "  As a undergrad research assistant, I kept watching my lab mates run around, shuffling through piles of papers mid-experiment just to log a number. So I made us a little system: a tin of color-coded flash cards. It was nothing fancy, but I noticed that no one was frantically flipping through clipboards anymore, and the relief on their faces made me feel warm inside. From then on, I became the lab's unofficial IT support, except for people instead of computers. When I found out there was an entire field built around exactly that, I was intrigued.",
+        },
+      ],
+      [
+        { text: "My curiosity eventually led me to the " },
+        { text: "University of Washington's MS in Human Centered Design & Engineering", italic: true },
+        { text: ", where I " },
+        {
+          text: "learned to design for diverse audiences, championed accessibility along the way, and tackled real world problems through a human centered lens.",
+          bold: true,
+        },
+      ],
     ],
     /** Right column, alongside the intro — ends with the action buttons. */
     moreParagraphs: [
-      "My curiosity eventually led me to the University of Washington's MS in Human Centered Design & Engineering, where I learned to design for diverse audiences, championed accessibility along the way, and tackled real world problems through a human centered lens.",
-      "These days, I care about building thoughtful products that empower people and make their lives a little easier. I'm a big advocate for research and accessibility, because I believe that good products start with actually listening to what people need.",
-      "That's the TLDR, but if you want to learn more about me, feel free to reach out! When I'm not cooking up designs or molding experiences, you can find me creating art (@sahidraws), fueling up with hojicha, watching sunsets, or collecting cat memes :))",
+      [
+        { text: "These days," },
+        {
+          text: " I care about building thoughtful products that empower people and make their lives a little easier.",
+          bold: true,
+        },
+        { text: " I'm a big advocate for research and accessibility, because I believe that good products start with actually listening to what people need." },
+      ],
+      [
+        {
+          text: "That's the TLDR, but if you want to learn more about me, feel free to reach out! When I'm not cooking up designs or molding experiences, you can find me creating art (@sahidraws), fueling up with hojicha, watching sunsets, or collecting cat memes :))",
+        },
+      ],
     ],
     polaroidCaption: "graduated from UW MS HCDE!",
   },

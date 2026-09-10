@@ -8,20 +8,21 @@ import { experience } from "@/content/site";
 export function Experience() {
   return (
     <div className="py-16 sm:py-20">
-      <h2 className="font-serif italic text-3xl text-ink sm:text-4xl">experience</h2>
+      <h2 className="font-hand text-4xl text-blue sm:text-5xl">experience</h2>
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto]">
-        <ul className="divide-y divide-line border-t border-line">
+        <ul className="divide-y divide-divider border-t border-divider">
           {experience.map((role, index) => (
             <li key={index} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-3">
               <p className="font-sans text-base text-blue">
-                {role.org}, <span className="italic">{role.project}</span>
+                <span className="font-bold">{role.org}, </span>
+                <span className="font-bold italic">{role.project}</span>
               </p>
               <p className="font-sans text-base text-ink/80">{role.role}</p>
             </li>
           ))}
         </ul>
         <div className="flex flex-col items-center gap-2">
-          <div className="flex h-[220px] w-[220px] items-center justify-center rounded-lg border border-dashed border-line bg-mist/60 sm:w-[280px]">
+          <div className="flex h-[220px] w-[220px] items-center justify-center rounded-lg border border-dashed border-divider bg-mist/60 sm:w-[280px]">
             <p className="px-6 text-center font-sans text-sm text-ink/60">tech stack icons</p>
           </div>
           <p className="font-sans text-xs italic text-blue">a glimpse of my current tech stack</p>

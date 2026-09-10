@@ -12,6 +12,9 @@ import { site } from "@/content/site";
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
+  // Style must be requested explicitly for variable fonts, or italic body
+  // text (e.g. the About hero bio) falls back to browser-synthesized italic.
+  style: ["normal", "italic"],
 });
 
 const sourceSerif = Source_Serif_4({

@@ -9,8 +9,12 @@ const base =
   "inline-flex items-center justify-center gap-2.5 rounded-lg h-12 px-3 font-sans text-lg font-medium transition-colors duration-[var(--duration-fast)] ease-[var(--ease-tactile)] focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-sage-pale text-olive hover:bg-sage",
-  secondary: "bg-sage text-olive hover:bg-sage-pale",
+  // Matches the Figma about-hero buttons (node 3267:7834): dark navy/blue
+  // fills with near-white text, not the older sage-green treatment. The
+  // default focus ring (--color-blue) would be invisible against these dark
+  // fills, so both override it to the light mist token instead.
+  primary: "bg-navy text-mist hover:bg-blue focus-visible:outline-mist",
+  secondary: "bg-blue text-mist hover:bg-navy focus-visible:outline-mist",
   ghost: "bg-transparent text-ink border border-line hover:border-blue hover:text-blue",
 };
 
