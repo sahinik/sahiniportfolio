@@ -3,8 +3,8 @@ import { site, footerNav } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="mx-auto w-full max-w-(--container-max) py-10 sm:py-16">
-      <div className="relative overflow-hidden rounded-lg bg-blue p-10 sm:p-14">
+    <footer className="w-full pt-10 sm:pt-16">
+      <div className="relative overflow-hidden bg-blue p-10 sm:p-14">
         <div className="relative flex flex-col items-start gap-10 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-mist">
             <p className="font-hand text-4xl sm:text-5xl">{site.handle}</p>
