@@ -13,7 +13,12 @@ export default function HomePage() {
         <Hero />
       </Section>
 
-      <Section as="section" id="projects" className="scroll-mt-[82px] py-12 sm:py-16" ariaLabel="Projects">
+      <Section
+        as="section"
+        id="projects"
+        className="scroll-mt-[82px] py-12 sm:py-16 lg:max-w-[1600px] lg:px-[60px]"
+        ariaLabel="Projects"
+      >
         <div className="grid grid-cols-1 gap-x-11 gap-y-16 lg:grid-cols-2">
           {largeProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} priority={index === 0} />
