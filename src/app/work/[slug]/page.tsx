@@ -57,7 +57,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         <span className="inline-block rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">
           {project.category}
         </span>
-        <h1 className="mt-4 font-serif italic text-4xl text-ink sm:text-5xl">
+        <h1 className="mt-4 font-serif text-4xl text-ink sm:text-5xl">
           {project.title}
         </h1>
         <p className="mt-4 max-w-2xl font-sans text-lg text-ink/80">{project.summary}</p>
@@ -108,7 +108,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
 
         {project.outcome && (
           <div className="max-w-2xl border-t border-line py-8">
-            <h2 className="font-serif italic text-2xl text-ink">Outcome</h2>
+            <h2 className="font-serif text-2xl text-ink">Outcome</h2>
             <p className="mt-3 font-sans text-ink/80 leading-relaxed">{project.outcome}</p>
           </div>
         )}
@@ -120,7 +120,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         </p>
         <Link
           href={`/work/${next.slug}`}
-          className="mt-2 inline-block font-serif italic text-3xl text-ink hover:text-blue"
+          className="mt-2 inline-block font-serif text-3xl text-ink hover:text-blue"
         >
           {next.title} →
         </Link>

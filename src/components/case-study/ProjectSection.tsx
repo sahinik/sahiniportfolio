@@ -7,7 +7,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
       return (
         <div className="max-w-2xl">
           {section.heading && (
-            <h2 className="font-serif italic text-xl text-ink">{section.heading}</h2>
+            <h2 className="font-serif text-xl text-ink">{section.heading}</h2>
           )}
           <p className="mt-3 font-sans text-base leading-[1.5] text-ink/80">{section.body}</p>
         </div>
@@ -60,7 +60,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
     case "quote":
       return (
         <blockquote className="max-w-2xl border-l-2 border-blue py-1 pl-6">
-          <p className="font-serif italic text-[22px] leading-[1.3] text-ink">&ldquo;{section.text}&rdquo;</p>
+          <p className="font-serif text-[22px] leading-[1.3] text-ink">&ldquo;{section.text}&rdquo;</p>
           {section.attribution && (
             <cite className="mt-3 block font-sans text-[13px] not-italic text-ink/80">
               {section.attribution}
@@ -104,7 +104,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
           {section.items.map((item, index) => (
             <div key={index}>
-              <p className="font-serif italic text-[28px] text-ink">{item.value}</p>
+              <p className="font-serif text-[28px] text-ink">{item.value}</p>
               <p className="mt-1 font-sans text-[13px] text-ink/80">{item.label}</p>
             </div>
           ))}
@@ -147,7 +147,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {section.items.map((item, index) => (
             <div key={index} className="rounded-lg border border-line bg-mist/60 p-5">
-              <p className="font-serif italic text-[17px] text-ink">{item.title}</p>
+              <p className="font-serif text-[17px] text-ink">{item.title}</p>
               <p className="mt-1.5 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
             </div>
           ))}

@@ -14,8 +14,8 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
               <h2
                 className={
                   section.highlighted
-                    ? "mt-1 font-serif italic text-[28px] leading-[1.18] text-ink"
-                    : "mt-1 font-serif italic text-[32px] leading-[1.18] text-ink"
+                    ? "mt-1 font-serif text-[28px] leading-[1.18] text-ink"
+                    : "mt-1 font-serif text-[32px] leading-[1.18] text-ink"
                 }
               >
                 {section.heading}

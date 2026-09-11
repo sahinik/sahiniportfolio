@@ -85,7 +85,7 @@ export function CaseStudySidebar({
         back
       </Link>
 
-      <p className="font-serif italic text-2xl leading-tight text-ink">{title}</p>
+      <p className="font-serif text-2xl leading-tight text-ink">{title}</p>
 
       {/* Full section map only at lg: — on mobile it's a long list better
           experienced by scrolling than by a sticky nav crowding the screen. */}
