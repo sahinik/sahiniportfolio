@@ -28,7 +28,7 @@ export default function WorkPage() {
 
       {smallProjects.length > 0 && (
         <div className="mt-20">
-          <h2 className="font-serif italic text-2xl text-ink">other side quests</h2>
+          <h2 className="font-hand text-4xl text-blue sm:text-5xl">other side quests</h2>
           <div className="mt-6 flex flex-wrap gap-9">
             {smallProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />

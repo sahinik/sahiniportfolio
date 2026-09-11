@@ -42,14 +42,14 @@ export function AboutHero() {
 
         {/* Both columns start here so their text lines up, matching the Figma about-hero layout. */}
         <div className="grid grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-2">
-          <div className="flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
+          <div className="flex flex-col gap-6 font-sans text-base leading-[1.875] text-ink">
             {site.about.introParagraphs.map((paragraph, index) => (
               <RichParagraph key={index} segments={paragraph} />
             ))}
           </div>
 
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
+            <div className="flex flex-col gap-6 font-sans text-base leading-[1.875] text-ink">
               {site.about.moreParagraphs.map((paragraph, index) => (
                 <RichParagraph key={index} segments={paragraph} />
               ))}

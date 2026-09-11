@@ -32,7 +32,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
             </span>
           ))}
         </div>
-        <h3 className="mt-2 font-serif text-lg font-normal text-ink">{project.title}</h3>
+        <h3 className="mt-2 font-serif text-xl font-normal text-ink">{project.title}</h3>
       </Link>
     );
   }
@@ -86,7 +86,7 @@ export function ProjectCard({ project, priority }: { project: Project; priority?
         </div>
       </motion.div>
       <div className="mt-5 flex flex-col gap-2">
-        <h2 className="font-serif text-2xl font-normal text-ink">{project.title}</h2>
+        <h2 className="font-serif text-xl font-normal text-ink">{project.title}</h2>
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
             <span key={cat} className="rounded bg-sky px-2.5 py-1 font-sans text-sm font-medium text-caption">

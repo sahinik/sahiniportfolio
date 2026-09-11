@@ -6,7 +6,7 @@ import type { LucideIcon } from "lucide-react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center gap-2.5 rounded-lg h-12 px-3 font-sans text-lg font-medium transition-colors duration-[var(--duration-fast)] ease-[var(--ease-tactile)] focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex items-center justify-center gap-2.5 rounded-lg h-12 px-3 font-sans text-lg font-medium leading-[1.5] transition-colors duration-[var(--duration-fast)] ease-[var(--ease-tactile)] focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<Variant, string> = {
   // Matches the Figma about-hero buttons (node 3267:7834): dark navy/blue

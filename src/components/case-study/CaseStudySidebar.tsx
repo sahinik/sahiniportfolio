@@ -102,7 +102,7 @@ export function CaseStudySidebar({
                 }}
                 aria-current={active ? "true" : undefined}
                 className={clsx(
-                  "block font-sans text-sm uppercase tracking-wide transition-colors",
+                  "block font-sans text-[13px] uppercase transition-colors",
                   active ? "font-medium text-ink" : "text-ink/75 hover:text-ink/80",
                 )}
               >

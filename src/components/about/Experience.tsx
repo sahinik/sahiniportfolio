@@ -13,11 +13,10 @@ export function Experience() {
         <ul className="divide-y divide-divider border-t border-divider">
           {experience.map((role, index) => (
             <li key={index} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-3">
-              <p className="font-sans text-base text-blue">
-                <span className="font-bold">{role.org}, </span>
-                <span className="font-bold italic">{role.project}</span>
+              <p className="font-sans text-lg font-medium text-blue">
+                {role.org}, {role.project}
               </p>
-              <p className="font-sans text-base text-ink/80">{role.role}</p>
+              <p className="font-sans text-lg text-ink/80">{role.role}</p>
             </li>
           ))}
         </ul>

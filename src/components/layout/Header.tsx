@@ -13,7 +13,7 @@ import { useHeaderHidden } from "@/lib/use-header-hidden";
 const allLinks: NavEntry[] = [...nav, ...navSecondary];
 
 const linkClasses =
-  "font-sans text-base text-blue transition-colors duration-[var(--duration-fast)] hover:text-navy";
+  "font-sans text-base leading-[1.875] text-blue transition-colors duration-[var(--duration-fast)] hover:text-navy";
 
 /**
  * Handles clicks on an anchor-link nav item (href containing "#"):

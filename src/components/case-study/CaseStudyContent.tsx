@@ -8,12 +8,16 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
         const header = (
           <div>
             {section.eyebrow && (
-              <p className="font-sans text-sm font-medium uppercase tracking-wide text-ink/75">
-                {section.eyebrow}
-              </p>
+              <p className="font-sans text-[13px] uppercase text-ink/75">{section.eyebrow}</p>
             )}
             {section.heading && (
-              <h2 className="mt-1 font-serif italic text-3xl text-ink sm:text-4xl">
+              <h2
+                className={
+                  section.highlighted
+                    ? "mt-1 font-serif italic text-[28px] leading-[1.18] text-ink"
+                    : "mt-1 font-serif italic text-[32px] leading-[1.18] text-ink"
+                }
+              >
                 {section.heading}
               </h2>
             )}
