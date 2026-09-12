@@ -1,10 +1,6 @@
 import { experience } from "@/content/site";
+import { TechStackBalls } from "@/components/about/TechStackBalls";
 
-/**
- * The tech-stack graphic in Figma is a plain box of icon dots with no
- * extractable labels — kept as a labeled placeholder here rather than
- * guessing at specific tools.
- */
 export function Experience() {
   return (
     <div className="py-16 sm:py-20">
@@ -21,10 +17,9 @@ export function Experience() {
           ))}
         </ul>
         <div className="flex flex-col items-center gap-2">
-          <div className="flex h-[220px] w-[220px] items-center justify-center rounded-lg border border-dashed border-divider bg-mist/60 sm:w-[280px]">
-            <p className="px-6 text-center font-sans text-sm text-ink/60">tech stack icons</p>
-          </div>
-          <p className="font-sans text-xs italic text-blue">a glimpse of my current tech stack</p>
+          <TechStackBalls />
+          <p className="font-sans text-xs font-bold italic text-blue">a glimpse of my current tech stack</p>
+          <span className="sr-only">Figma, Framer, Miro, Notion, Claude, ChatGPT, Reve</span>
         </div>
       </div>
     </div>
