@@ -2,11 +2,21 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Hourglass } from "lucide-react";
+import { Camera, Gem, Hourglass, Paintbrush, PlayCircle } from "lucide-react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const INTERACTIVE_SELECTOR = "a, button, [role='button'], input, textarea, select, [data-cursor]";
 const POINTER_QUERY = "(pointer: fine) and (hover: hover)";
+
+/** Maps `data-cursor-icon` values to the badge icon from Figma's "cursor badge" component set. Falls back to Hourglass when unset, matching the original badge look. */
+const BADGE_ICONS = {
+  hourglass: Hourglass,
+  play: PlayCircle,
+  brush: Paintbrush,
+  gem: Gem,
+  camera: Camera,
+} as const;
+type BadgeIconKey = keyof typeof BADGE_ICONS;
 
 function subscribePointer(callback: () => void) {
   const query = window.matchMedia(POINTER_QUERY);
@@ -38,6 +48,7 @@ export function CustomCursor() {
   const [hovering, setHovering] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
   const [badge, setBadge] = useState<string | null>(null);
+  const [badgeIcon, setBadgeIcon] = useState<BadgeIconKey>("hourglass");
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -64,6 +75,8 @@ export function CustomCursor() {
       if (!target) return;
       const badgeText = target.getAttribute("data-cursor-badge");
       if (badgeText) {
+        const iconKey = target.getAttribute("data-cursor-icon");
+        setBadgeIcon(iconKey && iconKey in BADGE_ICONS ? (iconKey as BadgeIconKey) : "hourglass");
         setBadge(badgeText);
         return;
       }
@@ -77,6 +90,7 @@ export function CustomCursor() {
         setHovering(false);
         setLabel(null);
         setBadge(null);
+        setBadgeIcon("hourglass");
       }
     };
 
@@ -93,6 +107,7 @@ export function CustomCursor() {
   if (!enabled) return null;
 
   if (badge) {
+    const Icon = BADGE_ICONS[badgeIcon];
     return (
       <motion.div
         key="badge"
@@ -104,7 +119,7 @@ export function CustomCursor() {
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Hourglass className="size-4 shrink-0" strokeWidth={2} aria-hidden />
+        <Icon className="size-4 shrink-0" strokeWidth={2} aria-hidden />
         {badge}
       </motion.div>
     );

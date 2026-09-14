@@ -1,26 +1,84 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 
+/**
+ * Each PNG is a pre-cut, already-rotated cutout straight from Figma (tilt,
+ * drop shadow and all) — sizing follows each cutout's real aspect ratio.
+ * Sizes are fixed (not shrunk per breakpoint): the staggered, overlapping
+ * row only has room once the viewport reaches `lg`, so below that the four
+ * items stack vertically instead of shrinking to fit. On hover, the cursor
+ * swaps to the matching badge from Figma's "cursor badge" component set
+ * instead of the item moving.
+ */
 const items = [
-  { src: "/images/favorites/fav-1.png", alt: "A favorite album cover", rotate: -8, shape: "rounded-lg", fill: "bg-navy", className: "w-36 sm:w-44" },
-  { src: "/images/favorites/fav-7-scan.png", alt: "A film photo of a sunset over the water", rotate: 4, shape: "rounded-lg", fill: "bg-mist", className: "w-40 sm:w-48" },
-  { src: "/images/favorites/fav-9-img3789.png", alt: "A dish of jewelry beside a hand-painted ceramic figure", rotate: -5, shape: "rounded-full", fill: "bg-mist", className: "w-36 sm:w-44" },
-  { src: "/images/favorites/fav-6-object.png", alt: "A small plush cat toy", rotate: 6, shape: "rounded-full", fill: "bg-mist", className: "w-32 sm:w-40" },
+  {
+    src: "/images/favorites/music-fav.png",
+    alt: "A CD in a jewel case, one of my favorite albums",
+    width: 599,
+    height: 535,
+    className: "w-[230px]",
+    offset: -20,
+    z: "z-10",
+    cursorBadge: "what i’ve been listening to, click to play!",
+    cursorIcon: "play",
+  },
+  {
+    src: "/images/favorites/drawing-fav.png",
+    alt: "A digital portrait I drew, shown on an iPad next to an Apple Pencil",
+    width: 869,
+    height: 869,
+    className: "w-[317px] lg:-ml-[63px]",
+    offset: -41,
+    z: "z-30",
+    cursorBadge: "digital art",
+    cursorIcon: "brush",
+  },
+  {
+    src: "/images/favorites/pottery-fav.png",
+    alt: "A ceramic dish holding jewelry and a small frog figurine",
+    width: 538,
+    height: 484,
+    className: "w-[208px] lg:-ml-[86px]",
+    offset: 36,
+    z: "z-40",
+    cursorBadge: "painted smiski pottery + fav jewelry",
+    cursorIcon: "gem",
+  },
+  {
+    src: "/images/favorites/film-fav.png",
+    alt: "A digital camera with a sunset photo on its screen, a charm keychain hanging off it",
+    width: 879,
+    height: 691,
+    className: "w-[317px] lg:-ml-20",
+    offset: 7,
+    z: "z-10",
+    cursorBadge: "taken on film",
+    cursorIcon: "camera",
+  },
 ];
 
 export function FavoriteThings() {
   return (
     <div className="py-16 sm:py-20">
-      <h2 className="text-center font-hand text-4xl text-blue sm:text-5xl">
-        some favorite things
-      </h2>
-      <div className="mt-14 flex flex-wrap items-end justify-center gap-x-6 gap-y-10 sm:gap-x-10">
+      <h2 className="text-center font-hand text-4xl text-blue sm:text-5xl">some favorite things</h2>
+      <div className="mt-16 flex flex-col items-center gap-[2px] sm:mt-20 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-0">
         {items.map((item) => (
           <div
             key={item.src}
-            className={`relative aspect-square overflow-hidden border-4 border-paper shadow-[0_18px_36px_-18px_rgba(58,56,52,0.35)] ${item.shape} ${item.fill} ${item.className}`}
-            style={{ transform: `rotate(${item.rotate}deg)` }}
+            className={`relative ${item.className} ${item.z} lg:translate-y-[var(--offset)]`}
+            style={{ "--offset": `${item.offset}px` } as CSSProperties}
+            data-cursor
+            data-cursor-badge={item.cursorBadge}
+            data-cursor-icon={item.cursorIcon}
           >
-            <Image src={item.src} alt={item.alt} fill sizes="200px" className="object-cover" />
+            <Image
+              src={item.src}
+              alt={item.alt}
+              width={item.width}
+              height={item.height}
+              sizes="317px"
+              className="h-auto w-full"
+            />
           </div>
         ))}
       </div>
