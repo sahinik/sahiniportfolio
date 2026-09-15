@@ -15,6 +15,7 @@ const caseStudySections: CaseStudySection[] = [
         type: "metaGrid",
         role: "Product Designer",
         timeline: "Jan - June '26",
+        team: ["4-person student team"],
         skills: ["User Research", "Interaction Design", "Co-design", "Prototyping", "Product Strategy"],
       },
     ],
