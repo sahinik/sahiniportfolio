@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Camera, Gem, Hourglass, Paintbrush, PlayCircle } from "lucide-react";
+import { Camera, Gem, Hourglass, Paintbrush, PauseCircle, PlayCircle } from "lucide-react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const INTERACTIVE_SELECTOR = "a, button, [role='button'], input, textarea, select, [data-cursor]";
@@ -12,6 +12,7 @@ const POINTER_QUERY = "(pointer: fine) and (hover: hover)";
 const BADGE_ICONS = {
   hourglass: Hourglass,
   play: PlayCircle,
+  pause: PauseCircle,
   brush: Paintbrush,
   gem: Gem,
   camera: Camera,
@@ -49,6 +50,7 @@ export function CustomCursor() {
   const [label, setLabel] = useState<string | null>(null);
   const [badge, setBadge] = useState<string | null>(null);
   const [badgeIcon, setBadgeIcon] = useState<BadgeIconKey>("hourglass");
+  const badgeTargetRef = useRef<Element | null>(null);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -65,19 +67,29 @@ export function CustomCursor() {
   useEffect(() => {
     if (!enabled) return;
 
+    const readBadge = (target: Element) => {
+      const badgeText = target.getAttribute("data-cursor-badge");
+      if (!badgeText) return false;
+      const iconKey = target.getAttribute("data-cursor-icon");
+      setBadgeIcon(iconKey && iconKey in BADGE_ICONS ? (iconKey as BadgeIconKey) : "hourglass");
+      setBadge(badgeText);
+      return true;
+    };
+
     const handleMove = (event: MouseEvent) => {
       x.set(event.clientX);
       y.set(event.clientY);
+      // A badge's text/icon can change while the cursor sits still over it
+      // (e.g. a play/pause toggle) — data attributes don't push updates, so
+      // re-read them on every move rather than only at mouseover.
+      if (badgeTargetRef.current) readBadge(badgeTargetRef.current);
     };
 
     const handleOver = (event: MouseEvent) => {
       const target = (event.target as Element)?.closest(INTERACTIVE_SELECTOR);
       if (!target) return;
-      const badgeText = target.getAttribute("data-cursor-badge");
-      if (badgeText) {
-        const iconKey = target.getAttribute("data-cursor-icon");
-        setBadgeIcon(iconKey && iconKey in BADGE_ICONS ? (iconKey as BadgeIconKey) : "hourglass");
-        setBadge(badgeText);
+      if (readBadge(target)) {
+        badgeTargetRef.current = target;
         return;
       }
       setHovering(true);
@@ -91,15 +103,29 @@ export function CustomCursor() {
         setLabel(null);
         setBadge(null);
         setBadgeIcon("hourglass");
+        badgeTargetRef.current = null;
       }
+    };
+
+    // A click can change a badge's text/icon (play → pause) without the
+    // cursor ever moving, so handleMove's re-read never runs — catch that
+    // case explicitly, deferred a frame so React has committed the new
+    // data-cursor-badge/icon attributes before we read them back.
+    const handleClick = () => {
+      if (!badgeTargetRef.current) return;
+      requestAnimationFrame(() => {
+        if (badgeTargetRef.current) readBadge(badgeTargetRef.current);
+      });
     };
 
     window.addEventListener("mousemove", handleMove);
     document.addEventListener("mouseover", handleOver);
     document.addEventListener("mouseout", handleOut);
+    document.addEventListener("click", handleClick);
     return () => {
       window.removeEventListener("mousemove", handleMove);
       document.removeEventListener("mouseover", handleOver);
+      document.removeEventListener("click", handleClick);
       document.removeEventListener("mouseout", handleOut);
     };
   }, [enabled, x, y]);

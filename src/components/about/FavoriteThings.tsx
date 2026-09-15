@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import { SpinningCD } from "@/components/about/SpinningCD";
 
 /**
  * Each PNG is a pre-cut, already-rotated cutout straight from Figma (tilt,
@@ -14,17 +15,15 @@ const items = [
   {
     src: "/images/favorites/music-fav.png",
     alt: "A CD in a jewel case, one of my favorite albums",
-    width: 599,
-    height: 535,
+    kind: "cd" as const,
     className: "w-[230px]",
     offset: -20,
     z: "z-10",
-    cursorBadge: "what i’ve been listening to, click to play!",
-    cursorIcon: "play",
   },
   {
     src: "/images/favorites/drawing-fav.png",
     alt: "A digital portrait I drew, shown on an iPad next to an Apple Pencil",
+    kind: "image" as const,
     width: 869,
     height: 869,
     className: "w-[317px] lg:-ml-[63px]",
@@ -36,6 +35,7 @@ const items = [
   {
     src: "/images/favorites/pottery-fav.png",
     alt: "A ceramic dish holding jewelry and a small frog figurine",
+    kind: "image" as const,
     width: 538,
     height: 484,
     className: "w-[208px] lg:-ml-[86px]",
@@ -47,6 +47,7 @@ const items = [
   {
     src: "/images/favorites/film-fav.png",
     alt: "A digital camera with a sunset photo on its screen, a charm keychain hanging off it",
+    kind: "image" as const,
     width: 879,
     height: 691,
     className: "w-[317px] lg:-ml-20",
@@ -67,18 +68,24 @@ export function FavoriteThings() {
             key={item.src}
             className={`relative ${item.className} ${item.z} lg:translate-y-[var(--offset)]`}
             style={{ "--offset": `${item.offset}px` } as CSSProperties}
-            data-cursor
-            data-cursor-badge={item.cursorBadge}
-            data-cursor-icon={item.cursorIcon}
+            // The CD's cursor badge is stateful (play/pause), so SpinningCD
+            // sets it directly on its own button instead of here.
+            {...(item.kind === "image"
+              ? { "data-cursor": "", "data-cursor-badge": item.cursorBadge, "data-cursor-icon": item.cursorIcon }
+              : {})}
           >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              width={item.width}
-              height={item.height}
-              sizes="317px"
-              className="h-auto w-full"
-            />
+            {item.kind === "cd" ? (
+              <SpinningCD />
+            ) : (
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={item.width}
+                height={item.height}
+                sizes="317px"
+                className="h-auto w-full"
+              />
+            )}
           </div>
         ))}
       </div>
