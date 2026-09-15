@@ -8,6 +8,12 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Overview",
     blocks: [
       {
+        type: "image",
+        src: "/images/projects/insect-project-image.png",
+        alt: "",
+        fullWidth: true,
+      },
+      {
         type: "text",
         body: "Over 10 weeks, I worked as a UX researcher and designer on a service design project exploring how to shift consumer attitudes toward insect-based protein. Through co-design sessions, interviews, and user testing, we designed a system of three connected touchpoints: an in-person tasting event, a packaged product, and a community app, all aimed at making an unfamiliar food feel normal.",
       },

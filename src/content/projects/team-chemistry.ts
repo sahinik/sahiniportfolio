@@ -8,6 +8,12 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Overview",
     blocks: [
       {
+        type: "image",
+        src: "/images/projects/team-chem--project-image.png",
+        alt: "",
+        fullWidth: true,
+      },
+      {
         type: "text",
         body: "My capstone team and I partnered with Team Chemistry Design to help collegiate sports teams turn intangible team chemistry into something coaches and players could actually see, measure, and build together. Over capstone we researched, designed, and shipped Huddl: a live app for teams to reflect, check in, and recognize each other, with a real-time pulse for coaches.",
       },
