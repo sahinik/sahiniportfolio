@@ -15,6 +15,7 @@ const caseStudySections: CaseStudySection[] = [
         type: "metaGrid",
         role: "UX Researcher",
         timeline: "HCDE Usability Studies course · 10 weeks",
+        team: ["Student team, with Google mentorship"],
         skills: ["Usability Testing", "Quantitative & Qualitative Research"],
       },
     ],

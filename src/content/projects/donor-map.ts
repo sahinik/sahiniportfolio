@@ -15,6 +15,7 @@ const caseStudySections: CaseStudySection[] = [
         type: "metaGrid",
         role: "Lead UX/UI Designer",
         timeline: "12 months",
+        team: ["Design, dev, QA & research team"],
         skills: ["Visual Design", "Design Systems", "Responsive Design"],
       },
     ],
