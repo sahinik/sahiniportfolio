@@ -8,12 +8,6 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Overview",
     blocks: [
       {
-        type: "image",
-        src: "/images/projects/donor-map--project-image.png",
-        alt: "",
-        fullWidth: true,
-      },
-      {
         type: "text",
         body: "Games for Love is a nonprofit gaming charity whose mission is to create sustainable futures for children through technology. As lead UX/UI designer, I partnered with Digital Aid Seattle to design an interactive map that shows donors exactly where their money goes, replacing a general fund donors couldn't see into with something they could actually track.",
       },
@@ -225,7 +219,7 @@ export const donorMap: Project = {
   order: 3,
   coverImage: { src: "/images/projects/donor-map.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/donor-map.jpg", alt: "" },
-  cardImage: { src: "/images/projects/donor-map--project-image.png", alt: "" },
+  cardImage: { src: "/images/projects/donor-map--project-image.png", alt: "", width: 976, height: 638 },
   meta: {
     role: "Lead UX/UI Designer",
     timeline: "12 months",

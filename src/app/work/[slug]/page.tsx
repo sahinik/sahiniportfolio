@@ -34,7 +34,20 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   if (project.caseStudySections) {
     return (
       <article>
-        <Section as="div" className="py-10 sm:py-14">
+        {project.cardImage && (
+          <Section as="div" className="pt-10 sm:pt-14">
+            <Image
+              src={project.cardImage.src}
+              alt={project.cardImage.alt}
+              width={project.cardImage.width}
+              height={project.cardImage.height}
+              sizes="100vw"
+              priority
+              className="h-auto w-full rounded-md"
+            />
+          </Section>
+        )}
+        <Section as="div" className="pt-6 pb-10 sm:pt-8 sm:pb-14">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
             <CaseStudySidebar title={project.title} sections={project.caseStudySections} />
             <CaseStudyContent sections={project.caseStudySections} />

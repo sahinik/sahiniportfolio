@@ -100,8 +100,8 @@ export interface Project {
   order: number;
   coverImage: { src: string; alt: string };
   thumbnailImage: { src: string; alt: string };
-  /** Real mockup shown on the large homepage card (Figma's "project image" component). Falls back to a glass-panel placeholder box when absent. */
-  cardImage?: { src: string; alt: string };
+  /** Real mockup shown on the large homepage card (Figma's "project image" component) and reused as the case-study TLDR hero. Falls back to a glass-panel placeholder box on the card when absent. width/height are the source file's real pixel dimensions, so the hero can render at its native aspect ratio with no cropping. */
+  cardImage?: { src: string; alt: string; width: number; height: number };
   meta: ProjectMeta;
   /** Short bullet list of skills/methods, shown in the case-study meta strip. */
   skills?: string[];

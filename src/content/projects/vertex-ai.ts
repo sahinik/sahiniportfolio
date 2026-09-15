@@ -8,12 +8,6 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Overview",
     blocks: [
       {
-        type: "image",
-        src: "/images/projects/vertex-project-image.png",
-        alt: "",
-        fullWidth: true,
-      },
-      {
         type: "text",
         body: "As part of the HCDE Usability Studies course, I collaborated with a team of students and Google, supported by a Google UX research manager and our professor, to conduct a usability study on Vertex AI Studio's loginless web experience. The study assessed how developers navigate and engage with the platform's features before ever signing in.",
       },
@@ -278,7 +272,7 @@ export const vertexAi: Project = {
   order: 2,
   coverImage: { src: "/images/projects/vertex-ai.jpg", alt: "" },
   thumbnailImage: { src: "/images/projects/vertex-ai.jpg", alt: "" },
-  cardImage: { src: "/images/projects/vertex-project-image.png", alt: "" },
+  cardImage: { src: "/images/projects/vertex-project-image.png", alt: "", width: 974, height: 608 },
   meta: {
     role: "UX Researcher",
     timeline: "HCDE Usability Studies course · 10 weeks",
