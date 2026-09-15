@@ -2,11 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { clsx } from "clsx";
 import type { CaseStudySection } from "@/types/project";
-import { HEADER_HEIGHT, useHeaderHidden } from "@/lib/use-header-hidden";
 
 export function CaseStudySidebar({
   title,
@@ -17,7 +15,6 @@ export function CaseStudySidebar({
 }) {
   const [activeId, setActiveId] = useState(sections[0]?.id);
   const mobileListRef = useRef<HTMLUListElement>(null);
-  const headerHidden = useHeaderHidden();
 
   useEffect(() => {
     const headings = sections
@@ -66,16 +63,14 @@ export function CaseStudySidebar({
   }
 
   return (
-    <motion.nav
+    <nav
       aria-label="Case study sections"
+      // Plain CSS sticky, no extra transform — a JS-driven "slide up to take
+      // the header's place" offset here made this column jump ahead of the
+      // hero image and content column (which have no such offset) as soon as
+      // the header hid on scroll-down, well before this nav was anywhere
+      // near its own sticky point, causing it to overlap content above it.
       className="sticky top-[82px] z-30 -mx-(--gutter) flex flex-col gap-4 bg-paper/90 px-(--gutter) py-4 backdrop-blur-sm lg:top-[104px] lg:z-auto lg:mx-0 lg:w-[220px] lg:shrink-0 lg:gap-8 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
-      // Slides up to take the header's place once it hides on scroll-down,
-      // and back down once it reappears on scroll-up — synced to the exact
-      // same scroll-direction state the header itself uses. A transform is
-      // safe to animate here since it's on this sticky element itself, not
-      // an ancestor of some other sticky/fixed element.
-      animate={{ y: headerHidden ? -HEADER_HEIGHT : 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <Link
         href="/#projects"
@@ -144,6 +139,6 @@ export function CaseStudySidebar({
           );
         })}
       </ul>
-    </motion.nav>
+    </nav>
   );
 }
