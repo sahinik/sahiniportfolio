@@ -1,5 +1,8 @@
 import Image from "next/image";
+import { Newspaper, Users, PersonStanding, CircleCheck, Delete } from "lucide-react";
 import type { ProjectSection as ProjectSectionType } from "@/types/project";
+
+const statCardIcons = { newspaper: Newspaper, users: Users, run: PersonStanding };
 
 export function ProjectSectionBlock({ section }: { section: ProjectSectionType }) {
   switch (section.type) {
@@ -16,7 +19,10 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
     case "image":
       return (
         <figure className={section.fullWidth ? undefined : "max-w-2xl"}>
-          <div className="relative aspect-video overflow-hidden rounded-md bg-mist">
+          <div
+            className="relative overflow-hidden rounded-md bg-mist"
+            style={{ aspectRatio: section.aspectRatio ?? "16/9" }}
+          >
             <Image
               src={section.src}
               alt={section.alt}
@@ -26,7 +32,13 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             />
           </div>
           {section.caption && (
-            <figcaption className="mt-3 font-sans text-[13px] text-ink/80">
+            <figcaption
+              className={
+                section.captionVariant === "accent-italic"
+                  ? "mt-2 text-center font-sans text-[14px] font-medium italic text-caption"
+                  : "mt-3 font-sans text-[13px] text-ink/80"
+              }
+            >
               {section.caption}
             </figcaption>
           )}
@@ -59,10 +71,12 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "quote":
       return (
-        <blockquote className="max-w-2xl border-l-2 border-blue py-1 pl-6">
-          <p className="font-serif text-[22px] leading-[1.3] text-ink">&ldquo;{section.text}&rdquo;</p>
+        <blockquote className="max-w-2xl border-l-2 border-blue py-1 pl-[15px]">
+          <p className="font-serif text-[16px] italic leading-[1.3] text-ink">
+            &ldquo;{section.text}&rdquo;
+          </p>
           {section.attribution && (
-            <cite className="mt-3 block font-sans text-[13px] not-italic text-ink/80">
+            <cite className="mt-0.5 block font-sans text-[12px] italic text-ink/80">
               {section.attribution}
             </cite>
           )}
@@ -101,13 +115,42 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "stats":
       return (
-        <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+        <div className="flex flex-wrap gap-x-[70px] gap-y-6">
           {section.items.map((item, index) => (
-            <div key={index}>
-              <p className="font-serif text-[28px] text-ink">{item.value}</p>
-              <p className="mt-1 font-sans text-[13px] text-ink/80">{item.label}</p>
+            <div key={index} className="flex flex-col items-center text-center">
+              <p className="font-serif text-[40px] leading-none text-caption">{item.value}</p>
+              <p className="mt-1 font-sans text-[13px] text-ink">{item.label}</p>
             </div>
           ))}
+        </div>
+      );
+
+    case "statCards":
+      return (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {section.items.map((item, index) => {
+            const Icon = statCardIcons[item.icon];
+            return (
+              <div
+                key={index}
+                className="relative flex flex-col gap-2.5 overflow-hidden rounded-[4px] bg-mist px-3 pb-3 pt-16"
+              >
+                <Icon
+                  className="pointer-events-none absolute -top-4 right-3 size-24 rotate-[10deg] text-blue/25"
+                  aria-hidden
+                  strokeWidth={1.25}
+                />
+                <div className="relative flex flex-col items-start text-ink">
+                  <p className="font-serif text-[40px] leading-none">{item.value}</p>
+                  <p className="font-sans text-[13px]">{item.label}</p>
+                </div>
+                <div className="h-px w-[47px] bg-ink/25" />
+                <p className="relative font-sans text-[13px] leading-normal text-navy">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       );
 
@@ -144,11 +187,11 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "principles":
       return (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
           {section.items.map((item, index) => (
-            <div key={index} className="rounded-lg border border-line bg-mist/60 p-5">
+            <div key={index} className="rounded-[10px] border border-blue p-[18px]">
               <p className="font-serif text-[17px] text-ink">{item.title}</p>
-              <p className="mt-1.5 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
+              <p className="mt-2 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
             </div>
           ))}
         </div>
@@ -156,26 +199,31 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "compareList":
       return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div className="rounded-lg border border-sage bg-sage-pale/40 p-5">
-            <p className="font-sans text-xs uppercase text-olive">{section.keptLabel}</p>
-            <ul className="mt-3 space-y-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="flex flex-col gap-3.5 rounded-[10px] border border-sage bg-[#dff2de] p-5">
+            <p className="font-sans text-xs tracking-wide text-olive">{section.keptLabel}</p>
+            <ul className="flex flex-col gap-3.5">
               {section.kept.map((item, index) => (
-                <li key={index} className="font-sans text-sm text-ink/80">
-                  {item}
+                <li key={index} className="flex gap-1">
+                  <CircleCheck className="mt-0.5 size-[19px] shrink-0 text-olive" aria-hidden />
+                  <div>
+                    <p className="font-sans text-sm text-ink">{item.title}</p>
+                    <p className="mt-0.5 font-sans text-xs leading-[1.4] text-ink/80">{item.reason}</p>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-lg border border-line bg-mist/50 p-5">
-            <p className="font-sans text-xs uppercase text-ink/75">{section.cutLabel}</p>
-            <ul className="mt-3 space-y-3">
+          <div className="flex flex-col gap-3.5 rounded-[10px] border border-[rgba(192,68,68,0.4)] bg-[#fff2ef] p-5">
+            <p className="font-sans text-xs tracking-wide text-ink">{section.cutLabel}</p>
+            <ul className="flex flex-col gap-3.5">
               {section.cut.map((item, index) => (
-                <li key={index}>
-                  <p className="font-sans text-sm text-ink/80 line-through decoration-ink/30">
-                    {item.title}
-                  </p>
-                  <p className="mt-0.5 font-sans text-xs leading-[1.4] text-ink/75">{item.reason}</p>
+                <li key={index} className="flex gap-1">
+                  <Delete className="mt-0.5 size-[19px] shrink-0 text-ink/60" aria-hidden />
+                  <div>
+                    <p className="font-sans text-sm text-ink">{item.title}</p>
+                    <p className="mt-0.5 font-sans text-xs leading-[1.4] text-ink/80">{item.reason}</p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -230,13 +278,15 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
       if (section.skills?.length) columns.push({ label: "Skills", items: section.skills });
 
       return (
-        <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-x-10 gap-y-4 rounded-[4px] bg-navy px-5 py-4 sm:grid-cols-4">
           {columns.map((col) => (
             <div key={col.label}>
-              <dt className="font-sans text-xs uppercase text-ink/75">{col.label}</dt>
+              <dt className="font-sans text-xs font-medium uppercase tracking-wide text-mist">
+                {col.label}
+              </dt>
               <dd className="mt-1.5 flex flex-col gap-0.5">
                 {col.items.map((item, i) => (
-                  <span key={i} className="font-sans text-sm text-ink">
+                  <span key={i} className="font-sans text-sm text-[#acd0ff]">
                     {item}
                   </span>
                 ))}
@@ -247,13 +297,30 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
       );
     }
 
+    case "row":
+      return (
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+          {section.items.map((item, index) => (
+            <div
+              key={index}
+              className="min-w-0"
+              style={item.width ? { width: item.width, flexShrink: 0 } : { flex: 1 }}
+            >
+              <ProjectSectionBlock section={item.block} />
+            </div>
+          ))}
+        </div>
+      );
+
     case "placeholder": {
       const aspect =
         section.aspect === "square"
           ? "aspect-square"
           : section.aspect === "wide"
             ? "aspect-[21/9]"
-            : "aspect-video";
+            : section.aspect === "banner"
+              ? "h-11"
+              : "aspect-video";
       return (
         <div
           className={`flex ${aspect} w-full items-center justify-center rounded-md border border-dashed border-line bg-mist/60`}

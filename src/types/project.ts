@@ -14,6 +14,11 @@ export type ProjectSection =
       alt: string;
       caption?: string;
       fullWidth?: boolean;
+      /** e.g. "274/289" — defaults to 16/9 (video) when omitted. */
+      aspectRatio?: string;
+      /** "accent-italic" matches the small italic blue caption style used
+       *  next to the "My Role" portrait; omit for the default caption. */
+      captionVariant?: "default" | "accent-italic";
     }
   | {
       type: "imageGrid";
@@ -27,17 +32,30 @@ export type ProjectSection =
       caption?: string;
     }
   | { type: "stats"; items: { label: string; value: string }[] }
+  | {
+      /** Richer stat card with a decorative icon, divider, and a line of
+       *  context — used for the Research section's methodology stats. */
+      type: "statCards";
+      items: {
+        value: string;
+        label: string;
+        description: string;
+        icon: "newspaper" | "users" | "run";
+      }[];
+    }
   | { type: "video"; src: string; poster?: string; caption?: string }
   /** A row of short bullet points — for scannable lists like "my contributions". */
   | { type: "bullets"; items: string[] }
-  /** A grid of small principle/pillar cards: short title + one-line description. */
+  /** A grid of small principle/pillar cards: short title + one-line description.
+   *  Uses an auto-fit grid so it also reads correctly at narrower widths when
+   *  nested inside a `row` item, not just at full section width. */
   | { type: "principles"; items: { title: string; body: string }[] }
   /** Two-column "kept" vs "cut" (or similar) comparison list. */
   | {
       type: "compareList";
       keptLabel: string;
       cutLabel: string;
-      kept: string[];
+      kept: { title: string; reason: string }[];
       cut: { title: string; reason: string }[];
     }
   /** A row of small tech/tool badges. */
@@ -45,8 +63,9 @@ export type ProjectSection =
   /** Ordered horizontal/vertical process steps. */
   | { type: "timeline"; steps: { label: string; detail?: string }[] }
   /** A labeled stand-in for real imagery that doesn't exist yet — rendered
-   *  as a styled placeholder block, never as a fabricated screenshot. */
-  | { type: "placeholder"; label: string; aspect?: "video" | "square" | "wide" }
+   *  as a styled placeholder block, never as a fabricated screenshot.
+   *  "banner" is a short full-width strip (the Design System section's). */
+  | { type: "placeholder"; label: string; aspect?: "video" | "square" | "wide" | "banner" }
   /** Role/timeline/team/skills meta strip, matching the case-study reference layout. */
   | {
       type: "metaGrid";
@@ -54,7 +73,14 @@ export type ProjectSection =
       timeline: string;
       team?: string[];
       skills?: string[];
-    };
+    }
+  /**
+   * Lays out 2+ blocks side by side (stacking on mobile) — e.g. a principles
+   * list next to a placeholder, or bullets next to a portrait. Each item's
+   * `width` (px) makes it a fixed-width column; omitting it makes that
+   * column flex to fill the remaining space.
+   */
+  | { type: "row"; items: { width?: number; block: ProjectSection }[] };
 
 export interface ProjectMeta {
   role: string;

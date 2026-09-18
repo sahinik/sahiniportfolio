@@ -106,8 +106,8 @@ export function CaseStudySidebar({
                 }}
                 aria-current={active ? "true" : undefined}
                 className={clsx(
-                  "block font-sans text-[13px] uppercase transition-colors",
-                  active ? "font-medium text-ink" : "text-ink/75 hover:text-ink/80",
+                  "block font-sans text-[13px] uppercase tracking-[0.52px] transition-colors",
+                  active ? "font-semibold text-ink" : "text-ink/75 hover:text-ink/80",
                 )}
               >
                 {section.navLabel}

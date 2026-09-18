@@ -8,14 +8,16 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
         const header = (
           <div>
             {section.eyebrow && (
-              <p className="font-sans text-[13px] uppercase text-ink/75">{section.eyebrow}</p>
+              <p className="font-sans text-[13px] font-medium tracking-wide text-blue">
+                {section.eyebrow}
+              </p>
             )}
             {section.heading && (
               <h2
                 className={
                   section.highlighted
-                    ? "mt-1 font-serif text-[28px] leading-[1.18] text-ink"
-                    : "mt-1 font-serif text-[32px] leading-[1.18] text-ink"
+                    ? "mt-2.5 font-serif text-[28px] leading-[1.18] text-ink"
+                    : "mt-2.5 font-serif text-[32px] leading-[1.18] text-ink"
                 }
               >
                 {section.heading}
@@ -31,7 +33,7 @@ export function CaseStudyContent({ sections }: { sections: CaseStudySection[] })
             className="scroll-mt-[210px] lg:scroll-mt-[104px]"
           >
             {section.highlighted ? (
-              <div className="flex flex-col gap-6 rounded-lg bg-mist/70 p-6 sm:p-8">
+              <div className="flex flex-col gap-4 rounded-xl bg-mist p-6 sm:p-8">
                 {header}
                 {section.blocks.map((block, index) => (
                   <ProjectSectionBlock key={index} section={block} />
