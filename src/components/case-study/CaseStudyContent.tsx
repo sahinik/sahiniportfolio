@@ -3,7 +3,7 @@ import { ProjectSectionBlock } from "@/components/case-study/ProjectSection";
 
 export function CaseStudyContent({ sections }: { sections: CaseStudySection[] }) {
   return (
-    <div className="flex min-w-0 flex-col gap-16 sm:gap-20 lg:flex-1">
+    <div className="flex min-w-0 flex-col gap-16 sm:gap-20 lg:w-full lg:max-w-3xl">
       {sections.map((section) => {
         const header = (
           <div>

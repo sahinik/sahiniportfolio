@@ -7,7 +7,7 @@ export type ProjectDiscipline =
   | "Prototyping";
 
 export type ProjectSection =
-  | { type: "text"; heading?: string; body: string }
+  | { type: "text"; heading?: string; body: string; fullWidth?: boolean }
   | {
       type: "image";
       src: string;
@@ -44,8 +44,10 @@ export type ProjectSection =
       }[];
     }
   | { type: "video"; src: string; poster?: string; caption?: string }
-  /** A row of short bullet points — for scannable lists like "my contributions". */
-  | { type: "bullets"; items: string[] }
+  /** A row of short bullet points — for scannable lists like "my contributions".
+   *  Wraps to 2 columns at sm: by default; pass `columns: 1` to keep it a
+   *  single column at every width. */
+  | { type: "bullets"; items: string[]; columns?: 1 | 2 }
   /** A grid of small principle/pillar cards: short title + one-line description.
    *  Uses an auto-fit grid so it also reads correctly at narrower widths when
    *  nested inside a `row` item, not just at full section width. */

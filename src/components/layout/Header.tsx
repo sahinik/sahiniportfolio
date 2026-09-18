@@ -105,9 +105,13 @@ export function Header() {
   const navHidden = hidden && !menuOpen;
 
   return (
-    <header className="sticky top-0 z-40">
+    // pointer-events-none while hidden: the header's own box stays in place
+    // (only its content transforms), so without this it silently swallows
+    // clicks meant for whatever slides up to take its spot underneath (e.g.
+    // the case-study sidebar's back link on scroll-down).
+    <header className={clsx("sticky top-0 z-40", navHidden && "pointer-events-none")}>
       <motion.div
-        className="bg-paper/90 backdrop-blur-sm"
+        className="pointer-events-auto bg-paper/90 backdrop-blur-sm"
         animate={{ y: navHidden ? "-100%" : "0%" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >

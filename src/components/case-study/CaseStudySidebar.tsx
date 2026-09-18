@@ -8,6 +8,7 @@ import { clsx } from "clsx";
 import type { CaseStudySection } from "@/types/project";
 import { HEADER_HEIGHT, useHeaderHidden } from "@/lib/use-header-hidden";
 import { useIsDesktop } from "@/lib/use-is-desktop";
+import { requestScrollTo } from "@/lib/scroll-to-hash";
 
 export function CaseStudySidebar({
   title,
@@ -70,19 +71,26 @@ export function CaseStudySidebar({
   return (
     <motion.nav
       aria-label="Case study sections"
-      className="sticky top-[82px] z-30 -mx-(--gutter) flex flex-col gap-4 bg-paper/90 px-(--gutter) py-4 backdrop-blur-sm lg:top-[104px] lg:z-auto lg:mx-0 lg:w-[220px] lg:shrink-0 lg:gap-8 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
+      className={clsx(
+        "sticky top-[82px] z-30 -mx-[45px] flex flex-col gap-4 bg-paper/90 px-[45px] py-4 backdrop-blur-sm transition-[top] duration-300 ease-in-out lg:z-auto lg:mx-0 lg:w-[220px] lg:justify-self-start lg:gap-8 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none",
+        // Desktop's stuck offset tracks the header: flush 50px below its
+        // bottom edge while it's visible, rising to a flat 50px from the
+        // viewport top once it hides on scroll-down — never sits behind it.
+        headerHidden ? "lg:top-[50px]" : "lg:top-[132px]",
+      )}
       // Mobile only: slides up to take the header's place once it hides on
       // scroll-down, so the pill bar sits flush at the very top instead of
-      // leaving a gap. Desktop stays plain CSS sticky with no transform —
-      // this offset used to apply there too and made the sidebar visibly
-      // race ahead of the hero image/content column (which have no such
-      // offset), since the header hides almost immediately on scroll, long
-      // before the sidebar is anywhere near its own sticky point.
+      // leaving a gap. Desktop instead animates its `top` offset (above) in
+      // sync with the header's own slide — a transform here used to make the
+      // sidebar visibly race ahead of the hero image/content column (which
+      // have no such offset), since the header hides almost immediately on
+      // scroll, long before the sidebar is anywhere near its own sticky point.
       animate={{ y: !isDesktop && headerHidden ? -HEADER_HEIGHT : 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <Link
         href="/#projects"
+        onClick={() => requestScrollTo("#projects")}
         className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/80 transition-colors hover:text-blue"
       >
         <ArrowLeft className="size-4" aria-hidden />

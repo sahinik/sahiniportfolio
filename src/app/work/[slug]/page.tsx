@@ -35,7 +35,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
     return (
       <article>
         {project.cardImage && (
-          <Section as="div" className="pt-10 sm:pt-14">
+          <Section as="div" gutter="px-[45px]" maxWidth="" className="pt-10 sm:pt-14">
             <Image
               src={project.cardImage.src}
               alt={project.cardImage.alt}
@@ -47,8 +47,8 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
             />
           </Section>
         )}
-        <Section as="div" className="pt-6 pb-10 sm:pt-8 sm:pb-14">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
+        <Section as="div" gutter="px-[45px]" maxWidth="" className="pt-6 pb-10 sm:pt-8 sm:pb-14">
+          <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-start lg:gap-x-20">
             <CaseStudySidebar title={project.title} sections={project.caseStudySections} />
             <CaseStudyContent sections={project.caseStudySections} />
           </div>

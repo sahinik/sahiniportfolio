@@ -8,7 +8,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
   switch (section.type) {
     case "text":
       return (
-        <div className="max-w-2xl">
+        <div className={section.fullWidth ? undefined : "max-w-2xl"}>
           {section.heading && (
             <h2 className="font-serif text-xl text-ink">{section.heading}</h2>
           )}
@@ -175,7 +175,13 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
 
     case "bullets":
       return (
-        <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
+        <ul
+          className={
+            section.columns === 1
+              ? "grid grid-cols-1 gap-x-8 gap-y-2"
+              : "grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2"
+          }
+        >
           {section.items.map((item, index) => (
             <li key={index} className="flex gap-2.5 font-sans text-[15px] leading-[1.4] text-ink/80">
               <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue" aria-hidden />
