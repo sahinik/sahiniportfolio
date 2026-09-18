@@ -290,42 +290,41 @@ const caseStudySections: CaseStudySection[] = [
         type: "row",
         items: [
           {
-            width: 320,
             block: {
-              type: "image",
-              src: "/images/projects/team-chemistry/reflection-kittens.png",
-              alt: "Two kittens play-fighting outside at night",
-              aspectRatio: "165/161",
+              type: "stack",
+              items: [
+                {
+                  type: "image",
+                  src: "/images/projects/team-chemistry/reflection-cat-dance-cat.gif",
+                  alt: "Two kittens dancing playfully outside at night",
+                  aspectRatio: "428/288",
+                },
+                {
+                  type: "text",
+                  heading: "Have a solid UI that meets user needs before introducing AI prototyping",
+                  body: "We went from “what if we added X” to a clickable prototype within a day. However, we noticed that AI was starting to bake in assumptions and generalize our decisions, so we resorted to traditional prototyping to ensure our designs accurately reflected the research we had done. Next time, I'd want the team to align upfront on exactly what role AI should play, instead of figuring it out mid-process.",
+                  fullWidth: true,
+                },
+              ],
             },
           },
           {
             block: {
-              type: "image",
-              src: "/images/projects/team-chemistry/reflection-team.jpg",
-              alt: "The capstone team and sponsor smiling together at an event",
-              aspectRatio: "3693/2770",
-            },
-          },
-        ],
-      },
-      {
-        type: "row",
-        items: [
-          {
-            width: 410,
-            block: {
-              type: "text",
-              heading: "Have a solid UI that meets user needs before introducing AI prototyping",
-              body: "We went from “what if we added X” to a clickable prototype within a day. However, we noticed that AI was starting to bake in assumptions and generalize our decisions, so we resorted to traditional prototyping to ensure our designs accurately reflected the research we had done. Next time, I'd want the team to align upfront on exactly what role AI should play, instead of figuring it out mid-process.",
-              fullWidth: true,
-            },
-          },
-          {
-            block: {
-              type: "text",
-              heading: "Team chemistry = more productivity!",
-              body: "I truly enjoyed this process because my team and sponsor were very fun to work with. I believe we were able to achieve all of this in such a short time span because we had great team chemistry :))",
-              fullWidth: true,
+              type: "stack",
+              items: [
+                {
+                  type: "image",
+                  src: "/images/projects/team-chemistry/reflection-team.jpg",
+                  alt: "The capstone team and sponsor smiling together at an event",
+                  aspectRatio: "3693/2770",
+                },
+                {
+                  type: "text",
+                  heading: "Team chemistry = more productivity!",
+                  body: "I truly enjoyed this process because my team and sponsor were very fun to work with. I believe we were able to achieve all of this in such a short time span because we had great team chemistry :))",
+                  fullWidth: true,
+                },
+              ],
             },
           },
         ],

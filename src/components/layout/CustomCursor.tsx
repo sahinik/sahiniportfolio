@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Camera, Gem, Hourglass, Paintbrush, PauseCircle, PlayCircle } from "lucide-react";
+import { Camera, Diamond, Hourglass, PaintBrush, PauseCircle, PlayCircle } from "@phosphor-icons/react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const INTERACTIVE_SELECTOR = "a, button, [role='button'], input, textarea, select, [data-cursor]";
@@ -13,8 +13,8 @@ const BADGE_ICONS = {
   hourglass: Hourglass,
   play: PlayCircle,
   pause: PauseCircle,
-  brush: Paintbrush,
-  gem: Gem,
+  brush: PaintBrush,
+  gem: Diamond,
   camera: Camera,
 } as const;
 type BadgeIconKey = keyof typeof BADGE_ICONS;
@@ -145,7 +145,7 @@ export function CustomCursor() {
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Icon className="size-4 shrink-0" strokeWidth={2} aria-hidden />
+        <Icon className="size-4 shrink-0" weight="regular" aria-hidden />
         {badge}
       </motion.div>
     );

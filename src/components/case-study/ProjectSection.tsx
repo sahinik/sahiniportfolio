@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Newspaper, Users, PersonStanding, CircleCheck, Delete } from "lucide-react";
+import { Newspaper, UsersThree, PersonSimpleThrow, CheckCircle, Backspace } from "@phosphor-icons/react/ssr";
 import type { ProjectSection as ProjectSectionType } from "@/types/project";
 
-const statCardIcons = { newspaper: Newspaper, users: Users, run: PersonStanding };
+const statCardIcons = { newspaper: Newspaper, users: UsersThree, run: PersonSimpleThrow };
 
 export function ProjectSectionBlock({ section }: { section: ProjectSectionType }) {
   switch (section.type) {
@@ -29,6 +29,9 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
               fill
               sizes="100vw"
               className="object-cover"
+              // Next's optimizer flattens GIFs to a single static frame —
+              // skip it so animated GIFs actually play.
+              unoptimized={section.src.endsWith(".gif")}
             />
           </div>
           {section.caption && (
@@ -138,7 +141,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
                 <Icon
                   className="pointer-events-none absolute -top-4 right-3 size-24 rotate-[10deg] text-blue/25"
                   aria-hidden
-                  strokeWidth={1.25}
+                  weight="regular"
                 />
                 <div className="relative flex flex-col items-start text-ink">
                   <p className="font-serif text-[40px] leading-none">{item.value}</p>
@@ -211,7 +214,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             <ul className="flex flex-col gap-3.5">
               {section.kept.map((item, index) => (
                 <li key={index} className="flex gap-1">
-                  <CircleCheck className="mt-0.5 size-[19px] shrink-0 text-olive" aria-hidden />
+                  <CheckCircle className="mt-0.5 size-[19px] shrink-0 text-olive" weight="regular" aria-hidden />
                   <div>
                     <p className="font-sans text-sm text-ink">{item.title}</p>
                     <p className="mt-0.5 font-sans text-xs leading-[1.4] text-ink/80">{item.reason}</p>
@@ -225,7 +228,7 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             <ul className="flex flex-col gap-3.5">
               {section.cut.map((item, index) => (
                 <li key={index} className="flex gap-1">
-                  <Delete className="mt-0.5 size-[19px] shrink-0 text-ink/60" aria-hidden />
+                  <Backspace className="mt-0.5 size-[19px] shrink-0 text-ink/60" weight="regular" aria-hidden />
                   <div>
                     <p className="font-sans text-sm text-ink">{item.title}</p>
                     <p className="mt-0.5 font-sans text-xs leading-[1.4] text-ink/80">{item.reason}</p>
@@ -314,6 +317,15 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
             >
               <ProjectSectionBlock section={item.block} />
             </div>
+          ))}
+        </div>
+      );
+
+    case "stack":
+      return (
+        <div className="flex flex-col gap-[25px]">
+          {section.items.map((block, index) => (
+            <ProjectSectionBlock key={index} section={block} />
           ))}
         </div>
       );

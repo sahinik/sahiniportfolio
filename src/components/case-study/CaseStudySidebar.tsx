@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "@phosphor-icons/react";
 import { clsx } from "clsx";
 import type { CaseStudySection } from "@/types/project";
 import { HEADER_HEIGHT, useHeaderHidden } from "@/lib/use-header-hidden";
@@ -93,7 +93,7 @@ export function CaseStudySidebar({
         onClick={() => requestScrollTo("#projects")}
         className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/80 transition-colors hover:text-blue"
       >
-        <ArrowLeft className="size-4" aria-hidden />
+        <ArrowLeft className="size-4" weight="regular" aria-hidden />
         back
       </Link>
 

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
 import { site } from "@/content/site";

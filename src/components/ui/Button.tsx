@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { clsx } from "clsx";
-import type { LucideIcon } from "lucide-react";
+import type { Icon } from "@phosphor-icons/react";
 
 type Variant = "primary" | "secondary" | "ghost";
 
@@ -20,7 +20,7 @@ const variants: Record<Variant, string> = {
 
 type CommonProps = {
   variant?: Variant;
-  icon?: LucideIcon;
+  icon?: Icon;
   iconPosition?: "start" | "end";
   children: ReactNode;
 };
@@ -31,8 +31,8 @@ type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children"> &
     external?: boolean;
   };
 
-function IconSlot({ icon: Icon }: { icon: LucideIcon }) {
-  return <Icon className="size-5 shrink-0" aria-hidden />;
+function IconSlot({ icon: Icon }: { icon: Icon }) {
+  return <Icon className="size-5 shrink-0" weight="regular" aria-hidden />;
 }
 
 export function LinkButton({

@@ -82,7 +82,13 @@ export type ProjectSection =
    * `width` (px) makes it a fixed-width column; omitting it makes that
    * column flex to fill the remaining space.
    */
-  | { type: "row"; items: { width?: number; block: ProjectSection }[] };
+  | { type: "row"; items: { width?: number; block: ProjectSection }[] }
+  /**
+   * Stacks 2+ blocks vertically with a tight, fixed gap — e.g. an image with
+   * its own caption/text directly beneath it, sized to match. Meant to nest
+   * inside a `row` column so the child blocks inherit that column's width.
+   */
+  | { type: "stack"; items: ProjectSection[] };
 
 export interface ProjectMeta {
   role: string;

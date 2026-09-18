@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowUpRight, Check } from "lucide-react";
+import { Envelope, ArrowUpRight, Check } from "@phosphor-icons/react";
 import { site } from "@/content/site";
 import { Button, LinkButton } from "@/components/ui/Button";
 import { RichParagraph } from "@/components/ui/RichText";
@@ -55,7 +55,7 @@ export function AboutHero() {
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-4">
-              <Button variant="secondary" icon={copied ? Check : Mail} onClick={copyEmail}>
+              <Button variant="secondary" icon={copied ? Check : Envelope} onClick={copyEmail}>
                 {copied ? "copied!" : "copy email"}
               </Button>
               <LinkButton href={site.resumeUrl} external icon={ArrowUpRight}>
