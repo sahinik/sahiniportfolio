@@ -6,7 +6,7 @@ import { SpinningCD } from "@/components/about/SpinningCD";
  * Each PNG is a pre-cut, already-rotated cutout straight from Figma (tilt,
  * drop shadow and all) — sizing follows each cutout's real aspect ratio.
  * Sizes are fixed (not shrunk per breakpoint): the staggered, overlapping
- * row only has room once the viewport reaches `lg`, so below that the four
+ * row only has room once the viewport reaches `xl`, so below that the four
  * items stack vertically instead of shrinking to fit. On hover, the cursor
  * swaps to the matching badge from Figma's "cursor badge" component set
  * instead of the item moving.
@@ -16,8 +16,8 @@ const items = [
     src: "/images/favorites/music-fav.png",
     alt: "A CD in a jewel case, one of my favorite albums",
     kind: "cd" as const,
-    className: "w-[230px]",
-    offset: -20,
+    className: "w-[299px]",
+    offset: -26,
     z: "z-10",
   },
   {
@@ -26,8 +26,8 @@ const items = [
     kind: "image" as const,
     width: 869,
     height: 869,
-    className: "w-[317px] lg:-ml-[63px]",
-    offset: -41,
+    className: "w-[412px] xl:-ml-[82px]",
+    offset: -53,
     z: "z-30",
     cursorBadge: "digital art",
     cursorIcon: "brush",
@@ -38,8 +38,8 @@ const items = [
     kind: "image" as const,
     width: 538,
     height: 484,
-    className: "w-[208px] lg:-ml-[86px]",
-    offset: 36,
+    className: "w-[270px] xl:-ml-[112px]",
+    offset: 47,
     z: "z-40",
     cursorBadge: "painted smiski pottery + fav jewelry",
     cursorIcon: "gem",
@@ -50,8 +50,8 @@ const items = [
     kind: "image" as const,
     width: 879,
     height: 691,
-    className: "w-[317px] lg:-ml-20",
-    offset: 7,
+    className: "w-[412px] xl:-ml-[104px]",
+    offset: 9,
     z: "z-10",
     cursorBadge: "taken on film",
     cursorIcon: "camera",
@@ -62,11 +62,11 @@ export function FavoriteThings() {
   return (
     <div className="py-16 sm:py-20">
       <h2 className="text-center font-hand text-4xl text-blue sm:text-5xl">some favorite things</h2>
-      <div className="mt-16 flex flex-col items-center gap-[2px] sm:mt-20 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-0">
+      <div className="mt-16 flex flex-col items-center gap-[2px] sm:mt-20 xl:flex-row xl:flex-wrap xl:justify-center xl:gap-0">
         {items.map((item) => (
           <div
             key={item.src}
-            className={`relative ${item.className} ${item.z} lg:translate-y-[var(--offset)]`}
+            className={`relative max-w-full ${item.className} ${item.z} xl:translate-y-[var(--offset)]`}
             style={{ "--offset": `${item.offset}px` } as CSSProperties}
             // The CD's cursor badge is stateful (play/pause), so SpinningCD
             // sets it directly on its own button instead of here.
@@ -82,7 +82,7 @@ export function FavoriteThings() {
                 alt={item.alt}
                 width={item.width}
                 height={item.height}
-                sizes="317px"
+                sizes="412px"
                 className="h-auto w-full"
               />
             )}

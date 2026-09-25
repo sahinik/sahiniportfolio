@@ -21,7 +21,7 @@ export function AboutHero() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-16 pt-8 pb-16 sm:pt-12">
+    <div className="flex flex-col items-center gap-16 pt-[72px] pb-16 sm:pt-[88px]">
       <div className="relative w-full max-w-[420px]">
         {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn mascot, positioned freely against the polaroid stack */}
         <img
@@ -33,36 +33,26 @@ export function AboutHero() {
         <PolaroidStack />
       </div>
 
-      <div className="flex w-full flex-col gap-6">
+      <div className="flex w-full max-w-[542px] flex-col gap-[35px]">
         <div className="flex items-center gap-3">
           <h1 className="font-hand text-4xl text-blue sm:text-5xl">{site.about.greeting}</h1>
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative hand-drawn smiley, stands in for a literal ":))" */}
           <img src="/images/marks/smiley.svg" alt="" aria-hidden="true" className="h-7 w-auto sm:h-9" />
         </div>
 
-        {/* Both columns start here so their text lines up, matching the Figma about-hero layout. */}
-        <div className="grid grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-2">
-          <div className="flex flex-col gap-6 font-sans text-base leading-[1.875] text-ink">
-            {site.about.introParagraphs.map((paragraph, index) => (
-              <RichParagraph key={index} segments={paragraph} />
-            ))}
-          </div>
+        <div className="flex flex-col gap-[30px] font-sans text-base leading-[1.875] text-ink">
+          {site.about.paragraphs.map((paragraph, index) => (
+            <RichParagraph key={index} segments={paragraph} />
+          ))}
+        </div>
 
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-6 font-sans text-base leading-[1.875] text-ink">
-              {site.about.moreParagraphs.map((paragraph, index) => (
-                <RichParagraph key={index} segments={paragraph} />
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button variant="secondary" icon={copied ? Check : Envelope} onClick={copyEmail}>
-                {copied ? "copied!" : "copy email"}
-              </Button>
-              <LinkButton href={site.resumeUrl} external icon={ArrowUpRight}>
-                view resume
-              </LinkButton>
-            </div>
-          </div>
+        <div className="flex flex-wrap items-center gap-[18px] pt-4">
+          <Button variant="secondary" icon={copied ? Check : Envelope} onClick={copyEmail}>
+            {copied ? "copied!" : "copy email"}
+          </Button>
+          <LinkButton href={site.resumeUrl} external icon={ArrowUpRight}>
+            view resume
+          </LinkButton>
         </div>
       </div>
     </div>

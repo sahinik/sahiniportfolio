@@ -103,7 +103,7 @@ export function PolaroidStack() {
               width={photo.width}
               height={photo.height}
               sizes="(min-width: 640px) 420px, 90vw"
-              className="h-full w-full object-contain drop-shadow-[0_18px_26px_rgba(36,59,94,0.18)]"
+              className="h-full w-full object-contain drop-shadow-[0_18px_26px_rgba(36,59,94,0.10)]"
               quality={100}
               priority={isFront}
             />

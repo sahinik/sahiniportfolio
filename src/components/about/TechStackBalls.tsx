@@ -20,13 +20,38 @@ const logos: Logo[] = [
   { src: "/images/about/reve-ball.png", alt: "Reve" },
 ];
 
-const BALL_SIZE = 62;
+const BALL_SIZE = 78;
 const WALL_THICKNESS = 60;
+// Balls come to rest this far above the box's bottom edge, on the shadowbox floor.
+const FLOOR_INSET = 10;
 const CEILING_DELAY_MS = 2200;
 
-// A little over a third of the viewport width at md/lg, capped so it never
-// crowds out the experience list once the two-column layout kicks in at lg.
-const STAGE_SIZE = "h-[220px] w-[220px] sm:w-[280px] md:h-[260px] md:w-[clamp(280px,38vw,480px)]";
+// Matches the 362x386 shadowbox frame in the Figma "v2 - about" experience
+// section; shrinks (keeping that aspect ratio) on viewports narrower than it.
+const STAGE_SIZE = "aspect-[362/386] w-[min(362px,calc(100vw-2.5rem))]";
+
+/** Blue shadowbox backdrop from Figma: a lit back panel with thin dark ceiling/floor and gradient side walls, with a shallow floor. */
+function ShadowboxBackdrop() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 362 386"
+      preserveAspectRatio="none"
+      className="pointer-events-none absolute inset-0 h-full w-full"
+    >
+      <defs>
+        <linearGradient id="shadowbox-wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#24549c" />
+          <stop offset="1" stopColor="#3b6cb6" />
+        </linearGradient>
+      </defs>
+      <rect width="362" height="386" fill="#194990" />
+      <rect x="59" y="33" width="244" height="308" fill="#3d6eb8" />
+      <polygon points="0,0 59,33 59,341 0,386" fill="url(#shadowbox-wall)" />
+      <polygon points="362,0 303,33 303,341 362,386" fill="url(#shadowbox-wall)" />
+    </svg>
+  );
+}
 
 /**
  * Sphere-shading overlay: a top-left specular highlight plus a soft
@@ -100,7 +125,7 @@ export function TechStackBalls() {
     // rendered size instead of drifting stale after a viewport resize.
     function buildSideWalls(width: number, height: number) {
       return [
-        Matter.Bodies.rectangle(width / 2, height + WALL_THICKNESS / 2, width + WALL_THICKNESS * 2, WALL_THICKNESS, {
+        Matter.Bodies.rectangle(width / 2, height - FLOOR_INSET + WALL_THICKNESS / 2, width + WALL_THICKNESS * 2, WALL_THICKNESS, {
           isStatic: true,
         }),
         Matter.Bodies.rectangle(-WALL_THICKNESS / 2, height / 2, WALL_THICKNESS, height + WALL_THICKNESS * 2, {
@@ -176,7 +201,7 @@ export function TechStackBalls() {
     const clampMouseToRoom = () => {
       const { width, height } = container.getBoundingClientRect();
       mouse.position.x = Math.min(Math.max(mouse.position.x, radius), Math.max(width - radius, radius));
-      mouse.position.y = Math.min(Math.max(mouse.position.y, radius), Math.max(height - radius, radius));
+      mouse.position.y = Math.min(Math.max(mouse.position.y, radius), Math.max(height - FLOOR_INSET - radius, radius));
     };
     container.addEventListener("mousemove", clampMouseToRoom);
     container.addEventListener("touchmove", clampMouseToRoom);
@@ -227,11 +252,12 @@ export function TechStackBalls() {
   if (reduced) {
     return (
       <div
-        className={`flex flex-wrap items-center justify-center gap-3 rounded-lg bg-mist/40 p-4 ${STAGE_SIZE}`}
+        className={`relative flex flex-wrap content-end items-end justify-center gap-3 overflow-hidden px-4 pt-4 pb-[26px] ${STAGE_SIZE}`}
         aria-hidden="true"
       >
+        <ShadowboxBackdrop />
         {logos.map((logo) => (
-          <div key={logo.src} style={{ width: BALL_SIZE, height: BALL_SIZE }}>
+          <div key={logo.src} className="relative" style={{ width: BALL_SIZE, height: BALL_SIZE }}>
             <BallFace logo={logo} />
           </div>
         ))}
@@ -242,9 +268,10 @@ export function TechStackBalls() {
   return (
     <div
       ref={containerRef}
-      className={`relative touch-none overflow-hidden rounded-lg bg-mist/40 [&.cursor-grabbing_*]:cursor-grabbing ${STAGE_SIZE}`}
+      className={`relative touch-none overflow-hidden [&.cursor-grabbing_*]:cursor-grabbing ${STAGE_SIZE}`}
       aria-hidden="true"
     >
+      <ShadowboxBackdrop />
       {logos.map((logo, index) => (
         <div
           key={logo.src}

@@ -136,7 +136,7 @@ export function SpinningCD() {
               src="/images/favorites/music-disc.png"
               alt=""
               fill
-              sizes="235px"
+              sizes="222px"
               className="pointer-events-none object-cover [animation:spin_3s_linear_infinite]"
               style={{ animationPlayState: playing ? "running" : "paused" }}
             />
@@ -145,7 +145,7 @@ export function SpinningCD() {
             src="/images/favorites/music-case.png"
             alt="A CD in a jewel case, one of my favorite albums"
             fill
-            sizes="317px"
+            sizes="299px"
             className="pointer-events-none object-contain"
           />
         </div>
