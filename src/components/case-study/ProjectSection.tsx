@@ -1,16 +1,75 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
-import { Newspaper, UsersThree, PersonSimpleThrow, CheckCircle, Backspace } from "@phosphor-icons/react/ssr";
+import {
+  Newspaper,
+  UsersThree,
+  UsersFour,
+  PersonSimpleThrow,
+  CheckCircle,
+  Backspace,
+  ChartBar,
+  Timer,
+  FlowArrow,
+  MagnifyingGlass,
+  ListChecks,
+  ChatCircleText,
+  ArrowsClockwise,
+  ShareNetwork,
+  Broadcast,
+  ChatsCircle,
+  ArrowCounterClockwise,
+  Eye,
+  Heart,
+  GitMerge,
+  ArrowDown,
+  NumberCircleOne,
+  NumberCircleTwo,
+  NumberCircleThree,
+  NumberCircleFour,
+  NumberCircleFive,
+  Smiley,
+  Handshake,
+  Plant,
+} from "@phosphor-icons/react/ssr";
 import type { ProjectSection as ProjectSectionType } from "@/types/project";
+import { TabbedPrinciples } from "@/components/case-study/TabbedPrinciples";
 
 const statCardIcons = { newspaper: Newspaper, users: UsersThree, run: PersonSimpleThrow };
+
+const numberIcons = [NumberCircleOne, NumberCircleTwo, NumberCircleThree, NumberCircleFour, NumberCircleFive];
+
+const infographicIcons = {
+  chartBar: ChartBar,
+  users: UsersFour,
+  timer: Timer,
+  flow: FlowArrow,
+  search: MagnifyingGlass,
+  checklist: ListChecks,
+  group: UsersThree,
+  chat: ChatCircleText,
+  cycle: ArrowsClockwise,
+  network: ShareNetwork,
+  broadcast: Broadcast,
+  scattered: ChatsCircle,
+  retention: ArrowCounterClockwise,
+  eye: Eye,
+  heart: Heart,
+  merge: GitMerge,
+  smiley: Smiley,
+  handshake: Handshake,
+  plant: Plant,
+};
 
 export function ProjectSectionBlock({ section }: { section: ProjectSectionType }) {
   switch (section.type) {
     case "text":
       return (
-        <div className={section.fullWidth ? undefined : "max-w-2xl"}>
+        <div>
           {section.heading && (
-            <h2 className="font-serif text-xl text-ink">{section.heading}</h2>
+            // Always a subheading of the enclosing section's own h2
+            // (CaseStudyContent) — every content use of this block sits
+            // inside a section that already has its own heading.
+            <h3 className="font-serif text-xl text-ink">{section.heading}</h3>
           )}
           <p className="mt-3 font-sans text-base leading-[1.5] text-ink/80">{section.body}</p>
         </div>
@@ -134,23 +193,100 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
           {section.items.map((item, index) => {
             const Icon = statCardIcons[item.icon];
             return (
-              <div
-                key={index}
-                className="relative flex flex-col gap-2.5 overflow-hidden rounded-[4px] bg-mist px-3 pb-3 pt-16"
-              >
-                <Icon
-                  className="pointer-events-none absolute -top-4 right-3 size-24 rotate-[10deg] text-blue/25"
-                  aria-hidden
-                  weight="regular"
-                />
-                <div className="relative flex flex-col items-start text-ink">
+              <div key={index} className="flex flex-col gap-2.5 rounded-[4px] bg-mist p-6">
+                <Icon className="size-7 text-[#acd0ff]" aria-hidden weight="regular" />
+                <div className="flex flex-col items-start text-ink">
                   <p className="font-serif text-[40px] leading-none">{item.value}</p>
                   <p className="font-sans text-[13px]">{item.label}</p>
                 </div>
-                <div className="h-px w-[47px] bg-ink/25" />
-                <p className="relative font-sans text-[13px] leading-normal text-navy">
-                  {item.description}
+                <div className="h-[2px] w-[47px] rounded-full bg-ink/25" />
+                <p className="font-sans text-[13px] leading-normal text-navy">{item.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      );
+
+    case "statIcons":
+      return (
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {section.items.map((item, index) => {
+              const Icon = infographicIcons[item.icon];
+              return (
+                <div key={index} className="flex flex-col gap-4 rounded-md bg-mist p-5">
+                  <Icon className="size-9 text-blue" weight="regular" aria-hidden />
+                  <div>
+                    <p className="font-serif text-[28px] leading-none text-ink">{item.value}</p>
+                    <p className="mt-1 font-sans text-[13px] text-ink/80">{item.label}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {section.notes && section.notes.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {section.notes.map((note, index) => (
+                <p
+                  key={index}
+                  className="border-t border-line pt-3 font-sans text-[13px] leading-[1.4] text-ink/70"
+                >
+                  {note}
                 </p>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+
+    case "iconGrid":
+      return (
+        <div className="flex flex-col items-center gap-5">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
+            {section.items.map((item, index) => {
+              const Icon = infographicIcons[item.icon];
+              return (
+                <div key={index} className="flex flex-col gap-3 rounded-md bg-mist p-5">
+                  <span className="flex size-11 items-center justify-center rounded-full bg-blue">
+                    <Icon className="size-5 text-paper" weight="regular" aria-hidden />
+                  </span>
+                  <div>
+                    <p className="font-sans text-[15px] font-medium text-ink">{item.title}</p>
+                    <p className="mt-1 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {section.outcome && (
+            <>
+              <ArrowDown className="size-4 text-blue" aria-hidden />
+              <p className="rounded-full bg-navy px-5 py-2.5 font-sans text-[13px] font-medium text-paper">
+                {section.outcome}
+              </p>
+            </>
+          )}
+        </div>
+      );
+
+    case "methodSteps":
+      return (
+        <div className="grid grid-cols-1 gap-6 sm:flex sm:flex-row">
+          {section.items.map((item, index) => {
+            const Icon = infographicIcons[item.icon];
+            const isLast = index === section.items.length - 1;
+            return (
+              <div key={index} className="flex flex-1 flex-col gap-3 sm:pr-4">
+                <div className="flex items-center gap-2">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-blue">
+                    <Icon className="size-5 text-paper" weight="regular" aria-hidden />
+                  </span>
+                  {!isLast && <span className="hidden h-px flex-1 bg-line sm:block" aria-hidden />}
+                </div>
+                <div>
+                  <p className="font-sans text-[14px] font-medium text-ink">{item.label}</p>
+                  <p className="mt-1 font-sans text-[13px] leading-[1.4] text-ink/70">{item.body}</p>
+                </div>
               </div>
             );
           })}
@@ -194,17 +330,79 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
         </ul>
       );
 
+    case "chatBubbles":
+      return (
+        <div className="flex flex-col items-center gap-6">
+          {section.items.map((item, index) => {
+            const tailOnLeft = index % 2 === 0;
+            return (
+              <div
+                key={index}
+                className="relative max-w-[600px] rounded-[28px] bg-blue/15 px-8 py-6 text-center"
+              >
+                <p className="font-sans text-[17px] leading-normal text-navy">{item}</p>
+                <svg
+                  viewBox="0 0 16 20"
+                  fill="currentColor"
+                  aria-hidden
+                  className={`absolute top-full h-5 w-4 text-blue/15 ${
+                    tailOnLeft ? "left-9" : "right-9 -scale-x-100"
+                  }`}
+                >
+                  <path d="M0 0H16C16 9 8 20 0 20Z" />
+                </svg>
+              </div>
+            );
+          })}
+        </div>
+      );
+
     case "principles":
       return (
         <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
-          {section.items.map((item, index) => (
-            <div key={index} className="rounded-[10px] border border-blue p-[18px]">
-              <p className="font-serif text-[17px] text-ink">{item.title}</p>
-              <p className="mt-2 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
-            </div>
-          ))}
+          {section.items.map((item, index) => {
+            if (section.numbered === "plain") {
+              return (
+                <div key={index} className="flex flex-col gap-3 rounded-[4px] bg-mist p-6">
+                  <p className="font-serif text-[44px] leading-none text-blue">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <p className="font-sans text-[15px] leading-[1.4] text-ink">{item.title}</p>
+                </div>
+              );
+            }
+            if (!section.numbered && item.icon) {
+              const Icon = infographicIcons[item.icon];
+              return (
+                <div key={index} className="flex flex-col gap-3 rounded-[4px] bg-mist p-6">
+                  <Icon className="size-11 text-blue" weight="regular" aria-hidden />
+                  <p className="font-sans text-[15px] leading-[1.4] text-ink">{item.title}</p>
+                </div>
+              );
+            }
+            if (!section.numbered) {
+              return (
+                <div key={index} className="rounded-[10px] border border-blue p-[18px]">
+                  <p className="font-serif text-[17px] text-ink">{item.title}</p>
+                  <p className="mt-2 font-sans text-[13px] leading-[1.4] text-ink/80">{item.body}</p>
+                </div>
+              );
+            }
+            const NumberIcon = numberIcons[index] ?? numberIcons[numberIcons.length - 1];
+            return (
+              <div key={index} className="flex flex-col gap-2.5 rounded-[4px] bg-mist p-6">
+                <NumberIcon className="size-7 text-[#acd0ff]" aria-hidden weight="regular" />
+                <p className="font-serif text-xl text-ink">{item.title}</p>
+                <div className="h-[2px] w-[47px] rounded-full bg-ink/25" />
+                <p className="font-sans text-[13px] leading-normal text-navy">{item.body}</p>
+              </div>
+            );
+          })}
         </div>
       );
+
+    case "tabbedPrinciples":
+      return <TabbedPrinciples items={section.items} layout={section.layout} />;
 
     case "compareList":
       return (
@@ -312,8 +510,19 @@ export function ProjectSectionBlock({ section }: { section: ProjectSectionType }
           {section.items.map((item, index) => (
             <div
               key={index}
-              className="min-w-0"
-              style={item.width ? { width: item.width, flexShrink: 0 } : { flex: 1 }}
+              // A fixed `width` only applies at sm: and up — below that,
+              // items stack full-width so a wide column (e.g. a 370px photo)
+              // can't overflow the page's fixed 45px gutter on narrow phones.
+              className={
+                item.width
+                  ? "w-full min-w-0 sm:w-[var(--row-col-width)] sm:shrink-0"
+                  : "min-w-0 flex-1"
+              }
+              style={
+                item.width
+                  ? ({ "--row-col-width": `${item.width}px` } as CSSProperties)
+                  : undefined
+              }
             >
               <ProjectSectionBlock section={item.block} />
             </div>

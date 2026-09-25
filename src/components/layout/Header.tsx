@@ -95,8 +95,18 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    // The open menu visually covers the page, but without this a keyboard
+    // user can still tab into the content sitting underneath it — inert
+    // removes that content from the tab order and the accessibility tree
+    // while the overlay is up.
+    const main = document.getElementById("main-content");
+    const footer = document.querySelector("footer");
+    main?.toggleAttribute("inert", menuOpen);
+    footer?.toggleAttribute("inert", menuOpen);
     return () => {
       document.body.style.overflow = "";
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
     };
   }, [menuOpen]);
 

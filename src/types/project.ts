@@ -6,8 +6,31 @@ export type ProjectDiscipline =
   | "Visual Design"
   | "Prototyping";
 
+/** Shared icon vocabulary for statIcons/iconGrid/methodSteps, mapped to a
+ *  single Phosphor icon each in ProjectSection. */
+export type InfographicIcon =
+  | "chartBar"
+  | "users"
+  | "timer"
+  | "flow"
+  | "search"
+  | "checklist"
+  | "group"
+  | "chat"
+  | "cycle"
+  | "network"
+  | "broadcast"
+  | "scattered"
+  | "retention"
+  | "eye"
+  | "heart"
+  | "merge"
+  | "smiley"
+  | "handshake"
+  | "plant";
+
 export type ProjectSection =
-  | { type: "text"; heading?: string; body: string; fullWidth?: boolean }
+  | { type: "text"; heading?: string; body: string }
   | {
       type: "image";
       src: string;
@@ -43,6 +66,33 @@ export type ProjectSection =
         icon: "newspaper" | "users" | "run";
       }[];
     }
+  /** A row of icon + big-number + label cards (e.g. weeks/participants/
+   *  session length/tasks tested). `notes` are short captions shown below
+   *  the cards, each under its own divider — pass fewer notes than items to
+   *  leave trailing cards without one, matching the Figma reference. */
+  | {
+      type: "statIcons";
+      items: { icon: InfographicIcon; value: string; label: string }[];
+      notes?: string[];
+    }
+  /** A grid of icon + title + caption cards (e.g. research pain points or
+   *  design assumptions). `outcome` renders a closing banner connected to
+   *  the cards above by a line, for a synthesis statement. */
+  | {
+      type: "iconGrid";
+      items: { icon: InfographicIcon; title: string; body: string }[];
+      outcome?: string;
+    }
+  /** A horizontal, connected row of icon + label + caption steps (e.g. a
+   *  research methodology walk-through). */
+  | {
+      type: "methodSteps";
+      items: { icon: InfographicIcon; label: string; body: string }[];
+    }
+  /** A centered stack of speech-bubble cards with an SVG tail, each sized to
+   *  its own text — for a conversational list like research questions. Tail
+   *  alternates side by index (even: bottom-left, odd: bottom-right). */
+  | { type: "chatBubbles"; items: string[] }
   | { type: "video"; src: string; poster?: string; caption?: string }
   /** A row of short bullet points — for scannable lists like "my contributions".
    *  Wraps to 2 columns at sm: by default; pass `columns: 1` to keep it a
@@ -50,8 +100,38 @@ export type ProjectSection =
   | { type: "bullets"; items: string[]; columns?: 1 | 2 }
   /** A grid of small principle/pillar cards: short title + one-line description.
    *  Uses an auto-fit grid so it also reads correctly at narrower widths when
-   *  nested inside a `row` item, not just at full section width. */
-  | { type: "principles"; items: { title: string; body: string }[] }
+   *  nested inside a `row` item, not just at full section width.
+   *  `numbered: true` matches `statCards`' light-card treatment instead of
+   *  the default outlined card — a NumberCircle Phosphor icon above the
+   *  title, with a divider under it (e.g. the Findings section).
+   *  `numbered: "plain"` is the same light card simplified further: just a
+   *  large numeral (01, 02…) above the text, no icon or divider — `body` is
+   *  unused in this mode, put the copy in `title` (e.g. Key Insights).
+   *  Give an item an `icon` (with `numbered` omitted) for the same light
+   *  card with a plain topic icon above the text instead of a number —
+   *  `body` is unused in this mode too (e.g. Design Goals). */
+  | {
+      type: "principles";
+      items: { title: string; body: string; icon?: InfographicIcon }[];
+      numbered?: boolean | "plain";
+    }
+  /** Interactive variant of `principles`: clicking a tab swaps the media
+   *  shown beside/beneath it (e.g. a solution's event/product/app variants).
+   *  Omit both `image` and `video` on an item with no built variant yet —
+   *  it renders as a plain, non-interactive card instead of a clickable tab.
+   *  `layout: "sideBySide"` puts the tabs in a left column and the media in
+   *  a right column (matching the Figma reference); default "stacked" keeps
+   *  the tabs in a row above the media. */
+  | {
+      type: "tabbedPrinciples";
+      layout?: "stacked" | "sideBySide";
+      items: {
+        title: string;
+        body: string;
+        image?: { src: string; alt: string; width: number; height: number };
+        video?: { src: string; poster?: string };
+      }[];
+    }
   /** Two-column "kept" vs "cut" (or similar) comparison list. */
   | {
       type: "compareList";

@@ -65,7 +65,14 @@ export function CaseStudySidebar({
   }, [activeId]);
 
   function handleClick(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Anchor nav only scrolls by default, leaving keyboard/screen-reader
+    // focus behind on the nav link — move it to the target section so its
+    // content is what's announced/tabbed from next, matching the visual jump.
+    target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
   }
 
   return (
@@ -91,13 +98,13 @@ export function CaseStudySidebar({
       <Link
         href="/#projects"
         onClick={() => requestScrollTo("#projects")}
-        className="flex w-fit items-center gap-1.5 font-sans text-sm text-ink/80 transition-colors hover:text-blue"
+        className="-my-1 flex w-fit items-center gap-1.5 py-1 font-sans text-sm text-ink/80 transition-colors hover:text-blue"
       >
         <ArrowLeft className="size-4" weight="regular" aria-hidden />
         back
       </Link>
 
-      <p className="font-serif text-2xl leading-tight text-ink">{title}</p>
+      <h1 className="font-serif text-2xl leading-tight text-ink">{title}</h1>
 
       {/* Full section map only at lg: — on mobile it's a long list better
           experienced by scrolling than by a sticky nav crowding the screen. */}

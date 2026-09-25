@@ -13,10 +13,25 @@ const caseStudySections: CaseStudySection[] = [
       },
       {
         type: "metaGrid",
-        role: "UX Researcher & Designer",
-        timeline: "10 weeks",
-        team: ["Team project"],
-        skills: ["User Research", "Product Design", "Service Design"],
+        role: "Product Designer & Researcher",
+        timeline: "September - December '24",
+        team: ["4 designers"],
+        skills: ["User Research", "Concept Design", "Service Design"],
+      },
+    ],
+  },
+  {
+    id: "impact",
+    navLabel: "Impact",
+    eyebrow: "IMPACT",
+    heading: "More people were left open to trying alternative protein",
+    blocks: [
+      {
+        type: "stats",
+        items: [
+          { label: "More inclined to try insect-based food", value: "38%" },
+          { label: "Open to trying alternative protein", value: "50%" },
+        ],
       },
     ],
   },
@@ -27,8 +42,24 @@ const caseStudySections: CaseStudySection[] = [
     heading: "The way we produce food is reaching a breaking point",
     blocks: [
       {
-        type: "text",
-        body: "The global population is projected to reach 9.7 billion by 2050. Traditional livestock farming can't meet that demand without serious environmental cost, so the food system needs alternatives that work for both people and the planet.",
+        type: "row",
+        items: [
+          {
+            width: 320,
+            block: {
+              type: "image",
+              src: "/images/projects/insect-protein/context-cow.png",
+              alt: "Livestock being fed on a dairy farm",
+              aspectRatio: "320/215",
+            },
+          },
+          {
+            block: {
+              type: "text",
+              body: "The global population is projected to reach 9.7 billion by 2050. Traditional livestock farming can't meet that demand without serious environmental cost, so the food system needs alternatives that work for both people and the planet.",
+            },
+          },
+        ],
       },
     ],
   },
@@ -59,20 +90,40 @@ const caseStudySections: CaseStudySection[] = [
     heading: "What did we do?",
     blocks: [
       {
-        type: "stats",
+        type: "statIcons",
         items: [
-          { label: "Weeks", value: "10" },
-          { label: "Participants", value: "8" },
+          { icon: "chartBar", value: "10", label: "Weeks" },
+          { icon: "users", value: "8", label: "Participants" },
         ],
       },
       {
-        type: "bullets",
+        type: "methodSteps",
         items: [
-          "Secondary research and competitive analysis",
-          "An initial survey on food preferences and prior exposure to alternative foods",
-          "Four co-design sessions, structured to give participants real agency in shaping equitable outcomes",
-          "Four in-depth interviews to capture detailed pain points",
-          "User testing with iterative design refinement",
+          {
+            icon: "search",
+            label: "Secondary research",
+            body: "Literature reviews and competitive analysis",
+          },
+          {
+            icon: "checklist",
+            label: "Initial survey",
+            body: "Assess food preferences and prior exposure to alternative foods",
+          },
+          {
+            icon: "group",
+            label: "Co-design sessions",
+            body: "4 sessions giving participants real agency in shaping equitable outcomes",
+          },
+          {
+            icon: "chat",
+            label: "In-depth interviews",
+            body: "4 interviews capturing detailed pain points",
+          },
+          {
+            icon: "cycle",
+            label: "User testing",
+            body: "Iterative design refinement",
+          },
         ],
       },
     ],
@@ -84,12 +135,21 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Three recurring pain points",
     blocks: [
       {
-        type: "bullets",
+        type: "principles",
+        numbered: "plain",
         items: [
-          "Aversion to insect taste, texture, and visuals",
-          "Concern about the sourcing and safety of insect ingredients",
-          "Limited accessibility and availability of insect-based food",
+          { title: "Aversion to insect taste, texture, and visuals", body: "" },
+          { title: "Concern about the sourcing and safety of insect ingredients", body: "" },
+          { title: "Limited accessibility and availability of insect-based food", body: "" },
         ],
+      },
+      {
+        type: "image",
+        src: "/images/projects/insect-protein/insights-codesign.png",
+        alt: "Co-design session boards covered in sticky notes capturing participant reactions",
+        caption: "participant comments from our co-design exercises",
+        aspectRatio: "1760/723",
+        fullWidth: true,
       },
     ],
   },
@@ -110,11 +170,23 @@ const caseStudySections: CaseStudySection[] = [
     eyebrow: "DESIGN GOALS",
     blocks: [
       {
-        type: "bullets",
+        type: "principles",
         items: [
-          "Make insect-based products feel familiar and intriguing, not clinical or strange",
-          "Establish trust through clear, transparent communication about sourcing and safety",
-          "Normalize adoption by framing it around sustainability and collective impact",
+          {
+            icon: "smiley",
+            title: "Make insect-based products feel familiar and intriguing, not clinical or strange",
+            body: "",
+          },
+          {
+            icon: "handshake",
+            title: "Establish trust through clear, transparent communication about sourcing and safety",
+            body: "",
+          },
+          {
+            icon: "plant",
+            title: "Normalize adoption by framing it around sustainability and collective impact",
+            body: "",
+          },
         ],
       },
     ],
@@ -129,7 +201,13 @@ const caseStudySections: CaseStudySection[] = [
         type: "text",
         body: "We generated over 100 original ideas as a team, then evaluated each one through group discussion focused on strengths, weaknesses, feasibility, and originality. Similar ideas got grouped together to surface patterns, and from those clusters we prioritized three directions and re-sketched them with more detail.",
       },
-      { type: "placeholder", label: "Ideation clusters and early concept sketches", aspect: "wide" },
+      {
+        type: "image",
+        src: "/images/projects/insect-protein/ideation.png",
+        alt: "Ideation sketches: insect card game, subscription kit, and pop reference packaging concepts",
+        aspectRatio: "1760/754",
+        fullWidth: true,
+      },
     ],
   },
   {
@@ -139,36 +217,35 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Three connected pieces: an event, a product, and an app",
     blocks: [
       {
-        type: "principles",
+        type: "tabbedPrinciples",
         items: [
           {
             title: "Bug Cube Events",
             body: "In-person tasting events built around interactive games, letting attendees discover their own insect-based food preferences in a low-pressure, social setting. The format leans on exposure therapy principles, using repeated, gamified exposure to reduce disgust while keeping choice in the attendee's hands.",
+            video: {
+              src: "/images/projects/insect-protein/bug-cube-tasting-event.mp4",
+            },
           },
           {
             title: "Bug Cube Products",
             body: "Packaging designed to lead with nutrition and sustainability, with a QR code linking to transparent sourcing and safety information, including FDA approval. A familiarity scale compares the taste and texture to foods people already know, like nuts or protein bars, to bridge the gap between the unfamiliar and the familiar.",
+            image: {
+              src: "/images/projects/insect-protein/solution-products.png",
+              alt: "Bug Cube packaging: cricket carbonara pasta boxes with sourcing, taste-profile, and environmental-impact callouts.",
+              width: 1536,
+              height: 1248,
+            },
           },
           {
             title: "Bug Cube Collective app",
             body: "A community platform for product discovery, monthly challenges, and social validation, with e-commerce and personalized recommendations built in. Badges, leaderboards, and rewards drive engagement while reducing the stigma around trying something new.",
+            image: {
+              src: "/images/projects/insect-protein/solution-app.png",
+              alt: "Bug Cube Collective app screens: home, store, meal box details, and achievements.",
+              width: 1536,
+              height: 1903,
+            },
           },
-        ],
-      },
-      { type: "placeholder", label: "Bug Cube event, packaging, and app screens", aspect: "wide" },
-    ],
-  },
-  {
-    id: "impact",
-    navLabel: "Impact",
-    eyebrow: "IMPACT",
-    heading: "More participants left open to trying it",
-    blocks: [
-      {
-        type: "stats",
-        items: [
-          { label: "More inclined to try insect-based food", value: "38%" },
-          { label: "Open to trying alternative protein", value: "50%" },
         ],
       },
     ],
@@ -197,14 +274,46 @@ const caseStudySections: CaseStudySection[] = [
     heading: "Key learnings",
     blocks: [
       {
-        type: "text",
-        heading: "Exposure works better than education",
-        body: "Reducing psychological barriers through exposure and social validation turned out to be more effective than a purely educational approach. Participants responded best to experiences that felt low-pressure, gamified, and community-driven, not to being told why insects are good for them.",
+        type: "row",
+        items: [
+          {
+            width: 150,
+            block: {
+              type: "image",
+              src: "/images/projects/insect-protein/reflection-1.png",
+              alt: "",
+              aspectRatio: "150/154",
+            },
+          },
+          {
+            block: {
+              type: "text",
+              heading: "Exposure works better than education",
+              body: "Reducing psychological barriers through exposure and social validation turned out to be more effective than a purely educational approach. Participants responded best to experiences that felt low-pressure, gamified, and community-driven, not to being told why insects are good for them.",
+            },
+          },
+        ],
       },
       {
-        type: "text",
-        heading: "Transparency builds trust",
-        body: "Transparency in packaging and sourcing information made people meaningfully more willing to try and purchase insect-based products. Trust turned out to be as much a design problem as taste or texture was.",
+        type: "row",
+        items: [
+          {
+            width: 150,
+            block: {
+              type: "image",
+              src: "/images/projects/insect-protein/reflection-2.png",
+              alt: "",
+              aspectRatio: "150/150",
+            },
+          },
+          {
+            block: {
+              type: "text",
+              heading: "Transparency builds trust",
+              body: "Transparency in packaging and sourcing information made people meaningfully more willing to try and purchase insect-based products. Trust turned out to be as much a design problem as taste or texture was.",
+            },
+          },
+        ],
       },
       {
         type: "text",

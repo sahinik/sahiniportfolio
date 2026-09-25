@@ -14,8 +14,8 @@ const caseStudySections: CaseStudySection[] = [
       {
         type: "metaGrid",
         role: "Lead UX/UI Designer",
-        timeline: "12 months",
-        team: ["Design, dev, QA & research team"],
+        timeline: "February '24 - May '25",
+        team: ["1 UX/UI designer", "1 Project manager", "2 Developers", "1 QA analyst", "1 Researcher"],
         skills: ["Visual Design", "Design Systems", "Responsive Design"],
       },
     ],
@@ -52,14 +52,16 @@ const caseStudySections: CaseStudySection[] = [
     heading: "A map covering 200+ hospitals",
     blocks: [
       {
-        type: "stats",
-        items: [{ label: "Hospitals visualized", value: "200+" }],
-      },
-      {
-        type: "bullets",
+        type: "principles",
         items: [
-          "Made donation impact visible, so donors could see exactly what their contributions were doing",
-          "Gave donors a clearer reason to give again, backed by real, trackable progress",
+          {
+            title: "Better visibility",
+            body: "Made donation impact visible, so donors could see exactly what their contributions were doing.",
+          },
+          {
+            title: "Increased retention",
+            body: "Gave donors a better reason to give again, backed by real, trackable progress.",
+          },
         ],
       },
     ],
@@ -91,12 +93,28 @@ const caseStudySections: CaseStudySection[] = [
         body: "Earlier research surfaced a handful of recurring pain points in the donor experience:",
       },
       {
-        type: "bullets",
+        type: "iconGrid",
         items: [
-          "A fragmented donor experience: Games for Love offers multiple ways to give, but without a clear path tailored to different donor types, contributions stay scattered and hard to optimize",
-          "Charity streams drive most donations, leaving the organization dependent on a single channel",
-          "Weak feedback loops between the organization and its donors, spread thin across Discord, social media, email, and in-person events with nothing tying them together",
-          "No real mechanism for re-engaging returning donors or showing them the progress their past donations made",
+          {
+            icon: "network",
+            title: "Fragmented paths",
+            body: "Multiple ways to give, but no path tailored to different donor types.",
+          },
+          {
+            icon: "broadcast",
+            title: "Reliance on a single channel",
+            body: "Charity streams drive most donations.",
+          },
+          {
+            icon: "scattered",
+            title: "Disconnected feedback loops",
+            body: "Spread thin across Discord, social, email, and events.",
+          },
+          {
+            icon: "retention",
+            title: "Low engagement and retention",
+            body: "No way to show donors the impact of their past contributions.",
+          },
         ],
       },
       {
@@ -104,12 +122,25 @@ const caseStudySections: CaseStudySection[] = [
         body: "From there, we worked from three assumptions:",
       },
       {
-        type: "bullets",
+        type: "iconGrid",
         items: [
-          "Transparency drives donor trust and repeat donations. If donors can see exactly where their money goes and track its impact over time, they're more likely to give again",
-          "Donors feel most motivated to give when they have a personal connection to a cause. Making it easy to donate to a specific hospital could turn impulse giving into something more intentional and recurring",
-          "A unified, engaging experience could reduce dependency on any single channel by bringing funding progress, impact stories, and donation actions into one place",
+          {
+            icon: "eye",
+            title: "Transparency builds trust",
+            body: "Seeing where money goes drives repeat donations.",
+          },
+          {
+            icon: "heart",
+            title: "Personal connection motivates",
+            body: "Giving to a specific hospital turns impulse into intention.",
+          },
+          {
+            icon: "merge",
+            title: "One unified experience",
+            body: "Progress, stories, and actions brought into one place to reduce dependency on any one channel.",
+          },
         ],
+        outcome: "A unified, transparent giving experience",
       },
     ],
   },
@@ -130,11 +161,23 @@ const caseStudySections: CaseStudySection[] = [
     eyebrow: "DESIGN GOALS",
     blocks: [
       {
-        type: "bullets",
+        type: "principles",
         items: [
-          "Close the gap between giving and impact",
-          "Create a fast, frictionless donation entry point so donors can act on impulse without losing the moment",
-          "Improve donor retention by showing funding progress over time",
+          {
+            icon: "smiley",
+            title: "Close the gap between giving and impact",
+            body: "",
+          },
+          {
+            icon: "handshake",
+            title: "Create a fast, frictionless donation entry point so donors can act on impulse without losing the moment",
+            body: "",
+          },
+          {
+            icon: "plant",
+            title: "Improve donor retention by showing funding progress over time",
+            body: "",
+          },
         ],
       },
     ],
@@ -149,7 +192,13 @@ const caseStudySections: CaseStudySection[] = [
         type: "text",
         body: "Starting from the research and design goals, I sketched a lo-fi wireframe that supported the immediate priorities. Partway through, the client asked for a hospital landing page alongside the map, giving donors a place to read the request narrative behind a location, see its impact, and check its donation status.",
       },
-      { type: "placeholder", label: "Lo-fi wireframes and hospital landing page concept", aspect: "wide" },
+      {
+        type: "image",
+        src: "/images/projects/donor-map/ideation.png",
+        alt: "Interactive map wireframe and hospital landing page wireframe",
+        aspectRatio: "1760/1811",
+        fullWidth: true,
+      },
     ],
   },
   {
@@ -163,19 +212,38 @@ const caseStudySections: CaseStudySection[] = [
         body: "After a lot of iteration and client feedback (I used Lovable early on to explore layout and visual direction), the client was clear that the final screens needed to feel playful and engaging, not like a spreadsheet. That shaped four core decisions.",
       },
       {
-        type: "principles",
+        type: "tabbedPrinciples",
+        layout: "sideBySide",
         items: [
           {
             title: "Multiple donation entry points",
             body: "Every location on the map ties to its own donation action, so donors can give to a specific place instead of a general fund, supporting more intentional giving.",
+            image: {
+              src: "/images/projects/donor-map/decision-donation.png",
+              alt: "The interactive map with a hospital's location card and its donation panel open.",
+              width: 1046,
+              height: 1156,
+            },
           },
           {
             title: "Visible fund allocation",
             body: "The map shows in real time where donations are going: specific hospitals, funding progress, and how close each is to its goal, directly closing the transparency gap.",
+            image: {
+              src: "/images/projects/donor-map/decision-allocation.png",
+              alt: "Three impact cards showing play sessions, equipment installed, and kids impacted so far.",
+              width: 1046,
+              height: 1156,
+            },
           },
           {
             title: "Progress tracking over time",
             body: "The prototype surfaces funding milestones and growth, giving returning donors something new to see and the feedback loop the organization was missing.",
+            image: {
+              src: "/images/projects/donor-map/decision-progress.png",
+              alt: "A donation progress meter showing funds raised against a hospital's goal.",
+              width: 1046,
+              height: 1156,
+            },
           },
           {
             title: "A shareable marketing asset",
@@ -183,7 +251,6 @@ const caseStudySections: CaseStudySection[] = [
           },
         ],
       },
-      { type: "placeholder", label: "Final map and hospital landing page screens", aspect: "wide" },
     ],
   },
   {
@@ -193,14 +260,46 @@ const caseStudySections: CaseStudySection[] = [
     heading: "What I'd carry forward",
     blocks: [
       {
-        type: "text",
-        heading: "On working cross-functionally",
-        body: "Collaborating with developers and stakeholders early was essential. Getting aligned on scope and feasibility from the start prevented bigger misalignments later on. As the sole UX designer on the team, I learned quickly that good design work is only half the job: advocating for user-centered decisions and accessibility standards in a cross-functional environment meant learning how to communicate design's value to people with very different priorities.",
+        type: "row",
+        items: [
+          {
+            width: 274,
+            block: {
+              type: "image",
+              src: "/images/projects/donor-map/reflection-1.png",
+              alt: "",
+              aspectRatio: "274/245",
+            },
+          },
+          {
+            block: {
+              type: "text",
+              heading: "On working cross-functionally",
+              body: "Collaborating with developers and stakeholders early was essential. Getting aligned on scope and feasibility from the start prevented bigger misalignments later on. As the sole UX designer on the team, I learned quickly that good design work is only half the job: advocating for user-centered decisions and accessibility standards in a cross-functional environment meant learning how to communicate design's value to people with very different priorities.",
+            },
+          },
+        ],
       },
       {
-        type: "text",
-        heading: "If I did this again",
-        body: "I'd bring AI tools into the ideation process earlier to move faster through initial concepts and spend more time refining what actually matters. I'd also prioritize formal usability testing to catch friction points that are easy to miss without direct user feedback.",
+        type: "row",
+        items: [
+          {
+            width: 275,
+            block: {
+              type: "image",
+              src: "/images/projects/donor-map/reflection-2.png",
+              alt: "",
+              aspectRatio: "275/247",
+            },
+          },
+          {
+            block: {
+              type: "text",
+              heading: "If I did this again",
+              body: "I'd bring AI tools into the ideation process earlier to move faster through initial concepts and spend more time refining what actually matters. I'd also prioritize formal usability testing to catch friction points that are easy to miss without direct user feedback.",
+            },
+          },
+        ],
       },
     ],
   },
